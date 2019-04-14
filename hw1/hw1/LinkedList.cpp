@@ -86,15 +86,21 @@ LinkedList::Node *LinkedList::GetAtIndex(int index)
 
 void LinkedList::RemoveAtHead()
 {
-	Node *tmp = head;
-
-	if (head != NULL)
+	if (size == 0) return;
+	if (size == 1)
 	{
-		head = head->next;
-		delete tmp;
-
-		size--;
+		delete head;
+		head = NULL;
+		tail = NULL;
+		size = 0;
+		return;
 	}
+
+	Node *tmp = head;
+	head = head->next;
+	delete tmp;
+
+	size--;
 }
 
 void LinkedList::RemoveAtTail()

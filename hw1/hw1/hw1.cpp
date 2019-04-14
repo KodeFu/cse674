@@ -20,19 +20,19 @@ int main()
 
 	tmp = new LinkedList::Node();
 	tmp->value = 3;
-	ll->AddAtHead(tmp);
+	//ll->AddAtHead(tmp);
 
 	tmp = new LinkedList::Node();
 	tmp->value = 77;
-	ll->AddAtTail(tmp);
+	//ll->AddAtTail(tmp);
 
 	tmp = new LinkedList::Node();
 	tmp->value = 99;
-	ll->AddAtTail(tmp);
+	//ll->AddAtTail(tmp);
 
 	tmp = new LinkedList::Node();
 	tmp->value = 4;
-	ll->AddAtHead(tmp);
+	//ll->AddAtHead(tmp);
 
 	ll->PrintAll();
 
