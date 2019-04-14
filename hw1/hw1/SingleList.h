@@ -1,6 +1,6 @@
 #pragma once
 
-class LinkedList
+class SingleList
 {
 public:
 	struct Node 
@@ -9,8 +9,8 @@ public:
 		Node *next;
 	};
 
-	LinkedList();
-	~LinkedList();
+	SingleList();
+	~SingleList();
 
 	void AddAtHead(Node *node);
 	void AddAtTail(Node *node);

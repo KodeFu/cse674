@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "LinkedList.h"
+#include "SingleList.h"
 
 
-LinkedList::LinkedList()
+SingleList::SingleList()
 {
 	size = 0;
 	head = NULL;
@@ -10,12 +10,12 @@ LinkedList::LinkedList()
 }
 
 
-LinkedList::~LinkedList()
+SingleList::~SingleList()
 {
 	RemoveAll();
 }
 
-void LinkedList::AddAtHead(LinkedList::Node *node)
+void SingleList::AddAtHead(SingleList::Node *node)
 {
 	if (head == NULL) // empty list
 	{
@@ -32,7 +32,7 @@ void LinkedList::AddAtHead(LinkedList::Node *node)
 	size++;
 }
 
-void LinkedList::AddAtTail(LinkedList::Node *node)
+void SingleList::AddAtTail(SingleList::Node *node)
 {
 	if (head == NULL) // empty list
 	{
@@ -49,17 +49,17 @@ void LinkedList::AddAtTail(LinkedList::Node *node)
 	size++;
 }
 
-LinkedList::Node *LinkedList::GetAtHead()
+SingleList::Node *SingleList::GetAtHead()
 {
 	return head;
 }
 
-LinkedList::Node *LinkedList::GetAtTail()
+SingleList::Node *SingleList::GetAtTail()
 {
 	return tail;
 }
 
-LinkedList::Node *LinkedList::GetAtIndex(int index)
+SingleList::Node *SingleList::GetAtIndex(int index)
 {
 	Node *tmp = head;
 	int current = 0;
@@ -84,7 +84,7 @@ LinkedList::Node *LinkedList::GetAtIndex(int index)
 	return NULL;
 }
 
-void LinkedList::RemoveAtHead()
+void SingleList::RemoveAtHead()
 {
 	if (size == 0) return;
 	if (size == 1)
@@ -103,7 +103,7 @@ void LinkedList::RemoveAtHead()
 	size--;
 }
 
-void LinkedList::RemoveAtTail()
+void SingleList::RemoveAtTail()
 {
 	if (size == 0) return;
 	if (size == 1) 
@@ -123,7 +123,7 @@ void LinkedList::RemoveAtTail()
 	size--;
 }
 
-void LinkedList::RemoveAll()
+void SingleList::RemoveAll()
 {
 	Node *tmp = head;
 	Node *next = NULL;
@@ -142,12 +142,12 @@ void LinkedList::RemoveAll()
 	tail = NULL;
 }
 
-int LinkedList::Size()
+int SingleList::Size()
 {
 	return size;
 }
 
-void LinkedList::PrintNode(Node *node)
+void SingleList::PrintNode(Node *node)
 {
 	if (node != NULL)
 	{
@@ -161,7 +161,7 @@ void LinkedList::PrintNode(Node *node)
 	}
 }
 
-void LinkedList::PrintAll()
+void SingleList::PrintAll()
 {
 	std::cout << "size: " << size << std::endl;
 	std::cout << "head: " << head << std::endl;
