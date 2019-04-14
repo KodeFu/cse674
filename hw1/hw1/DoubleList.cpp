@@ -22,10 +22,13 @@ void DoubleList::AddAtHead(DoubleList::Node *node)
 		head = node;
 		tail = node;
 		node->next = NULL;
+		node->prev = NULL;
 	}
 	else
 	{
 		node->next = head;
+		node->next->prev = node;
+		node->prev = NULL;
 		head = node;
 	}
 
@@ -39,10 +42,13 @@ void DoubleList::AddAtTail(DoubleList::Node *node)
 		head = node;
 		tail = node;
 		node->next = NULL;
+		node->prev = NULL;
 	}
 	else
 	{
 		tail->next = node;
+		node->next = NULL;
+		node->prev = tail;
 		tail = node;
 	}
 
@@ -98,6 +104,7 @@ void DoubleList::RemoveAtHead()
 
 	Node *tmp = head;
 	head = head->next;
+	head->prev = NULL;
 	delete tmp;
 
 	size--;
@@ -115,8 +122,8 @@ void DoubleList::RemoveAtTail()
 		return;
 	}
 
-	Node *prev = GetAtIndex(size - 1);
-	delete prev->next;
+	Node *prev = tail->prev;
+	delete prev->next; // same as tail
 	prev->next = NULL;
 	tail = prev;
 
@@ -153,6 +160,7 @@ void DoubleList::PrintNode(Node *node)
 	{
 		std::cout << "node: " << &node << " " << node << std::endl;
 		std::cout << node->value << std::endl;
+		std::cout << node->prev << std::endl;
 		std::cout << node->next << std::endl;
 	}
 	else

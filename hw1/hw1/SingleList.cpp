@@ -43,6 +43,7 @@ void SingleList::AddAtTail(SingleList::Node *node)
 	else
 	{
 		tail->next = node;
+		node->next = NULL;
 		tail = node;
 	}
 
@@ -116,7 +117,7 @@ void SingleList::RemoveAtTail()
 	}
 
 	Node *prev = GetAtIndex(size - 1);
-	delete prev->next;
+	delete prev->next; // same as tail
 	prev->next = NULL;
 	tail = prev;
 
