@@ -49,19 +49,72 @@ void LinkedList::AddAtTail(LinkedList::Node *node)
 	size++;
 }
 
-LinkedList::Node *LinkedList::Get(int index)
+LinkedList::Node *LinkedList::GetAtHead()
 {
+	return head;
+}
+
+LinkedList::Node *LinkedList::GetAtTail()
+{
+	return tail;
+}
+
+LinkedList::Node *LinkedList::GetAtIndex(int index)
+{
+	Node *tmp = head;
+	int current = 0;
+
+	if ((index < 1) || (index > size))
+	{
+		return NULL;
+	}
+
+	while (tmp != NULL)
+	{
+		current++;
+		
+		if (current == index)
+		{
+			return tmp;
+		}
+
+		tmp = tmp->next;
+	}
+
 	return NULL;
 }
 
-LinkedList::Node *LinkedList::RemoveAtHead()
+void LinkedList::RemoveAtHead()
 {
-	return NULL;
+	Node *tmp = head;
+
+	if (head != NULL)
+	{
+		head = head->next;
+		delete tmp;
+
+		size--;
+	}
 }
 
-LinkedList::Node *LinkedList::RemoveAtTail()
+void LinkedList::RemoveAtTail()
 {
-	return NULL;
+	if (size == 0) return;
+	if (size == 1) 
+	{
+		delete head;
+		head = NULL;
+		tail = NULL;
+		size = 0;
+		return;
+	}
+
+	Node *prev = GetAtIndex(size - 1);
+	delete prev->next;
+	prev->next = NULL;
+	tail = prev;
+
+	size--;
 }
 
 void LinkedList::RemoveAll()
@@ -76,12 +129,30 @@ void LinkedList::RemoveAll()
 		delete tmp;
 
 		tmp = next;
+		size--;
 	}
+
+	head = NULL;
+	tail = NULL;
 }
 
 int LinkedList::Size()
 {
 	return size;
+}
+
+void LinkedList::PrintNode(Node *node)
+{
+	if (node != NULL)
+	{
+		std::cout << "node: " << &node << " " << node << std::endl;
+		std::cout << node->value << std::endl;
+		std::cout << node->next << std::endl;
+	}
+	else
+	{
+		std::cout << "node: NULL" << std::endl;
+	}
 }
 
 void LinkedList::PrintAll()
@@ -93,9 +164,7 @@ void LinkedList::PrintAll()
 	Node *tmp = head;
 	while (tmp != NULL)
 	{
-		std::cout << "node: " << &tmp << " " << tmp << std::endl;
-		std::cout << tmp->value << std::endl;
-		std::cout << tmp->next << std::endl;
+		PrintNode(tmp);
 		tmp = tmp->next;
 	}
 }

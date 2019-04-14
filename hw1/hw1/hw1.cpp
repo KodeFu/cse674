@@ -36,6 +36,25 @@ int main()
 
 	ll->PrintAll();
 
+	ll->PrintNode(ll->GetAtIndex(1));
+	ll->PrintNode(ll->GetAtIndex(3));
+	ll->PrintNode(ll->GetAtIndex(0));
+	ll->PrintNode(ll->GetAtIndex(10));
+	
+	std::cout << "---> GetAtHead..." << std::endl;
+	ll->PrintNode(ll->GetAtHead());
+	std::cout << "---> GetAtTail..." << std::endl;
+	ll->PrintNode(ll->GetAtTail());
+
+	ll->RemoveAtHead();
+	ll->RemoveAtTail();
+
+	ll->PrintAll();
+	std::cout << "final size: " << ll->Size() << std::endl;
+
+	ll->RemoveAll();
+	std::cout << "final size: " << ll->Size() << std::endl;
+
 	delete ll;
 
     return 0;
