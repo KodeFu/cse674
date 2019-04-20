@@ -273,6 +273,36 @@ void SingleList::BubbleSort(int startIndex, int rangeLength)
 	}
 }
 
+void SingleList::Shuffle()
+{
+	int halfDeck = size / 2;
+
+	Node *leftCurr = head;
+	Node *leftNext = NULL;
+
+	Node *rightCurr = GetAtIndex(halfDeck);
+	Node *rightNext = NULL;
+
+	for (int i = 0; i < halfDeck; i++)
+	{
+		leftNext = leftCurr->next;
+		leftCurr->next = rightCurr;
+		
+		rightNext = rightCurr->next;
+		if (rightNext == NULL)
+		{
+			// end of right half of deck
+			break;
+		}
+
+		rightCurr->next = leftNext;
+
+		leftCurr = leftNext;
+		rightCurr = rightNext;
+		rightNext = rightCurr->next;
+	}
+}
+
 void SingleList::PrintNode(Node *node)
 {
 	if (node != NULL)

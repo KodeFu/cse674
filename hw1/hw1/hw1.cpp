@@ -91,8 +91,9 @@ int main()
 	//ll->RemoveAtTail();
 	//ll->PrintAll();
 
-	ll->BubbleSort(0,4);
-	ll->BubbleSort(4, 4);
+	//ll->BubbleSort(0,4);
+	//ll->BubbleSort(4, 4);
+	ll->Shuffle();
 	ll->PrintAll();
 
 	getchar();
