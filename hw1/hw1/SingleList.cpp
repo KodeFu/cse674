@@ -65,21 +65,20 @@ SingleList::Node *SingleList::GetAtIndex(int index)
 	Node *tmp = head;
 	int current = 0;
 
-	if ((index < 1) || (index > size))
+	if ((index < 0) || (index >= size))
 	{
 		return NULL;
 	}
 
 	while (tmp != NULL)
-	{
-		current++;
-		
+	{	
 		if (current == index)
 		{
 			return tmp;
 		}
 
 		tmp = tmp->next;
+		current++;
 	}
 
 	return NULL;
@@ -116,7 +115,7 @@ void SingleList::RemoveAtTail()
 		return;
 	}
 
-	Node *prev = GetAtIndex(size - 1);
+	Node *prev = GetAtIndex(size - 2);
 	delete prev->next; // same as tail
 	prev->next = NULL;
 	tail = prev;
@@ -222,18 +221,31 @@ void SingleList::Reverse()
 	head = curr;
 }
 
-void SingleList::BubbleSort()
+void SingleList::BubbleSort(int startIndex, int rangeLength)
 {
 	bool swapped = true;
 	Node *curr = NULL;
 	Node *next = NULL;
+	int range = 0;
+
+	if ((startIndex < 0) || (startIndex >= size))
+	{
+		return;
+	}
+
+	if (startIndex + rangeLength > size)
+	{
+		return;
+	}
 
 	while (swapped)
 	{
 		swapped = false;
-		Node *curr = head;
+		(!startIndex) ? curr = head : curr = GetAtIndex(startIndex);
+		(!rangeLength) ? range = size : range = startIndex + rangeLength;
+
 		Node *next = curr->next;
-		for (int i = 0; i < size - 1; i++)
+		for (int i = startIndex; i < range - 1; i++)
 		{
 			if (curr->value > next->value)
 			{

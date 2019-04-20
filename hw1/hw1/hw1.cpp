@@ -71,14 +71,28 @@ int main()
 	ll->AddAtTail(tmp);
 
 	tmp = new SingleList::Node();
+	tmp->value = 6;
+	ll->AddAtTail(tmp);
+
+	tmp = new SingleList::Node();
 	tmp->value = 1;
 	ll->AddAtTail(tmp);
 
+	tmp = new SingleList::Node();
+	tmp->value = 8;
+	ll->AddAtTail(tmp);
+
+	tmp = new SingleList::Node();
+	tmp->value = 5;
+	ll->AddAtTail(tmp);
+
+
 	ll->PrintAll();
-	//ll->Reverse();
+	//ll->RemoveAtTail();
 	//ll->PrintAll();
 
-	ll->BubbleSort();
+	ll->BubbleSort(0,4);
+	ll->BubbleSort(4, 4);
 	ll->PrintAll();
 
 	getchar();
