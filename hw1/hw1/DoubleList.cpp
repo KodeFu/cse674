@@ -160,19 +160,21 @@ void DoubleList::Swap(int a, int b)
 	// search for first node
 	while (tmp && (tmp->value != a))
 	{
-		prevA = tmp;
+		//prevA = tmp;
 		tmp = tmp->next;
 	}
 	nodeA = tmp;
+	prevA = tmp->prev;
 
 	// search for second node
 	tmp = head;
 	while (tmp && (tmp->value != b))
 	{
-		prevB = tmp;
+		//prevB = tmp;
 		tmp = tmp->next;
 	}
 	nodeB = tmp;
+	prevB = tmp->prev;
 
 	// only swap if both nodes found
 	if (nodeA && nodeB)
@@ -182,9 +184,12 @@ void DoubleList::Swap(int a, int b)
 		(prevB) ? prevB->next = nodeA : head = nodeA;
 
 		// update nodes
-		tmp = nodeA->next;
+		Node *tmpNext = nodeA->next;
+		Node *tmpPrev = nodeA->prev;
 		nodeA->next = nodeB->next;
-		nodeB->next = tmp;
+		nodeA->prev = nodeB->prev;
+		nodeB->next = tmpNext;
+		nodeB->prev = tmpPrev;
 	}
 }
 

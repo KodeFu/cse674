@@ -187,22 +187,52 @@ void SingleList::Swap(int a, int b)
 	}
 }
 
+void SingleList::Reverse()
+{
+	Node *prev;
+	Node *curr;
+	Node *next;
+
+	// don't do anything if there are no nodes
+	if (!size) return;
+
+	// make head node the last node
+	prev = NULL;
+	curr = head;
+	next = curr->next;
+
+	curr->next = NULL;
+	tail = curr;
+
+	// reverse next pointer for every node thereafter
+	while (next != NULL)
+	{
+		prev = curr;
+		curr = next;
+		next = curr->next;
+
+		curr->next = prev;
+	}
+
+	// point the head to the current front node
+	head = curr;
+}
+
 void SingleList::PrintNode(Node *node)
 {
 	if (node != NULL)
 	{
-		std::cout << "node: " << &node << " " << node << std::endl;
-		std::cout << node->value << std::endl;
-		std::cout << node->next << std::endl;
+		std::cout << "  -> 0x" << node << "  0x" << node->next << "  " << node->value << std::endl;
 	}
 	else
 	{
-		std::cout << "node: NULL" << std::endl;
+		std::cout << "  -> NULL" << std::endl;
 	}
 }
 
 void SingleList::PrintAll()
 {
+	std::cout << "-----------------------------------" << std::endl;
 	std::cout << "size: " << size << std::endl;
 	std::cout << "head: " << head << std::endl;
 	std::cout << "tail: " << tail << std::endl;
