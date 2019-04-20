@@ -184,6 +184,10 @@ void SingleList::Swap(int a, int b)
 		tmp = nodeA->next;
 		nodeA->next = nodeB->next;
 		nodeB->next = tmp;
+
+		// adjust tail if node points to NULL
+		if (nodeA->next == NULL) tail = nodeA;
+		if (nodeB->next == NULL) tail = nodeB;
 	}
 }
 
@@ -216,6 +220,45 @@ void SingleList::Reverse()
 
 	// point the head to the current front node
 	head = curr;
+}
+
+void SingleList::BubbleSort()
+{
+	bool swapped = true;
+	Node *curr = NULL;
+	Node *next = NULL;
+
+	while (swapped)
+	{
+		swapped = false;
+		Node *curr = head;
+		Node *next = curr->next;
+		for (int i = 0; i < size - 1; i++)
+		{
+			if (curr->value > next->value)
+			{
+				Swap(curr->value, next->value);
+				swapped = true;
+
+				// if we did swap, curr stays the same since it
+				// swapped with next
+			}
+			else
+			{
+				// if we didn't swap, curr advances to next
+				curr = next;
+			}
+
+			if (curr->next != NULL)
+			{
+				next = curr->next;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
 }
 
 void SingleList::PrintNode(Node *node)

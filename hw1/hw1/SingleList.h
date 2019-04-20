@@ -22,6 +22,7 @@ public:
 	void RemoveAll();
 	void Swap(int a, int b);
 	void Reverse();
+	void BubbleSort();
 	int Size();
 
 	void PrintNode(Node *node);

@@ -55,23 +55,30 @@ int main()
 	SingleList *ll = new SingleList();
 
 	SingleList::Node *tmp = new SingleList::Node();
-	tmp->value = 1;
+	tmp->value = 7;
 	ll->AddAtHead(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 2;
-	ll->AddAtTail(tmp);
 
 	tmp = new SingleList::Node();
 	tmp->value = 3;
 	ll->AddAtTail(tmp);
 
 	tmp = new SingleList::Node();
-	tmp->value = 4;
+	tmp->value = 9;
+	ll->AddAtTail(tmp);
+
+	tmp = new SingleList::Node();
+	tmp->value = 2;
+	ll->AddAtTail(tmp);
+
+	tmp = new SingleList::Node();
+	tmp->value = 1;
 	ll->AddAtTail(tmp);
 
 	ll->PrintAll();
-	ll->Reverse();
+	//ll->Reverse();
+	//ll->PrintAll();
+
+	ll->BubbleSort();
 	ll->PrintAll();
 
 	getchar();
