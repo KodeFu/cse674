@@ -149,6 +149,45 @@ void DoubleList::RemoveAll()
 	tail = NULL;
 }
 
+void DoubleList::Swap(int a, int b)
+{
+	Node *tmp = head;
+	Node *prevA = NULL;
+	Node *nodeA = head;
+	Node *prevB = NULL;
+	Node *nodeB = head;
+
+	// search for first node
+	while (tmp && (tmp->value != a))
+	{
+		prevA = tmp;
+		tmp = tmp->next;
+	}
+	nodeA = tmp;
+
+	// search for second node
+	tmp = head;
+	while (tmp && (tmp->value != b))
+	{
+		prevB = tmp;
+		tmp = tmp->next;
+	}
+	nodeB = tmp;
+
+	// only swap if both nodes found
+	if (nodeA && nodeB)
+	{
+		// update prev nodes
+		(prevA) ? prevA->next = nodeB : head = nodeB;
+		(prevB) ? prevB->next = nodeA : head = nodeA;
+
+		// update nodes
+		tmp = nodeA->next;
+		nodeA->next = nodeB->next;
+		nodeB->next = tmp;
+	}
+}
+
 int DoubleList::Size()
 {
 	return size;

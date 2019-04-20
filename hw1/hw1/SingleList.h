@@ -20,6 +20,7 @@ public:
 	void RemoveAtHead();
 	void RemoveAtTail();
 	void RemoveAll();
+	void Swap(int a, int b);
 	int Size();
 
 	void PrintNode(Node *node);
@@ -30,4 +31,3 @@ private:
 	Node *tail;
 	int size;
 };
-
