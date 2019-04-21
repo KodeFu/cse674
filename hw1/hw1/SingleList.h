@@ -23,6 +23,7 @@ public:
 	void Swap(int a, int b);
 	void Reverse();
 	void BubbleSort(int startIndex = 0, int rangeLength = 0);
+	void TeamOfFour();
 	void Shuffle();
 	int Size();
 

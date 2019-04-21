@@ -62,10 +62,10 @@ void TeamOfFourS2()
 	}
 
 	std::cout << "***** Before the Team of Four operation *****" << std::endl;
-	//ll->PrintResults();
-	//ll->Shuffle();
+	ll->PrintResults();
+	ll->TeamOfFour();
 	std::cout << "***** After the Team of Four operation *****" << std::endl;
-	//ll->PrintResults();
+	ll->PrintResults();
 
 	ll->RemoveAll();
 	delete ll;
@@ -173,11 +173,11 @@ int main()
 
 	TeamOfFourS2();
 
-	ReverseS1();
-	ReverseS2();
+	//ReverseS1();
+	//ReverseS2();
 
-	ShuffleS1();
-	ShuffleS2();
+	//ShuffleS1();
+	//ShuffleS2();
 
 	std::cout << "Press any key to continue..." << std::endl;
 	getchar();

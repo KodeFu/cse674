@@ -272,6 +272,14 @@ void SingleList::BubbleSort(int startIndex, int rangeLength)
 	}
 }
 
+void SingleList::TeamOfFour()
+{
+	for (int i = 0; i < size; i+=4)
+	{
+		BubbleSort(i, 4);
+	}
+}
+
 void SingleList::Shuffle()
 {
 	int halfDeck = size / 2;
@@ -331,7 +339,7 @@ void SingleList::PrintAll()
 
 void SingleList::PrintResults()
 {
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < size/4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
