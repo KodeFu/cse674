@@ -131,7 +131,6 @@ void SingleList::RemoveAll()
 	while (tmp != NULL)
 	{
 		Node *next = tmp->next;
-		std::cout << "deleting node: " << tmp << std::endl;
 		delete tmp;
 
 		tmp = next;
@@ -327,5 +326,19 @@ void SingleList::PrintAll()
 	{
 		PrintNode(tmp);
 		tmp = tmp->next;
+	}
+}
+
+void SingleList::PrintResults()
+{
+	for (int i = 0; i < 25; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << GetAtIndex(i * 4 + j)->value;
+			std::cout << ", ";
+		}
+
+		std::cout << std::endl;
 	}
 }

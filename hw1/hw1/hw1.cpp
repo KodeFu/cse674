@@ -48,59 +48,139 @@ void generateS2(unsigned int seed=0)
 	}
 }
 
-int main()
+void TeamOfFourS2()
 {
-	std::cout << "Homework 1: Linked List" << std::endl;
-	
 	SingleList *ll = new SingleList();
+	SingleList::Node *tmp = NULL;
 
-	SingleList::Node *tmp = new SingleList::Node();
-	tmp->value = 7;
-	ll->AddAtHead(tmp);
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		tmp = new SingleList::Node();
+		tmp->value = g_S2[i];
+		ll->AddAtTail(tmp);
+	}
 
-	tmp = new SingleList::Node();
-	tmp->value = 3;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 9;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 2;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 6;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 1;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 8;
-	ll->AddAtTail(tmp);
-
-	tmp = new SingleList::Node();
-	tmp->value = 5;
-	ll->AddAtTail(tmp);
-
-
-	ll->PrintAll();
-	//ll->RemoveAtTail();
-	//ll->PrintAll();
-
-	//ll->BubbleSort(0,4);
-	//ll->BubbleSort(4, 4);
-	ll->Shuffle();
-	ll->PrintAll();
-
-	getchar();
+	std::cout << "***** Before the Team of Four operation *****" << std::endl;
+	//ll->PrintResults();
+	//ll->Shuffle();
+	std::cout << "***** After the Team of Four operation *****" << std::endl;
+	//ll->PrintResults();
 
 	ll->RemoveAll();
 	delete ll;
+}
 
+
+void ReverseS1()
+{
+	SingleList *ll = new SingleList();
+	SingleList::Node *tmp = NULL;
+
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		tmp = new SingleList::Node();
+		tmp->value = g_S1[i];
+		ll->AddAtTail(tmp);
+	}
+
+	std::cout << "***** Before the Reverse operation *****" << std::endl;
+	ll->PrintResults();
+	ll->Reverse();
+	std::cout << "***** After the Reverse operation *****" << std::endl;
+	ll->PrintResults();
+
+	ll->RemoveAll();
+	delete ll;
+}
+
+void ReverseS2()
+{
+	SingleList *ll = new SingleList();
+	SingleList::Node *tmp = NULL;
+
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		tmp = new SingleList::Node();
+		tmp->value = g_S2[i];
+		ll->AddAtTail(tmp);
+	}
+
+	std::cout << "***** Before the Reverse operation *****" << std::endl;
+	ll->PrintResults();
+	ll->Reverse();
+	std::cout << "***** After the Reverse operation *****" << std::endl;
+	ll->PrintResults();
+
+	ll->RemoveAll();
+	delete ll;
+}
+
+void ShuffleS1()
+{
+	SingleList *ll = new SingleList();
+	SingleList::Node *tmp = NULL;
+
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		tmp = new SingleList::Node();
+		tmp->value = g_S1[i];
+		ll->AddAtTail(tmp);
+	}
+
+	std::cout << "***** Before the Shuffle operation *****" << std::endl;
+	ll->PrintResults();
+	ll->Shuffle();
+	std::cout << "***** After the Shuffle operation *****" << std::endl;
+	ll->PrintResults();
+
+	ll->RemoveAll();
+	delete ll;
+}
+
+void ShuffleS2()
+{
+	SingleList *ll = new SingleList();
+	SingleList::Node *tmp = NULL;
+
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		tmp = new SingleList::Node();
+		tmp->value = g_S2[i];
+		ll->AddAtTail(tmp);
+	}
+
+	std::cout << "***** Before the Shuffle operation *****" << std::endl;
+	ll->PrintResults();
+	ll->Shuffle();
+	std::cout << "***** After the Shuffle operation *****" << std::endl;
+	ll->PrintResults();
+
+	ll->RemoveAll();
+	delete ll;
+}
+
+int main()
+{
+	std::cout << "Homework 1: Linked List" << std::endl;
+
+	generateS1();
+	generateS2();
+
+	TeamOfFourS2();
+
+	ReverseS1();
+	ReverseS2();
+
+	ShuffleS1();
+	ShuffleS2();
+
+	std::cout << "Press any key to continue..." << std::endl;
+	getchar();
     return 0;
 }
 

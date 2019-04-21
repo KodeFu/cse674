@@ -28,6 +28,7 @@ public:
 
 	void PrintNode(Node *node);
 	void PrintAll();
+	void PrintResults();
 
 private:
 	Node *head;
