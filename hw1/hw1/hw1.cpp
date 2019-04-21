@@ -50,118 +50,218 @@ void generateS2(unsigned int seed=0)
 
 void TeamOfFourS2()
 {
-	SingleList *ll = new SingleList();
-	SingleList::Node *tmp = NULL;
+	SingleList *sl = new SingleList();
+	SingleList::Node *sltmp = NULL;
 
 	// Single List
 	for (int i = 0; i < 100; i++)
 	{
-		tmp = new SingleList::Node();
-		tmp->value = g_S2[i];
-		ll->AddAtTail(tmp);
+		sltmp = new SingleList::Node();
+		sltmp->value = g_S2[i];
+		sl->AddAtTail(sltmp);
 	}
 
 	std::cout << "***** Before the Team of Four operation *****" << std::endl;
-	ll->PrintResults();
-	ll->TeamOfFour();
+	sl->PrintResults();
+	sl->TeamOfFour();
 	std::cout << "***** After the Team of Four operation *****" << std::endl;
-	ll->PrintResults();
+	sl->PrintResults();
 
-	ll->RemoveAll();
-	delete ll;
+	sl->RemoveAll();
+	delete sl;
+
+	DoubleList *dl = new DoubleList();
+	DoubleList::Node *dltmp = NULL;
+
+	// Single List
+	for (int i = 0; i < 100; i++)
+	{
+		dltmp = new DoubleList::Node();
+		dltmp->value = g_S2[i];
+		dl->AddAtTail(dltmp);
+	}
+
+	std::cout << "***** Before the Team of Four operation *****" << std::endl;
+	dl->PrintResults();
+	dl->TeamOfFour();
+	std::cout << "***** After the Team of Four operation *****" << std::endl;
+	dl->PrintResults();
+
+	dl->RemoveAll();
+	delete dl;
 }
 
 
 void ReverseS1()
 {
-	SingleList *ll = new SingleList();
-	SingleList::Node *tmp = NULL;
+	SingleList *sl = new SingleList();
+	SingleList::Node *sltmp = NULL;
 
 	// Single List
 	for (int i = 0; i < 100; i++)
 	{
-		tmp = new SingleList::Node();
-		tmp->value = g_S1[i];
-		ll->AddAtTail(tmp);
+		sltmp = new SingleList::Node();
+		sltmp->value = g_S1[i];
+		sl->AddAtTail(sltmp);
 	}
 
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
-	ll->PrintResults();
-	ll->Reverse();
+	sl->PrintResults();
+	sl->Reverse();
 	std::cout << "***** After the Reverse operation *****" << std::endl;
-	ll->PrintResults();
+	sl->PrintResults();
 
-	ll->RemoveAll();
-	delete ll;
+	sl->RemoveAll();
+	delete sl;
+
+	DoubleList *dl = new DoubleList();
+	DoubleList::Node *dltmp = NULL;
+
+	// Double List
+	for (int i = 0; i < 100; i++)
+	{
+		dltmp = new DoubleList::Node();
+		dltmp->value = g_S1[i];
+		dl->AddAtTail(dltmp);
+	}
+
+	std::cout << "***** Before the Reverse operation *****" << std::endl;
+	dl->PrintResults();
+	dl->Reverse();
+	std::cout << "***** After the Reverse operation *****" << std::endl;
+	dl->PrintResults();
+
+	dl->RemoveAll();
+	delete dl;
 }
 
 void ReverseS2()
 {
-	SingleList *ll = new SingleList();
-	SingleList::Node *tmp = NULL;
+	SingleList *sl = new SingleList();
+	SingleList::Node *sltmp = NULL;
 
 	// Single List
 	for (int i = 0; i < 100; i++)
 	{
-		tmp = new SingleList::Node();
-		tmp->value = g_S2[i];
-		ll->AddAtTail(tmp);
+		sltmp = new SingleList::Node();
+		sltmp->value = g_S2[i];
+		sl->AddAtTail(sltmp);
 	}
 
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
-	ll->PrintResults();
-	ll->Reverse();
+	sl->PrintResults();
+	sl->Reverse();
 	std::cout << "***** After the Reverse operation *****" << std::endl;
-	ll->PrintResults();
+	sl->PrintResults();
 
-	ll->RemoveAll();
-	delete ll;
+	sl->RemoveAll();
+	delete sl;
+
+	DoubleList *dl = new DoubleList();
+	DoubleList::Node *dltmp = NULL;
+
+	// Double List
+	for (int i = 0; i < 100; i++)
+	{
+		dltmp = new DoubleList::Node();
+		dltmp->value = g_S2[i];
+		dl->AddAtTail(dltmp);
+	}
+
+	std::cout << "***** Before the Reverse operation *****" << std::endl;
+	dl->PrintResults();
+	dl->Reverse();
+	std::cout << "***** After the Reverse operation *****" << std::endl;
+	dl->PrintResults();
+
+	dl->RemoveAll();
+	delete dl;
 }
 
 void ShuffleS1()
 {
-	SingleList *ll = new SingleList();
-	SingleList::Node *tmp = NULL;
+	SingleList *sl = new SingleList();
+	SingleList::Node *sltmp = NULL;
 
 	// Single List
 	for (int i = 0; i < 100; i++)
 	{
-		tmp = new SingleList::Node();
-		tmp->value = g_S1[i];
-		ll->AddAtTail(tmp);
+		sltmp = new SingleList::Node();
+		sltmp->value = g_S1[i];
+		sl->AddAtTail(sltmp);
 	}
 
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
-	ll->PrintResults();
-	ll->Shuffle();
+	sl->PrintResults();
+	sl->Shuffle();
 	std::cout << "***** After the Shuffle operation *****" << std::endl;
-	ll->PrintResults();
+	sl->PrintResults();
 
-	ll->RemoveAll();
-	delete ll;
+	sl->RemoveAll();
+	delete sl;
+
+	DoubleList *dl = new DoubleList();
+	DoubleList::Node *dltmp = NULL;
+
+	// Double List
+	for (int i = 0; i < 100; i++)
+	{
+		dltmp = new DoubleList::Node();
+		dltmp->value = g_S1[i];
+		dl->AddAtTail(dltmp);
+	}
+
+	std::cout << "***** Before the Shuffle operation *****" << std::endl;
+	dl->PrintResults();
+	dl->Shuffle();
+	std::cout << "***** After the Shuffle operation *****" << std::endl;
+	dl->PrintResults();
+
+	dl->RemoveAll();
+	delete dl;
 }
 
 void ShuffleS2()
 {
-	SingleList *ll = new SingleList();
-	SingleList::Node *tmp = NULL;
+	SingleList *sl = new SingleList();
+	SingleList::Node *sltmp = NULL;
 
 	// Single List
 	for (int i = 0; i < 100; i++)
 	{
-		tmp = new SingleList::Node();
-		tmp->value = g_S2[i];
-		ll->AddAtTail(tmp);
+		sltmp = new SingleList::Node();
+		sltmp->value = g_S2[i];
+		sl->AddAtTail(sltmp);
 	}
 
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
-	ll->PrintResults();
-	ll->Shuffle();
+	sl->PrintResults();
+	sl->Shuffle();
 	std::cout << "***** After the Shuffle operation *****" << std::endl;
-	ll->PrintResults();
+	sl->PrintResults();
 
-	ll->RemoveAll();
-	delete ll;
+	sl->RemoveAll();
+	delete sl;
+
+	DoubleList *dl = new DoubleList();
+	DoubleList::Node *dltmp = NULL;
+
+	// Double List
+	for (int i = 0; i < 100; i++)
+	{
+		dltmp = new DoubleList::Node();
+		dltmp->value = g_S2[i];
+		dl->AddAtTail(dltmp);
+	}
+
+	std::cout << "***** Before the Shuffle operation *****" << std::endl;
+	dl->PrintResults();
+	dl->Shuffle();
+	std::cout << "***** After the Shuffle operation *****" << std::endl;
+	dl->PrintResults();
+
+	dl->RemoveAll();
+	delete dl;
 }
 
 int main()
@@ -171,13 +271,13 @@ int main()
 	generateS1();
 	generateS2();
 
-	TeamOfFourS2();
+	//TeamOfFourS2();
 
 	//ReverseS1();
 	//ReverseS2();
 
-	//ShuffleS1();
-	//ShuffleS2();
+	ShuffleS1();
+	ShuffleS2();
 
 	std::cout << "Press any key to continue..." << std::endl;
 	getchar();

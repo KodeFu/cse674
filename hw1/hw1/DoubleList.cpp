@@ -70,21 +70,20 @@ DoubleList::Node *DoubleList::GetAtIndex(int index)
 	Node *tmp = head;
 	int current = 0;
 
-	if ((index < 1) || (index > size))
+	if ((index < 0) || (index >= size))
 	{
 		return NULL;
 	}
 
 	while (tmp != NULL)
-	{
-		current++;
-		
+	{	
 		if (current == index)
 		{
 			return tmp;
 		}
 
 		tmp = tmp->next;
+		current++;
 	}
 
 	return NULL;
@@ -138,7 +137,6 @@ void DoubleList::RemoveAll()
 	while (tmp != NULL)
 	{
 		Node *next = tmp->next;
-		std::cout << "deleting node: " << tmp << std::endl;
 		delete tmp;
 
 		tmp = next;
@@ -160,21 +158,19 @@ void DoubleList::Swap(int a, int b)
 	// search for first node
 	while (tmp && (tmp->value != a))
 	{
-		//prevA = tmp;
+		prevA = tmp;
 		tmp = tmp->next;
 	}
 	nodeA = tmp;
-	prevA = tmp->prev;
 
 	// search for second node
 	tmp = head;
 	while (tmp && (tmp->value != b))
 	{
-		//prevB = tmp;
+		prevB = tmp;
 		tmp = tmp->next;
 	}
 	nodeB = tmp;
-	prevB = tmp->prev;
 
 	// only swap if both nodes found
 	if (nodeA && nodeB)
@@ -184,14 +180,137 @@ void DoubleList::Swap(int a, int b)
 		(prevB) ? prevB->next = nodeA : head = nodeA;
 
 		// update nodes
-		Node *tmpNext = nodeA->next;
-		Node *tmpPrev = nodeA->prev;
+		tmp = nodeA->next;
 		nodeA->next = nodeB->next;
-		nodeA->prev = nodeB->prev;
-		nodeB->next = tmpNext;
-		nodeB->prev = tmpPrev;
+		nodeB->next = tmp;
+
+		// adjust tail if node points to NULL
+		if (nodeA->next == NULL) tail = nodeA;
+		if (nodeB->next == NULL) tail = nodeB;
 	}
 }
+
+void DoubleList::Reverse()
+{
+	Node *prev;
+	Node *curr;
+	Node *next;
+
+	// don't do anything if there are no nodes
+	if (!size) return;
+
+	// make head node the last node
+	prev = NULL;
+	curr = head;
+	next = curr->next;
+
+	curr->next = NULL;
+	tail = curr;
+
+	// reverse next pointer for every node thereafter
+	while (next != NULL)
+	{
+		prev = curr;
+		curr = next;
+		next = curr->next;
+
+		curr->next = prev;
+	}
+
+	// point the head to the current front node
+	head = curr;
+}
+
+void DoubleList::BubbleSort(int startIndex, int rangeLength)
+{
+	bool swapped = true;
+	Node *curr = NULL;
+	Node *next = NULL;
+	int range = 0;
+
+	if ((startIndex < 0) || (startIndex >= size))
+	{
+		return;
+	}
+
+	if (startIndex + rangeLength > size)
+	{
+		return;
+	}
+
+	while (swapped)
+	{
+		swapped = false;
+		(!startIndex) ? curr = head : curr = GetAtIndex(startIndex);
+		(!rangeLength) ? range = size : range = startIndex + rangeLength;
+
+		Node *next = curr->next;
+		for (int i = startIndex; i < range - 1; i++)
+		{
+			if (curr->value > next->value)
+			{
+				Swap(curr->value, next->value);
+				swapped = true;
+
+				// if we did swap, curr stays the same since it
+				// swapped with next
+			}
+			else
+			{
+				// if we didn't swap, curr advances to next
+				curr = next;
+			}
+
+			if (curr->next != NULL)
+			{
+				next = curr->next;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+}
+
+void DoubleList::TeamOfFour()
+{
+	for (int i = 0; i < size; i += 4)
+	{
+		BubbleSort(i, 4);
+	}
+}
+
+void DoubleList::Shuffle()
+{
+	int halfDeck = size / 2;
+
+	Node *leftCurr = head;
+	Node *leftNext = NULL;
+
+	Node *rightCurr = GetAtIndex(halfDeck);
+	Node *rightNext = NULL;
+
+	for (int i = 0; i < halfDeck; i++)
+	{
+		leftNext = leftCurr->next;
+		leftCurr->next = rightCurr;
+
+		rightNext = rightCurr->next;
+		if (rightNext == NULL)
+		{
+			// end of right half of deck
+			break;
+		}
+
+		rightCurr->next = leftNext;
+
+		leftCurr = leftNext;
+		rightCurr = rightNext;
+		rightNext = rightCurr->next;
+	}
+}
+
 
 int DoubleList::Size()
 {
@@ -202,14 +321,11 @@ void DoubleList::PrintNode(Node *node)
 {
 	if (node != NULL)
 	{
-		std::cout << "node: " << &node << " " << node << std::endl;
-		std::cout << node->value << std::endl;
-		std::cout << node->prev << std::endl;
-		std::cout << node->next << std::endl;
+		std::cout << "  -> 0x" << node << "  0x" << node->next << "  " << node->value << std::endl;
 	}
 	else
 	{
-		std::cout << "node: NULL" << std::endl;
+		std::cout << "  -> NULL" << std::endl;
 	}
 }
 
@@ -224,5 +340,19 @@ void DoubleList::PrintAll()
 	{
 		PrintNode(tmp);
 		tmp = tmp->next;
+	}
+}
+
+void DoubleList::PrintResults()
+{
+	for (int i = 0; i < size / 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << GetAtIndex(i * 4 + j)->value;
+			std::cout << ", ";
+		}
+
+		std::cout << std::endl;
 	}
 }
