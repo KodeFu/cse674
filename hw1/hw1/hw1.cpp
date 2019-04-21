@@ -288,7 +288,7 @@ int main()
 
 	ShuffleS1();
 	ShuffleS2();
-
+	
 	std::cout << "Press any key to continue..." << std::endl;
 	getchar();
     return 0;

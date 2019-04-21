@@ -172,6 +172,10 @@ void DoubleList::Swap(Node *left)
 		nodeB->prev = nodeA->prev;
 		nodeB->next = nodeA;
 		nodeA->prev = nodeB;
+
+		// adjust tail if node points to NULL
+		if (nodeA->next == NULL) tail = nodeA;
+		if (nodeB->next == NULL) tail = nodeB;
 	}
 }
 

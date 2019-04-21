@@ -146,42 +146,34 @@ int SingleList::Size()
 	return size;
 }
 
-void SingleList::Swap(int a, int b)
+void SingleList::Swap(Node *left)
 {
+	Node *prev = NULL;
+
+	// search for previous node
 	Node *tmp = head;
-	Node *prevA = NULL;
-	Node *nodeA = head;
-	Node *prevB = NULL;
-	Node *nodeB = head;
-
-	// search for first node
-	while (tmp && (tmp->value != a))
+	while (tmp && (tmp != left))
 	{
-		prevA = tmp;
+		prev = tmp;
 		tmp = tmp->next;
 	}
-	nodeA = tmp;
 
-	// search for second node
-	tmp = head;
-	while (tmp && (tmp->value != b))
-	{
-		prevB = tmp;
-		tmp = tmp->next;
-	}
-	nodeB = tmp;
+	Node *nodeA = left;
+	Node *nodeB = left->next;
 
-	// only swap if both nodes found
 	if (nodeA && nodeB)
 	{
-		// update prev nodes
-		(prevA) ? prevA->next = nodeB : head = nodeB;
-		(prevB) ? prevB->next = nodeA : head = nodeA;
+		if (prev)
+		{
+			prev->next = nodeB;
+		}
+		else
+		{
+			head = nodeB;
+		}
 
-		// update nodes
-		tmp = nodeA->next;
 		nodeA->next = nodeB->next;
-		nodeB->next = tmp;
+		nodeB->next = nodeA;
 
 		// adjust tail if node points to NULL
 		if (nodeA->next == NULL) tail = nodeA;
@@ -248,7 +240,7 @@ void SingleList::BubbleSort(int startIndex, int rangeLength)
 		{
 			if (curr->value > next->value)
 			{
-				Swap(curr->value, next->value);
+				Swap(curr);
 				swapped = true;
 
 				// if we did swap, curr stays the same since it

@@ -20,12 +20,13 @@ public:
 	void RemoveAtHead();
 	void RemoveAtTail();
 	void RemoveAll();
-	void Swap(int a, int b);
-	void Reverse();
+	void Swap(Node *left);
 	void BubbleSort(int startIndex = 0, int rangeLength = 0);
+	int  Size();
+
 	void TeamOfFour();
+	void Reverse();
 	void Shuffle();
-	int Size();
 
 	void PrintNode(Node *node);
 	void PrintAll();

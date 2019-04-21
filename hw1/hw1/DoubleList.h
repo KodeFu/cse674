@@ -22,11 +22,12 @@ public:
 	void RemoveAtTail();
 	void RemoveAll();
 	void Swap(Node *left);
-	void Reverse();
 	void BubbleSort(int startIndex = 0, int rangeLength = 0);
+	int  Size();
+
 	void TeamOfFour();
+	void Reverse();
 	void Shuffle();
-	int Size();
 
 	void PrintNode(Node *node);
 	void PrintAll();
