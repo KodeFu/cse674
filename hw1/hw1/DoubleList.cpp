@@ -192,33 +192,32 @@ void DoubleList::Swap(int a, int b)
 
 void DoubleList::Reverse()
 {
-	Node *prev;
 	Node *curr;
 	Node *next;
 
-	// don't do anything if there are no nodes
-	if (!size) return;
+	// start from the tail
+	curr = tail;
 
-	// make head node the last node
-	prev = NULL;
-	curr = head;
-	next = curr->next;
+	// get next node; work with this after curr
+	next = curr->prev;
 
-	curr->next = NULL;
-	tail = curr;
+	// adjust the node's pointers
+	curr->prev = NULL; // head
+	curr->next = next;
 
-	// reverse next pointer for every node thereafter
 	while (next != NULL)
 	{
-		prev = curr;
 		curr = next;
-		next = curr->next;
 
-		curr->next = prev;
+		next = curr->prev;
+		curr->prev = curr->next;
+		curr->next = next;
 	}
 
-	// point the head to the current front node
-	head = curr;
+	// swap head and tail
+	Node *tmp = head;
+	head = tail;
+	tail = tmp;
 }
 
 void DoubleList::BubbleSort(int startIndex, int rangeLength)
