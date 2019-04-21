@@ -61,6 +61,7 @@ void TeamOfFourS2()
 		sl->AddAtTail(sltmp);
 	}
 
+	std::cout << "*****        Single Linked List         *****" << std::endl;
 	std::cout << "***** Before the Team of Four operation *****" << std::endl;
 	sl->PrintResults();
 	sl->TeamOfFour();
@@ -81,6 +82,7 @@ void TeamOfFourS2()
 		dl->AddAtTail(dltmp);
 	}
 
+	std::cout << "*****        Double Linked List         *****" << std::endl;
 	std::cout << "***** Before the Team of Four operation *****" << std::endl;
 	dl->PrintResults();
 	dl->TeamOfFour();
@@ -105,6 +107,7 @@ void ReverseS1()
 		sl->AddAtTail(sltmp);
 	}
 
+	std::cout << "*****        Single Linked List    *****" << std::endl;
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
 	sl->PrintResults();
 	sl->Reverse();
@@ -125,6 +128,7 @@ void ReverseS1()
 		dl->AddAtTail(dltmp);
 	}
 
+	std::cout << "*****      Double Linked List      *****" << std::endl;
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
 	dl->PrintResults();
 	dl->Reverse();
@@ -148,6 +152,7 @@ void ReverseS2()
 		sl->AddAtTail(sltmp);
 	}
 
+	std::cout << "*****       Single Linked List     *****" << std::endl;
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
 	sl->PrintResults();
 	sl->Reverse();
@@ -168,6 +173,7 @@ void ReverseS2()
 		dl->AddAtTail(dltmp);
 	}
 
+	std::cout << "*****      Double Linked List      *****" << std::endl;
 	std::cout << "***** Before the Reverse operation *****" << std::endl;
 	dl->PrintResults();
 	dl->Reverse();
@@ -191,6 +197,7 @@ void ShuffleS1()
 		sl->AddAtTail(sltmp);
 	}
 
+	std::cout << "*****      Single Linked List      *****" << std::endl;
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
 	sl->PrintResults();
 	sl->Shuffle();
@@ -211,6 +218,7 @@ void ShuffleS1()
 		dl->AddAtTail(dltmp);
 	}
 
+	std::cout << "*****      Double Linked List      *****" << std::endl;
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
 	dl->PrintResults();
 	dl->Shuffle();
@@ -234,6 +242,7 @@ void ShuffleS2()
 		sl->AddAtTail(sltmp);
 	}
 
+	std::cout << "*****      Single Linked List      *****" << std::endl;
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
 	sl->PrintResults();
 	sl->Shuffle();
@@ -254,6 +263,7 @@ void ShuffleS2()
 		dl->AddAtTail(dltmp);
 	}
 
+	std::cout << "*****      Double Linked List      *****" << std::endl;
 	std::cout << "***** Before the Shuffle operation *****" << std::endl;
 	dl->PrintResults();
 	dl->Shuffle();
@@ -271,10 +281,10 @@ int main()
 	generateS1();
 	generateS2();
 
-	//TeamOfFourS2();
+	TeamOfFourS2();
 
-	//ReverseS1();
-	//ReverseS2();
+	ReverseS1();
+	ReverseS2();
 
 	ShuffleS1();
 	ShuffleS2();
