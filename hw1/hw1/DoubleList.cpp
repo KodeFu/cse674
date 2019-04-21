@@ -147,46 +147,31 @@ void DoubleList::RemoveAll()
 	tail = NULL;
 }
 
-void DoubleList::Swap(int a, int b)
+void DoubleList::Swap(Node *left)
 {
-	Node *tmp = head;
-	Node *prevA = NULL;
-	Node *nodeA = head;
-	Node *prevB = NULL;
-	Node *nodeB = head;
+	Node *nodeA = left;
+	Node *nodeB = left->next;
 
-	// search for first node
-	while (tmp && (tmp->value != a))
-	{
-		prevA = tmp;
-		tmp = tmp->next;
-	}
-	nodeA = tmp;
-
-	// search for second node
-	tmp = head;
-	while (tmp && (tmp->value != b))
-	{
-		prevB = tmp;
-		tmp = tmp->next;
-	}
-	nodeB = tmp;
-
-	// only swap if both nodes found
 	if (nodeA && nodeB)
 	{
-		// update prev nodes
-		(prevA) ? prevA->next = nodeB : head = nodeB;
-		(prevB) ? prevB->next = nodeA : head = nodeA;
+		if (nodeA->prev)
+		{
+			nodeA->prev->next = nodeB;
+		}
+		else
+		{
+			head = nodeB;
+		}
 
-		// update nodes
-		tmp = nodeA->next;
+		if (nodeB->next)
+		{
+			nodeB->next->prev = nodeA;
+		}
+
 		nodeA->next = nodeB->next;
-		nodeB->next = tmp;
-
-		// adjust tail if node points to NULL
-		if (nodeA->next == NULL) tail = nodeA;
-		if (nodeB->next == NULL) tail = nodeB;
+		nodeB->prev = nodeA->prev;
+		nodeB->next = nodeA;
+		nodeA->prev = nodeB;
 	}
 }
 
@@ -248,7 +233,7 @@ void DoubleList::BubbleSort(int startIndex, int rangeLength)
 		{
 			if (curr->value > next->value)
 			{
-				Swap(curr->value, next->value);
+				Swap(curr);
 				swapped = true;
 
 				// if we did swap, curr stays the same since it
@@ -320,7 +305,7 @@ void DoubleList::PrintNode(Node *node)
 {
 	if (node != NULL)
 	{
-		std::cout << "  -> 0x" << node << "  0x" << node->next << "  " << node->value << std::endl;
+		std::cout << "  -> 0x" << node << "  0x" << node->prev << "  0x" << node->next << "  " << node->value << std::endl;
 	}
 	else
 	{

@@ -21,7 +21,7 @@ public:
 	void RemoveAtHead();
 	void RemoveAtTail();
 	void RemoveAll();
-	void Swap(int a, int b);
+	void Swap(Node *left);
 	void Reverse();
 	void BubbleSort(int startIndex = 0, int rangeLength = 0);
 	void TeamOfFour();
