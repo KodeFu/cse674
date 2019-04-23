@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "SingleList.h"
 
+//#define VERBOSE 1
 
 SingleList::SingleList()
 {
@@ -341,4 +342,7 @@ void SingleList::PrintResults()
 
 		std::cout << std::endl;
 	}
+#ifdef VERBOSE
+	PrintAll();
+#endif
 }

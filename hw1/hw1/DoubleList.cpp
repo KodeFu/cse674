@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "DoubleList.h"
 
+//#define VERBOSE 1
 
 DoubleList::DoubleList()
 {
@@ -343,4 +344,8 @@ void DoubleList::PrintResults()
 
 		std::cout << std::endl;
 	}
+
+#ifdef VERBOSE
+	PrintAll();
+#endif
 }
