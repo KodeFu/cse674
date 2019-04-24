@@ -34,7 +34,9 @@ SingleList class.
         Node *next;
     };
 
-In this data structure, we store an int and a pointer to the next node. Please see the figure below. The linked list contains a HEAD which points to the beginning of the list, a TAIL which points to the last node of the list and nodes which contain a the int value and a pointer to the next node.
+In this data structure, we store an int and a pointer to the next node. Please see the figure below.
+The linked list contains a HEAD which points to the beginning of the list, a TAIL which points to the 
+last node of the list and nodes which contain a the int value and a pointer to the next node.
 
 HEAD-->[int]-->[int]-->[int]-->NULL
                         ^--TAIL
@@ -81,7 +83,10 @@ This list is a double linked list made of nodes. The node structure is defined a
         Node *next;
     };
 
-In this data structure, we store an int, a pointer to the next node and a pointer to the previous node. Please see the figure below. The linked list contains a HEAD which points to the beginning of the list, a TAIL which points to the last node of the list and nodes which contain a the int value, a pointer to the next node and a pointer to the previous node.
+In this data structure, we store an int, a pointer to the next node and a pointer to the previous node. Please 
+see the figure below. The linked list contains a HEAD which points to the beginning of the list, a TAIL which 
+points to the last node of the list and nodes which contain a the int value, a pointer to the next node and a 
+pointer to the previous node.
 
 HEAD-->[int]-->[int]-->[int]-->NULL
     <--[   ]<--[   ]<--[   ]<--
@@ -124,7 +129,11 @@ Description of operations:
 
 (1) Team of Four
 
-All operations are implemented as member function within the linked list class for single and double. The Team of Four mainly relies on the BubbleSort() function and Swap(). These were implemented in such a way that the start index and range is specfified for BubbleSort, so we can easy sort subsets of our array for a particular range. For Team of Four, we specify, for example, index 0 for the start index and range of 4. This sorts the first four nodes of the list. The Swap function is utilized within BubbleSort to swap nodes into the right order.
+All operations are implemented as member function within the linked list class for single and double. The 
+Team of Four mainly relies on the BubbleSort() function and Swap(). These were implemented in such a way that 
+the start index and range is specfified for BubbleSort, so we can easy sort subsets of our array for a particular 
+range. For Team of Four, we specify, for example, index 0 for the start index and range of 4. This sorts the 
+first four nodes of the list. The Swap function is utilized within BubbleSort to swap nodes into the right order.
 
 For the TeamOfFour() function is implemented as:
 
@@ -136,7 +145,8 @@ void SingleList::TeamOfFour() // same for DoubleList
 	}
 }
 
-Here we can see that BubbleSort is called for each group of four nodes. The BubbleSort is implemented as below (trimmed down for clarity). It is implemented the same way for the single list and the double list.
+Here we can see that BubbleSort is called for each group of four nodes. The BubbleSort is implemented as below 
+(trimmed down for clarity). It is implemented the same way for the single list and the double list.
 
 void SingleList::BubbleSort(int startIndex, int rangeLength)
 {
@@ -170,9 +180,12 @@ void SingleList::BubbleSort(int startIndex, int rangeLength)
 	}
 }
 
-The swap function for the SingleList is shown below. left is the left node. We get the right node by accessing the left->next node. We then swap node pointers and adjust the previous node's next pointer, head pointer and tail pointers as well. 
+The swap function for the SingleList is shown below. left is the left node. We get the right node by accessing the
+left->next node. We then swap node pointers and adjust the previous node's next pointer, head pointer and tail 
+pointers as well. 
 
-The double list implementation is similar except that it takes into account the previous pointer in each node. Also, since it a double list, we can easily get the previous node without searching from the top of the linked list.
+The double list implementation is similar except that it takes into account the previous pointer in each node. Also,
+since it a double list, we can easily get the previous node without searching from the top of the linked list.
 
 void SingleList::Swap(Node *left)
 {
@@ -206,7 +219,8 @@ void SingleList::Swap(Node *left)
 
 (2) Reverse
 
-Both implementations, for single list and double list, are shows for Reverse below. For single list, the next pointers are change to point to the previous node.
+Both implementations, for single list and double list, are shows for Reverse below. For single list, the next 
+pointers are change to point to the previous node.
 
 void SingleList::Reverse()
 {
@@ -238,7 +252,8 @@ void SingleList::Reverse()
 	head = curr;
 }
 
-For double list, the next pointers are change to point to the previous node. Also, because this is a double list, the previous pointers are changed to the next pointers.
+For double list, the next pointers are change to point to the previous node. Also, because this is a double list,
+the previous pointers are changed to the next pointers.
 
 void DoubleList::Reverse()
 {
@@ -272,7 +287,10 @@ void DoubleList::Reverse()
 
 (3) Shuffle
 
-The Shuffle operation is the same for both single and double list. The basic idea is that we have two sets of  pointers for right and left. The right points to the "right half" of the elements which are going to be inserted into the "left half" of the elements. The algorithm iterates through each node of the right side and inserts that into nodes on the left side.
+The Shuffle operation is the same for both single and double list. The basic idea is that we have two sets of
+pointers for right and left. The right points to the "right half" of the elements which are going to be inserted
+into the "left half" of the elements. The algorithm iterates through each node of the right side and inserts that
+into nodes on the left side.
 
 void DoubleList::Shuffle()
 {
@@ -305,15 +323,22 @@ void DoubleList::Shuffle()
 EVIDENCE
 "Evidence that your code implements the required operations by modifying the pointers."
 
-** All code shown above and in this project show that pointers of nodes are being manipulated and values are NOT being simply copied. All list manipulations occur on existing lists by moving pointers around to achieve the desired results. **
+** All code shown above and in this project show that pointers of nodes are being manipulated and values are NOT 
+being simply copied. All list manipulations occur on existing lists by moving pointers around to achieve the desired 
+results. **
 
-As evidence, included is the OutputVerbose.txt, which includes output with pointer information. For example:
+As evidence, included is the OutputVerbose.txt, which includes output with pointer information. 
 
-For Single List (copy/pasting a small chunk), we see the Before the Team of Four operation and right after that, we see the pointers. We can see the size of the list, the head, and the tail. Below that, we can also see two address and a value which can be described as:
+For example:
+
+For Single List (copy/pasting a small chunk below), we see the Before the Team of Four operation and right after that,
+we see the pointers. We can see the size of the list, the head, and the tail. Below that, we can also see two address
+and a value which can be described as:
 
 <node's address>  <next pointer address> <value>
 
-We can follow the linked list address by looking at the HEAD, which points to 0x00216648 which is the first node (100). We can then see that the first node's "next" pointer address points to 0x00216300 which points to the next node (8.)
+We can follow the linked list address by looking at the HEAD, which points to 0x00216648 which is the first node (100). We
+can then see that the first node's "next" pointer address points to 0x00216300 which points to the next node (8.)
 
 ***** Before the Team of Four operation *****
 100, 8, 56, 55, 
@@ -327,7 +352,9 @@ tail: 002197D8
   -> 0x00216958  0x002164F8  56
   -> 0x002164F8  0x00216338  55
 
-The output below shows similar output, but this is for the AFTER the Team of Four operation. Using a similar technique described above, we can follow the now sorted for elements. HEAD points to 0x216300. This node (8), points to the next node 0x002164F8 (55).
+The output below shows similar output, but this is for the AFTER the Team of Four operation. Using a similar technique 
+described above, we can follow the now sorted for elements. HEAD points to 0x216300. This node (8), points to the next 
+node 0x002164F8 (55).
 
 ***** After the Team of Four operation *****
 8, 55, 56, 100, 
@@ -340,12 +367,22 @@ tail: 00219768
   -> 0x00216958  0x00216648  56
   -> 0x00216648  0x002163E0  100
 
-OutputVerbose.txt contains all of the operation results with this head, tail and node information. Please note, that the double list version contains the node's previous address as well, so that node's info would look like this:
+OutputVerbose.txt contains all of the operation results with head, tail and node information. Please note, that 
+the double list version contains the node's previous address as well, so that node's info would look like this:
 
 <node's address> <previous pointer address> <next pointer address> <value>
 
+As mentioned, only pointers were manipulated and pointer values can be viewed, for reference, by looking at the
+OutputVerbose.txt file.
+
+Additionally, if desired, the code can be compiled to print this verbose pointer information by uncommenting the
+VERBOSE define in SingleList.cpp and DoubleList.cpp. This will print the output for each of the operations with
+the pointer informatin as well.
+
 ACKNOWLEDGE AND REFERENCE(S):
 
-1. CLRS - Introduction to Algorithms. While I didn't use any code, I have been reading this book about algorithms in this class so some idea were likely influenced by this book.
+1. CLRS - Introduction to Algorithms. While I didn't use any code, I have been reading this book about algorithms in 
+   this class so some ideas were likely influenced by this book.
 
-2. BubbleSort https://en.wikipedia.org/wiki/Bubble_sort. I needed to understand this again and used the Pseudocode of "procedure bubblesort" as a reference for my BubbleSort implementation.
+2. BubbleSort https://en.wikipedia.org/wiki/Bubble_sort. I needed to understand this again and used the Pseudocode of 
+   "procedure bubblesort" as a reference for the BubbleSort implementation.
