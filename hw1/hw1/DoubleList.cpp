@@ -1,8 +1,27 @@
+/*
+
+	File:
+		DoubleList.h
+
+	Purpose:
+		Defines the DoubleList class which contains the node implementation and operations for
+		the double-linked list.
+
+	Author:
+		mpvats@syr.edu
+
+*/
+
 #include "stdafx.h"
 #include "DoubleList.h"
 
-//#define VERBOSE 1
+//#define VERBOSE 1 // uncomment to print pointer information
 
+//
+// Constructor
+//
+// Initialize members
+//
 DoubleList::DoubleList()
 {
 	size = 0;
@@ -10,12 +29,21 @@ DoubleList::DoubleList()
 	tail = NULL;
 }
 
-
+//
+// Destructor
+//
+// Destroy / cleanup object on destruction
+//
 DoubleList::~DoubleList()
 {
 	RemoveAll();
 }
 
+//
+// AddAtHead
+//
+// Adds a node to the HEAD
+//
 void DoubleList::AddAtHead(DoubleList::Node *node)
 {
 	if (head == NULL) // empty list
@@ -36,6 +64,11 @@ void DoubleList::AddAtHead(DoubleList::Node *node)
 	size++;
 }
 
+//
+// AddAtTail
+//
+// Adds a node to the TAIL
+//
 void DoubleList::AddAtTail(DoubleList::Node *node)
 {
 	if (head == NULL) // empty list
@@ -56,16 +89,31 @@ void DoubleList::AddAtTail(DoubleList::Node *node)
 	size++;
 }
 
+//
+// GetAtHead
+//
+// Get the node at HEAD
+//
 DoubleList::Node *DoubleList::GetAtHead()
 {
 	return head;
 }
 
+//
+// GetAtTail
+//
+// Get the node at TAIL
+//
 DoubleList::Node *DoubleList::GetAtTail()
 {
 	return tail;
 }
 
+//
+// GetAtIndex
+//
+// Get the node for a node value
+//
 DoubleList::Node *DoubleList::GetAtIndex(int index)
 {
 	Node *tmp = head;
@@ -90,6 +138,11 @@ DoubleList::Node *DoubleList::GetAtIndex(int index)
 	return NULL;
 }
 
+//
+// RemoveAtHead
+//
+// Remove node at HEAD
+//
 void DoubleList::RemoveAtHead()
 {
 	if (size == 0) return;
@@ -110,6 +163,11 @@ void DoubleList::RemoveAtHead()
 	size--;
 }
 
+//
+// RemoveAtTail
+//
+// Remove node at TAIL
+//
 void DoubleList::RemoveAtTail()
 {
 	if (size == 0) return;
@@ -130,6 +188,11 @@ void DoubleList::RemoveAtTail()
 	size--;
 }
 
+//
+// RemoveAll
+//
+// Remove (deallocate) all nodes
+//
 void DoubleList::RemoveAll()
 {
 	Node *tmp = head;
@@ -148,6 +211,11 @@ void DoubleList::RemoveAll()
 	tail = NULL;
 }
 
+//
+// Swap
+//
+// Swap adjacent nodes
+//
 void DoubleList::Swap(Node *left)
 {
 	Node *nodeA = left;
@@ -180,6 +248,11 @@ void DoubleList::Swap(Node *left)
 	}
 }
 
+//
+// Reverse
+//
+// Perform Reverse operation
+//
 void DoubleList::Reverse()
 {
 	Node *curr;
@@ -210,6 +283,12 @@ void DoubleList::Reverse()
 	tail = tmp;
 }
 
+//
+// BubbleSort
+//
+// Bubble sort algorithm, to sort at a starting index
+// for a specfified range
+//
 void DoubleList::BubbleSort(int startIndex, int rangeLength)
 {
 	bool swapped = true;
@@ -262,6 +341,11 @@ void DoubleList::BubbleSort(int startIndex, int rangeLength)
 	}
 }
 
+//
+// TeamOfFour
+//
+// Perform TeamOfFour operation
+//
 void DoubleList::TeamOfFour()
 {
 	for (int i = 0; i < size; i += 4)
@@ -270,6 +354,11 @@ void DoubleList::TeamOfFour()
 	}
 }
 
+//
+// Shuffle
+//
+// Perform Shuffle operation
+//
 void DoubleList::Shuffle()
 {
 	int halfDeck = size / 2;
@@ -300,12 +389,21 @@ void DoubleList::Shuffle()
 	}
 }
 
-
+//
+// Size
+//
+// Get number of nodes in list
+//
 int DoubleList::Size()
 {
 	return size;
 }
 
+//
+// PrintNode
+//
+// Print a node
+//
 void DoubleList::PrintNode(Node *node)
 {
 	if (node != NULL)
@@ -318,6 +416,11 @@ void DoubleList::PrintNode(Node *node)
 	}
 }
 
+//
+// PrintAll
+//
+// Print all nodes
+//
 void DoubleList::PrintAll()
 {
 	std::cout << "size: " << size << std::endl;
@@ -332,6 +435,11 @@ void DoubleList::PrintAll()
 	}
 }
 
+//
+// PrintResults
+//
+// Print results per lab requirement
+//
 void DoubleList::PrintResults()
 {
 	for (int i = 0; i < size / 4; i++)

@@ -1,8 +1,27 @@
+/*
+
+	File:
+		SingleList.cpp
+
+	Purpose:
+		Defines the SingleList class which contains the node implementation and operations for
+		the single-linked list.
+
+	Author:
+		mpvats@syr.edu
+
+*/
+
 #include "stdafx.h"
 #include "SingleList.h"
 
-//#define VERBOSE 1
+//#define VERBOSE 1 // uncomment to print pointer information
 
+//
+// Constructor
+//
+// Initialize members
+//
 SingleList::SingleList()
 {
 	size = 0;
@@ -10,12 +29,21 @@ SingleList::SingleList()
 	tail = NULL;
 }
 
-
+//
+// Destructor
+//
+// Destroy / cleanup object on destruction
+//
 SingleList::~SingleList()
 {
 	RemoveAll();
 }
 
+//
+// AddAtHead
+//
+// Adds a node to the HEAD
+//
 void SingleList::AddAtHead(SingleList::Node *node)
 {
 	if (head == NULL) // empty list
@@ -33,6 +61,11 @@ void SingleList::AddAtHead(SingleList::Node *node)
 	size++;
 }
 
+//
+// AddAtTail
+//
+// Adds a node to the TAIL
+//
 void SingleList::AddAtTail(SingleList::Node *node)
 {
 	if (head == NULL) // empty list
@@ -51,16 +84,31 @@ void SingleList::AddAtTail(SingleList::Node *node)
 	size++;
 }
 
+//
+// GetAtHead
+//
+// Get the node at HEAD
+//
 SingleList::Node *SingleList::GetAtHead()
 {
 	return head;
 }
 
+//
+// GetAtTail
+//
+// Get the node at TAIL
+//
 SingleList::Node *SingleList::GetAtTail()
 {
 	return tail;
 }
 
+//
+// GetAtIndex
+//
+// Get the node for a node value
+//
 SingleList::Node *SingleList::GetAtIndex(int index)
 {
 	Node *tmp = head;
@@ -85,6 +133,11 @@ SingleList::Node *SingleList::GetAtIndex(int index)
 	return NULL;
 }
 
+//
+// RemoveAtHead
+//
+// Remove node at HEAD
+//
 void SingleList::RemoveAtHead()
 {
 	if (size == 0) return;
@@ -104,6 +157,11 @@ void SingleList::RemoveAtHead()
 	size--;
 }
 
+//
+// RemoveAtTail
+//
+// Remove node at TAIL
+//
 void SingleList::RemoveAtTail()
 {
 	if (size == 0) return;
@@ -124,6 +182,11 @@ void SingleList::RemoveAtTail()
 	size--;
 }
 
+//
+// RemoveAll
+//
+// Remove (deallocate) all nodes
+//
 void SingleList::RemoveAll()
 {
 	Node *tmp = head;
@@ -142,11 +205,21 @@ void SingleList::RemoveAll()
 	tail = NULL;
 }
 
+//
+// Size
+//
+// Get number of nodes in list
+//
 int SingleList::Size()
 {
 	return size;
 }
 
+//
+// Swap
+//
+// Swap adjacent nodes
+//
 void SingleList::Swap(Node *left)
 {
 	Node *prev = NULL;
@@ -182,6 +255,11 @@ void SingleList::Swap(Node *left)
 	}
 }
 
+//
+// Reverse
+//
+// Perform Reverse operation
+//
 void SingleList::Reverse()
 {
 	Node *prev;
@@ -213,6 +291,12 @@ void SingleList::Reverse()
 	head = curr;
 }
 
+//
+// BubbleSort
+//
+// Bubble sort algorithm, to sort at a starting index
+// for a specfified range
+//
 void SingleList::BubbleSort(int startIndex, int rangeLength)
 {
 	bool swapped = true;
@@ -265,6 +349,11 @@ void SingleList::BubbleSort(int startIndex, int rangeLength)
 	}
 }
 
+//
+// TeamOfFour
+//
+// Perform TeamOfFour operation
+//
 void SingleList::TeamOfFour()
 {
 	for (int i = 0; i < size; i+=4)
@@ -273,6 +362,11 @@ void SingleList::TeamOfFour()
 	}
 }
 
+//
+// Shuffle
+//
+// Perform Shuffle operation
+//
 void SingleList::Shuffle()
 {
 	int halfDeck = size / 2;
@@ -303,6 +397,11 @@ void SingleList::Shuffle()
 	}
 }
 
+//
+// PrintNode
+//
+// Print a node
+//
 void SingleList::PrintNode(Node *node)
 {
 	if (node != NULL)
@@ -315,6 +414,11 @@ void SingleList::PrintNode(Node *node)
 	}
 }
 
+//
+// PrintAll
+//
+// Print all nodes
+//
 void SingleList::PrintAll()
 {
 	std::cout << "-----------------------------------" << std::endl;
@@ -330,6 +434,11 @@ void SingleList::PrintAll()
 	}
 }
 
+//
+// PrintResults
+//
+// Print results per lab requirement
+//
 void SingleList::PrintResults()
 {
 	for (int i = 0; i < size/4; i++)
