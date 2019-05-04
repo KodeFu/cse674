@@ -7,17 +7,20 @@
 #include "BubbleSort.h"
 #include "BubbleSortWithFlag.h"
 #include "InsertionSort.h"
+#include "SelectionSort.h"
 
 int main()
 {
 	CBubbleSort *bubbleSort = new CBubbleSort();
 	CBubbleSortWithFlag *bubbleSortWithFlag = new CBubbleSortWithFlag();
 	CInsertionSort *insertionSort = new CInsertionSort();
+	CSelectionSort *selectionSort = new CSelectionSort();
 
 	std::vector<ISortInterface *> sorters;
 	//sorters.push_back(bubbleSort);
 	//sorters.push_back(bubbleSortWithFlag);
-	sorters.push_back(insertionSort);
+	//sorters.push_back(insertionSort);
+	sorters.push_back(selectionSort);
 
 	std::vector<int> t;
 	t.push_back(5);
@@ -35,9 +38,11 @@ int main()
 		sorters[i]->display(t);
 	}
 
+	sorters.clear();
 	delete bubbleSort;
 	delete bubbleSortWithFlag;
 	delete insertionSort;
+	delete selectionSort;
 
 	std::cout << "Press a key..." << std::endl;
 	std::cin.get();

@@ -15,9 +15,9 @@ void CBubbleSortWithFlag::sort(std::vector<int>& vector)
 {
 	bool swapped;
 
-	for (unsigned int i = 0; i < vector.size(); i++) {
+	for (size_t i = 0; i < vector.size(); i++) {
 		swapped = false;
-		for (unsigned int j = i + 1; j < vector.size(); j++) {
+		for (size_t j = i + 1; j < vector.size(); j++) {
 			if (vector[j] < vector[i])
 			{
 				int tmp = vector[i];
