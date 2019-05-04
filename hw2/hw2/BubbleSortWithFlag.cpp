@@ -15,11 +15,17 @@ void CBubbleSortWithFlag::sort(std::vector<int>& vector)
 {
 	bool swapped;
 
+	// go through each element in the vector
 	for (size_t i = 0; i < vector.size(); i++) {
+
+		// swapped holds whether we swapped or not
 		swapped = false;
+
+		// compare is to the next element in the vector
 		for (size_t j = i + 1; j < vector.size(); j++) {
-			if (vector[j] < vector[i])
-			{
+
+			// swap elements if the current element is smaller then the previous element
+			if (vector[j] < vector[i])	{
 				int tmp = vector[i];
 				vector[i] = vector[j];
 				vector[j] = tmp;
@@ -28,6 +34,7 @@ void CBubbleSortWithFlag::sort(std::vector<int>& vector)
 			}
 		}
 
+		// if we didn't swap in the run through the vector, vector must be sorted
 		if (!swapped) break;
 	}
 }
