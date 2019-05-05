@@ -11,6 +11,8 @@
 #include "HeapSort.h"
 #include "MergeSort.h"
 #include "QuickSort.h"
+#include "RadixSort.h"
+#include "CountingSort.h"
 
 int main()
 {
@@ -21,6 +23,8 @@ int main()
 	CHeapSort *heapSort = new CHeapSort();
 	CMergeSort *mergeSort = new CMergeSort();
 	CQuickSort *quickSort = new CQuickSort();
+	CRadixSort *radixSort = new CRadixSort();
+	CCountingSort *countingSort = new CCountingSort();
 
 	std::vector<ISortInterface *> sorters;
 	//sorters.push_back(bubbleSort);
@@ -29,7 +33,9 @@ int main()
 	//sorters.push_back(selectionSort);
 	//sorters.push_back(heapSort);
 	//sorters.push_back(mergeSort);
-	sorters.push_back(quickSort);
+	//sorters.push_back(quickSort);
+	//sorters.push_back(radixSort);
+	sorters.push_back(countingSort);
 
 	std::vector<int> t;
 	t.push_back(5);
@@ -44,6 +50,14 @@ int main()
 	t.push_back(2);
 	t.push_back(7);
 	t.push_back(9);
+
+	/*t.push_back(0);
+	t.push_back(5);
+	t.push_back(5);
+	t.push_back(4);
+	t.push_back(4);
+	t.push_back(2);
+	t.push_back(1);*/
 
 	// Add sorters
 	for (unsigned int i = 0; i < sorters.size(); i++) {
@@ -61,6 +75,8 @@ int main()
 	delete heapSort;
 	delete mergeSort;
 	delete quickSort;
+	delete radixSort;
+	delete countingSort;
 
 	std::cout << "Press a key..." << std::endl;
 	std::cin.get();
