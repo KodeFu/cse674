@@ -142,6 +142,7 @@
     <ClInclude Include="BubbleSortWithFlag.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="InsertionSort.h" />
+    <ClInclude Include="MergeSort.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortInterface.h" />
     <ClInclude Include="stdafx.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
