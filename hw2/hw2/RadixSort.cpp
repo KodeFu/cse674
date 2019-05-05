@@ -36,7 +36,7 @@ void CRadixSort::radixSort(std::vector<int>& vector)
 
 	for (int i = 0, factor = 1; i < digits; factor *= radix, i++) {
 		//fill up the queues
-		for (int j = 0; j < vector.size(); j++) {
+		for (size_t j = 0; j < vector.size(); j++) {
 			queues[(vector[j] / factor) % radix].push(vector[j]);
 		}
 

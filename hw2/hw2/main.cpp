@@ -36,9 +36,9 @@ int main()
 	//sorters.push_back(heapSort);
 	//sorters.push_back(mergeSort);
 	//sorters.push_back(quickSort);
-	//sorters.push_back(radixSort);
+	sorters.push_back(radixSort);
 	//sorters.push_back(countingSort);
-	sorters.push_back(smoothSort);
+	//sorters.push_back(smoothSort);
 
 	std::vector<int> t;
 	t.push_back(5);
