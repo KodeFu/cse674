@@ -38,3 +38,13 @@ AppWizard uses "TODO:" comments to indicate parts of the source code you
 should add to or customize.
 
 /////////////////////////////////////////////////////////////////////////////
+ACKNOWLEDGE AND REFERENCE(S):
+
+1. CLRS - Introduction to Algorithms. I have been reading this book about algorithms in this 
+   class so ideas and pseudo-code were used in the development of these algorithms.
+
+2. trifort.org/ads/index.html - Class notes. In particular Lecture 6 Sorting #1 and 7 Sorting #2.
+
+2. https://www.wikipedia.org/ - Read numorous articles on sorting methods to understand algorithms.
+
+3. http://geeksforgeeks.org/ - Read numours articles on sorting methods to understand algorithms.
