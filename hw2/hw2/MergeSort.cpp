@@ -16,7 +16,7 @@ void CMergeSort::sort(std::vector<int>& vector)
 	size_t p = 0; // first element index
 	size_t r = vector.size() - 1; // last element index
 
-	merge_sort(vector, p, r);
+	mergeSort(vector, p, r);
 
 }
 
@@ -88,12 +88,12 @@ void CMergeSort::merge(std::vector<int>& vector, int p, int q, int r)
 	}
 }
 
-void CMergeSort::merge_sort(std::vector<int>& vector, int p, int r)
+void CMergeSort::mergeSort(std::vector<int>& vector, int p, int r)
 {
 	if (p < r) {
 		int q = (p + r) / 2;
-		merge_sort(vector, p, q);
-		merge_sort(vector, q + 1, r);
+		mergeSort(vector, p, q);
+		mergeSort(vector, q + 1, r);
 		merge(vector, p, q, r);
 	}
 }

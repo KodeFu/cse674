@@ -10,6 +10,7 @@
 #include "SelectionSort.h"
 #include "HeapSort.h"
 #include "MergeSort.h"
+#include "QuickSort.h"
 
 int main()
 {
@@ -19,6 +20,7 @@ int main()
 	CSelectionSort *selectionSort = new CSelectionSort();
 	CHeapSort *heapSort = new CHeapSort();
 	CMergeSort *mergeSort = new CMergeSort();
+	CQuickSort *quickSort = new CQuickSort();
 
 	std::vector<ISortInterface *> sorters;
 	//sorters.push_back(bubbleSort);
@@ -26,7 +28,8 @@ int main()
 	//sorters.push_back(insertionSort);
 	//sorters.push_back(selectionSort);
 	//sorters.push_back(heapSort);
-	sorters.push_back(mergeSort);
+	//sorters.push_back(mergeSort);
+	sorters.push_back(quickSort);
 
 	std::vector<int> t;
 	t.push_back(5);
@@ -57,6 +60,7 @@ int main()
 	delete selectionSort;
 	delete heapSort;
 	delete mergeSort;
+	delete quickSort;
 
 	std::cout << "Press a key..." << std::endl;
 	std::cin.get();

@@ -8,7 +8,9 @@ public:
 	~CMergeSort();
 	void sort(std::vector<int>& vector);
 	std::string identify();
-	void merge_sort(std::vector<int>& vector, int p, int r);
+
+private:
+	void mergeSort(std::vector<int>& vector, int p, int r);
 	void merge(std::vector<int>& vector, int p, int q, int r);
 };
 
