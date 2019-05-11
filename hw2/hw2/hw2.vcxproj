@@ -141,6 +141,7 @@
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="BubbleSortWithFlag.h" />
     <ClInclude Include="CountingSort.h" />
+    <ClInclude Include="GenerateInput.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="InsertionSort.h" />
     <ClInclude Include="MergeSort.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="BubbleSortWithFlag.cpp" />
     <ClCompile Include="CountingSort.cpp" />
+    <ClCompile Include="GenerateInput.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
     <ClCompile Include="main.cpp" />

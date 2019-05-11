@@ -15,6 +15,16 @@
 #include "CountingSort.h"
 #include "SmoothSort.h"
 
+#define MAX_RANGE 10000
+
+void generateRandom(std::vector<int>& data)
+{
+	srand((unsigned int) time(NULL));
+	for (int i = 0; i < MAX_RANGE; i++) {
+		data.push_back(((rand() << 15) | rand()) % MAX_RANGE + 1);
+	}
+}
+
 int main()
 {
 	CBubbleSort *bubbleSort = new CBubbleSort();
@@ -29,38 +39,31 @@ int main()
 	CSmoothSort *smoothSort = new CSmoothSort();
 
 	std::vector<ISortInterface *> sorters;
-	//sorters.push_back(bubbleSort);
-	//sorters.push_back(bubbleSortWithFlag);
-	//sorters.push_back(insertionSort);
-	//sorters.push_back(selectionSort);
-	//sorters.push_back(heapSort);
-	//sorters.push_back(mergeSort);
-	//sorters.push_back(quickSort);
+	sorters.push_back(bubbleSort);
+	sorters.push_back(bubbleSortWithFlag);
+	sorters.push_back(insertionSort);
+	sorters.push_back(selectionSort);
+	sorters.push_back(heapSort);
+	sorters.push_back(mergeSort);
+	sorters.push_back(quickSort);
 	sorters.push_back(radixSort);
-	//sorters.push_back(countingSort);
-	//sorters.push_back(smoothSort);
+	sorters.push_back(countingSort);
+	sorters.push_back(smoothSort);
 
 	std::vector<int> t;
-	t.push_back(5);
-	t.push_back(3);
-	t.push_back(2);
-	t.push_back(7);
-	t.push_back(9);
-	t.push_back(4);
-	t.push_back(10);
-	t.push_back(1);
-	t.push_back(15);
-	t.push_back(2);
-	t.push_back(7);
-	t.push_back(9);
-
 
 	// Add sorters
 	for (unsigned int i = 0; i < sorters.size(); i++) {
-		std::string str = sorters[i]->identify();
-		std::cout << str << std::endl;
+		
+		// generate some data
+		t.clear();
+		generateRandom(t);
+
+		// run the sorter
+		//std::string str = ;
+		std::cout << sorters[i]->identify() << std::endl;
 		sorters[i]->sort(t);
-		sorters[i]->display(t);
+		//sorters[i]->display(t);
 	}
 
 	sorters.clear();

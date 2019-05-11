@@ -1,5 +1,6 @@
 #pragma once
 #include "SortInterface.h"
+
 class CSmoothSort :
 	public ISortInterface
 {
@@ -8,5 +9,13 @@ public:
 	~CSmoothSort();
 	void sort(std::vector<int>& vector);
 	std::string identify();
+
+private:
+	void sift();
+	void trinkle();
+	void semiTrinkle();
+
+	std::vector<int> A;
+	int q, r, p, b, c, r1, b1, c1;
 };
 

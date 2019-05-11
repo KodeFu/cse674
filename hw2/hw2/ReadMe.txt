@@ -40,11 +40,20 @@ should add to or customize.
 /////////////////////////////////////////////////////////////////////////////
 ACKNOWLEDGE AND REFERENCE(S):
 
-1. CLRS - Introduction to Algorithms. I have been reading this book about algorithms in this 
-   class so ideas and pseudo-code were used in the development of these algorithms.
+1. CLRS - Introduction to Algorithms.
+   https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844
 
-2. trifort.org/ads/index.html - Class notes. In particular Lecture 6 Sorting #1 and 7 Sorting #2.
+2. Class notes. Lecture 6 Sorting #1 and 7 Sorting #2.
+   http://trifort.org/ads/index.html
 
-2. https://www.wikipedia.org/ - Read numorous articles on sorting methods to understand algorithms.
+2. Wikipedia. Read numorous articles on sorting methods to understand algorithms.
+   https://www.wikipedia.org/
 
-3. http://geeksforgeeks.org/ - Read numours articles on sorting methods to understand algorithms.
+3. Geek for Geeks website. Read numours articles on sorting methods to understand algorithms.
+   http://geeksforgeeks.org/
+
+4. Smoothsort, an alternative for sorting in situ, E.W.Dijkstra.
+   http://www.enterag.ch/hartwig/order/smoothsort.pdf
+
+5. Smoothsort method to sort strings.
+   https://www.programmingalgorithms.com/algorithm/smooth-sort?lang=C%2B%2B
