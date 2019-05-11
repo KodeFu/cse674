@@ -15,6 +15,7 @@
 #include "CountingSort.h"
 #include "SmoothSort.h"
 #include "GenerateInput.h"
+#include "WindowsStopWatch.h"
 
 #define MAX_RANGE 10000
 
@@ -28,6 +29,8 @@ void generateRandom(std::vector<int>& data)
 
 int main()
 {
+	CWindowsStopWatch *stopWatch;
+
 	CBubbleSort *bubbleSort = new CBubbleSort();
 	CBubbleSortWithFlag *bubbleSortWithFlag = new CBubbleSortWithFlag();
 	CInsertionSort *insertionSort = new CInsertionSort();
@@ -72,20 +75,33 @@ int main()
 
 			for (unsigned int j = 0; j < 3; j++) {
 
-				// generate some data
+				// Generate some data
 				std::vector<int> *t = new std::vector<int>;
 				t->clear();
 				genInput->getRandom(*t, step);
 
+				std::cout << step << ": " << sorters[i]->identify();
+
+				// Start the stop measurement
+				stopWatch = new CWindowsStopWatch();
+				stopWatch->start();
+
 				// Run the sorter
-				std::cout << step << ": " << sorters[i]->identify() << std::endl;
 				sorters[i]->sort(*t);
+
+				// Stop the measurement
+				stopWatch->stop();
+				std::cout << " time: " << stopWatch->getTime() << std::endl;
+				delete stopWatch;
+
+				// Delete the data
 				delete t;
 			}
 
+			if (step == maxStep) break;
+
 			// Double the step
 			step = step * 2;
-
 			if (step > maxStep) step = maxStep;
 		}
 	}

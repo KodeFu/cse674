@@ -5,7 +5,7 @@
 // Smooth sort implementation based on Djikstra's smoothsort pseudo-code and
 // programming algorithms example.
 //
-// Adapted to:
+// changelog:
 //     - Support C++ class structure
 //     - Integer sorting instead of strings
 //     - Use std vectors types
@@ -34,7 +34,7 @@ std::string CSmoothSort::identify()
 	return "Smooth Sort";
 }
 
-void CSmoothSort::sift()
+void CSmoothSort::sift(std::vector<int>& A)
 {
 	int r0, r2, temp;
 	int t;
@@ -65,7 +65,7 @@ void CSmoothSort::sift()
 	}
 }
 
-void CSmoothSort::trinkle()
+void CSmoothSort::trinkle(std::vector<int>& A)
 {
 	int p1, r2, r3, r0, temp;
 	int t;
@@ -121,10 +121,11 @@ void CSmoothSort::trinkle()
 		A[r1] = t;
 	}
 
-	sift();
+	sift(A);
 }
 
-void CSmoothSort::semiTrinkle() {
+void CSmoothSort::semiTrinkle(std::vector<int>& A) 
+{
 	int T;
 	r1 = r - c;
 
@@ -132,32 +133,32 @@ void CSmoothSort::semiTrinkle() {
 		T = A[r];
 		A[r] = A[r1];
 		A[r1] = T;
-		trinkle();
+		trinkle(A);
 	}
 }
 
-void CSmoothSort::sort(std::vector<int>& vector) {
+void CSmoothSort::sort(std::vector<int>& A) 
+{
 	int temp;
-	A = vector;
 
-	while (q < ((int) vector.size())) {
+	while (q < ((int) A.size())) {
 		r1 = r;
 		if ((p & 7) == 3) {
 			b1 = b;
 			c1 = c;
-			sift();
+			sift(A);
 			p = (p + 1) >> 2;
 			UP(b, c);
 			UP(b, c);
 		}
 		else if ((p & 3) == 1) {
-			if (q + c < ((int) vector.size())) {
+			if (q + c < ((int) A.size())) {
 				b1 = b;
 				c1 = c;
-				sift();
+				sift(A);
 			}
 			else {
-				trinkle();
+				trinkle(A);
 			}
 
 			DOWN(b, c);
@@ -176,7 +177,7 @@ void CSmoothSort::sort(std::vector<int>& vector) {
 	}
 
 	r1 = r;
-	trinkle();
+	trinkle(A);
 
 	while (q > 1) {
 		--q;
@@ -195,17 +196,15 @@ void CSmoothSort::sort(std::vector<int>& vector) {
 				p--;
 				r = r - b + c;
 				if (p > 0)
-					semiTrinkle();
+					semiTrinkle(A);
 
 				DOWN(b, c);
 				p = (p << 1) + 1;
 				r = r + c;
-				semiTrinkle();
+				semiTrinkle(A);
 				DOWN(b, c);
 				p = (p << 1) + 1;
 			}
 		}
 	}
-
-	vector = A; // copy elements back to vector
 }

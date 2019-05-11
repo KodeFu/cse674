@@ -11,11 +11,10 @@ public:
 	std::string identify();
 
 private:
-	void sift();
-	void trinkle();
-	void semiTrinkle();
+	void sift(std::vector<int>& A);
+	void trinkle(std::vector<int>& A);
+	void semiTrinkle(std::vector<int>& A);
 
-	std::vector<int> A;
 	int q, r, p, b, c, r1, b1, c1;
 };
 
