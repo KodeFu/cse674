@@ -69,10 +69,12 @@ void CGenerateInput::writeFile(std::vector<int> data, std::string filename)
 	f.close();
 }
 
-void CGenerateInput::readFile(std::vector<int>& data, std::string filename)
+void CGenerateInput::readFile(std::vector<int>& data, std::string filename, int maxElements)
 {
 	int i = 0;
 	std::string line;
+
+	data.clear();
 
 	std::ifstream f(filename);
 	if (f.is_open()) {
@@ -83,6 +85,45 @@ void CGenerateInput::readFile(std::vector<int>& data, std::string filename)
 			while (std::getline(lineStream, segment, '-')) {
 				data.push_back(std::stoi(segment));
 			}
+
+			if (((int) data.size()) >= maxElements) {
+				break;
+			}
 		}
+
+		f.close();
 	}
+}
+
+void CGenerateInput::generateInputFiles()
+{
+	// generate random
+	std::vector<int> random;
+	generateRandom(random);
+	writeFile(random, "random.txt");
+
+	// generate ascending
+	std::vector<int> ascending;
+	generateAscending(ascending);
+	writeFile(ascending, "ascending.txt");
+
+	// generate descending
+	std::vector<int> descending;
+	generateDescending(descending);
+	writeFile(descending, "descending.txt");
+}
+
+void CGenerateInput::getAscending(std::vector<int>& data, int maxElements)
+{
+	readFile(data, "ascending.txt", maxElements);
+}
+
+void CGenerateInput::getDescending(std::vector<int>& data, int maxElements)
+{
+	readFile(data, "descending.txt", maxElements);
+}
+
+void CGenerateInput::getRandom(std::vector<int>& data, int maxElements)
+{
+	readFile(data, "random.txt", maxElements);
 }

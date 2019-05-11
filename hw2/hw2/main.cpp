@@ -14,6 +14,7 @@
 #include "RadixSort.h"
 #include "CountingSort.h"
 #include "SmoothSort.h"
+#include "GenerateInput.h"
 
 #define MAX_RANGE 10000
 
@@ -50,21 +51,46 @@ int main()
 	sorters.push_back(countingSort);
 	sorters.push_back(smoothSort);
 
-	std::vector<int> t;
+	// Create input data files
+	CGenerateInput *genInput = new CGenerateInput();
+	genInput->setMaxRange(1000000);
 
-	// Add sorters
+	// Uncomment to regenerate input file. Otherwise current input files ascending.txt, 
+	// descending.txt and random.txt will be reused.
+	//genInput->generateInputFiles();
+
+	// Run sorters
+	int step;
+	int maxStep;
 	for (unsigned int i = 0; i < sorters.size(); i++) {
-		
-		// generate some data
-		t.clear();
-		generateRandom(t);
+				
+		// Set starting step
+		step = 1000;
+		maxStep = 1000000;
 
-		// run the sorter
-		//std::string str = ;
-		std::cout << sorters[i]->identify() << std::endl;
-		sorters[i]->sort(t);
-		//sorters[i]->display(t);
+		while (step <= maxStep) {
+
+			for (unsigned int j = 0; j < 3; j++) {
+
+				// generate some data
+				std::vector<int> *t = new std::vector<int>;
+				t->clear();
+				genInput->getRandom(*t, step);
+
+				// Run the sorter
+				std::cout << step << ": " << sorters[i]->identify() << std::endl;
+				sorters[i]->sort(*t);
+				delete t;
+			}
+
+			// Double the step
+			step = step * 2;
+
+			if (step > maxStep) step = maxStep;
+		}
 	}
+
+	delete genInput;
 
 	sorters.clear();
 	delete bubbleSort;
