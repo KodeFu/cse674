@@ -27,31 +27,32 @@ std::string CQuickSort::identify()
 int CQuickSort::partition(std::vector<int>& vector, int p, int r)
 {
 	int tmp;
-	int pivot = vector[r]; // pivot set to last element
-	int i = p - 1; // index of less than pivot
+	//int pivot = vector[r]; // use last element
+	int pivot = vector[p + ((r - p + 1) / 2)]; // use middle element
+	int i = p;
 
 	// go through vector up to the pivot; sort them such that items less than
 	// pivot are left of the pivot and items greater then pivot are to the right
-	for (int j = p; j <= r - 1; j++) {
+	for (int j = p; j < r; j++) {
 
 		// if item less than pivot, advance i which is the counter for the less
 		// than list
 		if (vector[j] <= pivot) {
-			i = i + 1;
-			
+
 			// swap item to the left
 			tmp = vector[i];
 			vector[i] = vector[j];
 			vector[j] = tmp;
+
+			i = i + 1;
 		}
 	}
 
 	// put the pivot in the right spot; between left and right halves
-	tmp = vector[i+1];
-	vector[i+1] = vector[r];
-	vector[r] = tmp;
+	vector[r] = vector[i];
+	vector[i] = pivot;
 
-	return i + 1;
+	return i;
 }
 
 void CQuickSort::quicksort(std::vector<int>& vector, int p, int r)
