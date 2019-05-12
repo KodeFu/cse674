@@ -1,3 +1,15 @@
+/*
+
+	File:
+		SmoothSort.h
+
+	Purpose:
+		Class definition for the SmoothSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "SortInterface.h"
 

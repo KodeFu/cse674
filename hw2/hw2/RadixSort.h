@@ -1,3 +1,16 @@
+/*
+
+	File:
+		Radix.h
+
+	Purpose:
+		Class definition for the RadixSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
+
 #pragma once
 #include "SortInterface.h"
 class CRadixSort :

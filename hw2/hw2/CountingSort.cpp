@@ -5,8 +5,8 @@
 // Counting sort based off course notes:
 //     trifort.org/ads/index.php/dlcode/index/countingSort.cpp.html
 //
-// Adapted to:
-//     - Use int vectors
+// Changelog:
+//     - Use C++ class structure
 //     - Handle large data sets (1000000)
 //
 CCountingSort::CCountingSort()

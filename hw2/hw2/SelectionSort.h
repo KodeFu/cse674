@@ -1,5 +1,18 @@
+/*
+
+	File:
+		HeapSort.h
+
+	Purpose:
+		Class definition for the SelectionSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "SortInterface.h"
+
 class CSelectionSort :
 	public ISortInterface
 {

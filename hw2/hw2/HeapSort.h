@@ -1,5 +1,18 @@
+/*
+
+	File:
+		HeapSort.h
+
+	Purpose:
+		Class definition for the HeapSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "SortInterface.h"
+
 class CHeapSort :
 	public ISortInterface
 {

@@ -1,5 +1,18 @@
+/*
+
+	File:
+		MergeSort.h
+
+	Purpose:
+		Class definition for the MergeSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "SortInterface.h"
+
 class CMergeSort :
 	public ISortInterface
 {

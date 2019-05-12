@@ -5,8 +5,8 @@
 // Radix Sort based off course notes:
 //     trifort.org/ads/index.php/dlcode/index/radixSort.cpp.html
 //
-// Adapted to:
-//     - Use int vectors
+// Changelog:
+//     - Use C++ class stucture
 //     - Handle large data sets (1000000)
 //
 CRadixSort::CRadixSort()

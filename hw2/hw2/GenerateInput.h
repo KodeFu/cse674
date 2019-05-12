@@ -1,4 +1,17 @@
+/*
+
+	File:
+		GenerateInput.h
+
+	Purpose:
+		Class definition for the generating input data.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
+
 class CGenerateInput
 {
 public:

@@ -1,3 +1,16 @@
+/*
+
+	File:
+		CountingSort.h
+
+	Purpose:
+		Class definition for the CountingSort algorithm.
+
+	Author:
+		http://trifort.org/ads/index.html
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "SortInterface.h"
 class CCountingSort :

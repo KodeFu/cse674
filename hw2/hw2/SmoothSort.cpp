@@ -3,7 +3,8 @@
 
 //
 // Smooth sort implementation based on Djikstra's smoothsort pseudo-code and
-// programming algorithms example.
+// Programming Algorithms example. Pseudo code in Djikstra's program notation
+// on pages 8-9 (ref #4 in ReadMe.txt).
 //
 // changelog:
 //     - Support C++ class structure

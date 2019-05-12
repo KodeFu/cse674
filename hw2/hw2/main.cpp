@@ -1,5 +1,16 @@
-// hw2.cpp : Defines the entry point for the console application.
-//
+/*
+
+	File:
+		main.cpp
+
+	Purpose:
+		The hw2 application which performs several sorting methods on random ascending, random
+		descending, and random data.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 
 #include "stdafx.h"
 #include "SortInterface.h"
@@ -16,16 +27,6 @@
 #include "SmoothSort.h"
 #include "GenerateInput.h"
 #include "WindowsStopWatch.h"
-
-#define MAX_RANGE 10000
-
-void generateRandom(std::vector<int>& data)
-{
-	srand((unsigned int) time(NULL));
-	for (int i = 0; i < MAX_RANGE; i++) {
-		data.push_back(((rand() << 15) | rand()) % MAX_RANGE + 1);
-	}
-}
 
 int main()
 {

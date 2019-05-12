@@ -1,3 +1,16 @@
+/*
+
+	File:
+		QuickSort.h
+
+	Purpose:
+		Class definition for the QuickSort algorithm.
+
+	Author:
+		mpvats@syr.edu
+
+*/
+
 #pragma once
 #include "SortInterface.h"
 class CQuickSort :
