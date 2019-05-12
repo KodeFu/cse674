@@ -60,7 +60,14 @@ int main()
 
 	// Uncomment to regenerate input file. Otherwise current input files ascending.txt, 
 	// descending.txt and random.txt will be reused.
-	//genInput->generateInputFiles();
+	/*std::vector<int> d;
+	genInput->generateRandom(d);
+	genInput->writeFile(d, "random.txt");
+	quickSort->sort(d);
+	genInput->writeFile(d, "ascending.txt");
+	std::reverse(d.begin(), d.end());
+	genInput->writeFile(d, "descending.txt");
+	*/
 
 	//
 	// ASCENDING DATA RUN

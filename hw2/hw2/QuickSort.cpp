@@ -27,8 +27,10 @@ std::string CQuickSort::identify()
 int CQuickSort::partition(std::vector<int>& vector, int p, int r)
 {
 	int tmp;
-	//int pivot = vector[r]; // use last element
-	int pivot = vector[p + ((r - p + 1) / 2)]; // use middle element
+
+	// use middle element as pivot; more stack friendly with sorted array
+	// previously using "int pivot = vector[r];"  per CRLS
+	int pivot = vector[p + ((r - p + 1) / 2)]; 
 	int i = p;
 
 	// go through vector up to the pivot; sort them such that items less than

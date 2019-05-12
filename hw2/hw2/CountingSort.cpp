@@ -1,7 +1,14 @@
 #include "stdafx.h"
 #include "CountingSort.h"
 
-
+//
+// Counting sort based off course notes:
+//     trifort.org/ads/index.php/dlcode/index/countingSort.cpp.html
+//
+// Adapted to:
+//     - Use int vectors
+//     - Handle large data sets (1000000)
+//
 CCountingSort::CCountingSort()
 {
 }
@@ -21,14 +28,6 @@ std::string CCountingSort::identify()
 	return "Counting Sort";
 }
 
-//
-// Counting sort based off code from course notes:
-//     trifort.org/ads/index.php/dlcode/index/countingSort.cpp.html
-//
-// Adapted to:
-//     - Use int vectors
-//     - Handle large data sets (1000000)
-//
 void CCountingSort::countingSort(std::vector<int>& vector) 
 {
 	const int max_value = 1000000;
