@@ -8,13 +8,22 @@
 /////////////////////////////////////////////////////////////////////////////
 SUPER SHORT HOW-TO
 
-- Run by exectuing hw2/Release/hw2.exe. No arguments needed.
+- Run by exectuing hw2.exe. No arguments needed.
+    hw2/Release/hw2.exe
 
-- Data files used by hw2.exe are hw2/Release/[ascending.txt, descending.txt, random.txt]
+- Data files used by hw2.exe are:
+    hw2/Release/ascending.txt
+	hw2/Release/descending.txt
+	hw2/Release/random.txt
 
-- Output of hw2.exe for Data Files listed above in hw2/OUTPUT.TXT.
+- Output of hw2.exe for Data Files listed above in:
+    hw2/output.txt
 
-- Charts located in hw2/OUTPUT.XLSX. Three tabs for Asceding, Descending and Random.
+- Charts located in output.xlsx. Three tabs for Asceding, Descending and Random. Also
+  an additional tabl for the Program Output (same as output.txt).
+    hw2/output.xlsx
+
+- If you rebuild, build in Release mode since debug really slows down performance.
 
 /////////////////////////////////////////////////////////////////////////////
 Files in this application:
@@ -211,10 +220,14 @@ into an Excel spreadsheet.
 
 There are three tabs: One for Asceding, one for Descending and one for Random.
 
-Each tabl contains the average time for each sort for each step and the line
+Each tab contains the average time for each sort for each step and the line
 chart showing their performance.
 
 This file is called OUTPUT.XLSX.
+
+There is also one additional tab for Program Output. This is the same as
+output.txt which contains the program output, which is the times for each
+sorting meting for a particular step.
 
 /////////////////////////////////////////////////////////////////////////////
 ALGORITHMS
