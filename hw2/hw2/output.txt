@@ -1,0 +1,339 @@
+============================================
+ Ascending
+============================================
+BubbleSort 1000 0 0 0 0
+BubbleSort 2000 1 1 1 1
+BubbleSort 4000 4 4 4 4
+BubbleSort 8000 20 17 17 18
+BubbleSort 16000 69 70 69 69
+BubbleSort 32000 283 283 290 285
+BubbleSort 64000 1136 1137 1128 1133
+BubbleSort 128000 4527 4544 4539 4536
+BubbleSort 256000 18289 18267 18325 18293
+BubbleSort 512000 73329 73112 73291 73244
+BubbleSort 1000000 280605 280184 279859 280216
+BubbleSort with Flag 1000 0 0 0 0
+BubbleSort with Flag 2000 0 0 0 0
+BubbleSort with Flag 4000 0 0 0 0
+BubbleSort with Flag 8000 0 0 0 0
+BubbleSort with Flag 16000 0 0 0 0
+BubbleSort with Flag 32000 0 0 0 0
+BubbleSort with Flag 64000 0 0 0 0
+BubbleSort with Flag 128000 0 0 0 0
+BubbleSort with Flag 256000 0 0 0 0
+BubbleSort with Flag 512000 0 0 0 0
+BubbleSort with Flag 1000000 0 0 0 0
+Insertion Sort 1000 0 0 0 0
+Insertion Sort 2000 0 0 0 0
+Insertion Sort 4000 0 0 0 0
+Insertion Sort 8000 0 0 0 0
+Insertion Sort 16000 0 0 0 0
+Insertion Sort 32000 0 0 0 0
+Insertion Sort 64000 0 0 0 0
+Insertion Sort 128000 0 0 0 0
+Insertion Sort 256000 0 0 0 0
+Insertion Sort 512000 0 0 0 0
+Insertion Sort 1000000 0 0 0 0
+Selection Sort 1000 0 0 0 0
+Selection Sort 2000 0 0 0 0
+Selection Sort 4000 3 3 3 3
+Selection Sort 8000 15 15 15 15
+Selection Sort 16000 60 60 60 60
+Selection Sort 32000 260 240 240 246
+Selection Sort 64000 974 960 963 965
+Selection Sort 128000 3865 3867 3845 3859
+Selection Sort 256000 15412 15432 15504 15449
+Selection Sort 512000 62295 62211 62070 62192
+Selection Sort 1000000 237881 237484 237421 237595
+Heap Sort 1000 0 0 0 0
+Heap Sort 2000 0 0 0 0
+Heap Sort 4000 0 0 0 0
+Heap Sort 8000 0 0 0 0
+Heap Sort 16000 0 0 0 0
+Heap Sort 32000 1 1 1 1
+Heap Sort 64000 2 2 2 2
+Heap Sort 128000 5 5 5 5
+Heap Sort 256000 11 11 11 11
+Heap Sort 512000 25 25 25 25
+Heap Sort 1000000 53 53 53 53
+Merge Sort 1000 0 0 0 0
+Merge Sort 2000 0 0 0 0
+Merge Sort 4000 1 1 1 1
+Merge Sort 8000 2 2 2 2
+Merge Sort 16000 5 5 5 5
+Merge Sort 32000 10 10 13 11
+Merge Sort 64000 21 21 21 21
+Merge Sort 128000 43 44 44 43
+Merge Sort 256000 90 89 88 89
+Merge Sort 512000 182 180 179 180
+Merge Sort 1000000 373 360 360 364
+Quick Sort 1000 0 0 0 0
+Quick Sort 2000 0 0 0 0
+Quick Sort 4000 0 0 0 0
+Quick Sort 8000 0 0 0 0
+Quick Sort 16000 0 0 0 0
+Quick Sort 32000 0 0 0 0
+Quick Sort 64000 1 1 1 1
+Quick Sort 128000 2 2 2 2
+Quick Sort 256000 5 6 5 5
+Quick Sort 512000 11 11 11 11
+Quick Sort 1000000 22 22 22 22
+Radix Sort 1000 0 0 0 0
+Radix Sort 2000 0 0 0 0
+Radix Sort 4000 0 0 0 0
+Radix Sort 8000 1 1 1 1
+Radix Sort 16000 3 3 3 3
+Radix Sort 32000 6 6 6 6
+Radix Sort 64000 11 11 11 11
+Radix Sort 128000 24 23 24 23
+Radix Sort 256000 50 50 49 49
+Radix Sort 512000 102 101 101 101
+Radix Sort 1000000 197 197 209 201
+Counting Sort 1000 7 6 6 6
+Counting Sort 2000 7 7 6 6
+Counting Sort 4000 6 6 7 6
+Counting Sort 8000 7 7 7 7
+Counting Sort 16000 7 7 7 7
+Counting Sort 32000 7 7 7 7
+Counting Sort 64000 8 7 7 7
+Counting Sort 128000 8 7 9 8
+Counting Sort 256000 9 8 8 8
+Counting Sort 512000 10 11 11 10
+Counting Sort 1000000 14 14 14 14
+Smooth Sort 1000 0 0 0 0
+Smooth Sort 2000 0 0 0 0
+Smooth Sort 4000 0 0 0 0
+Smooth Sort 8000 0 0 0 0
+Smooth Sort 16000 0 0 0 0
+Smooth Sort 32000 0 0 0 0
+Smooth Sort 64000 1 1 1 1
+Smooth Sort 128000 2 2 2 2
+Smooth Sort 256000 5 4 5 4
+Smooth Sort 512000 9 10 13 10
+Smooth Sort 1000000 20 20 21 20
+============================================
+ Descending
+============================================
+BubbleSort 1000 1 1 1 1
+BubbleSort 2000 6 5 5 5
+BubbleSort 4000 25 25 25 25
+BubbleSort 8000 104 104 110 106
+BubbleSort 16000 429 428 426 427
+BubbleSort 32000 1708 1704 1710 1707
+BubbleSort 64000 6819 6829 6813 6820
+BubbleSort 128000 27225 27250 27246 27240
+BubbleSort 256000 108839 108816 108772 108809
+BubbleSort 512000 435332 434458 434248 434679
+BubbleSort 1000000 1655293 1655707 1655780 1655593
+BubbleSort with Flag 1000 0 0 0 0
+BubbleSort with Flag 2000 1 1 1 1
+BubbleSort with Flag 4000 9 10 10 9
+BubbleSort with Flag 8000 67 68 68 67
+BubbleSort with Flag 16000 346 345 345 345
+BubbleSort with Flag 32000 1546 1544 1549 1546
+BubbleSort with Flag 64000 6520 6520 6517 6519
+BubbleSort with Flag 128000 26606 26540 26556 26567
+BubbleSort with Flag 256000 106815 106805 106780 106800
+BubbleSort with Flag 512000 428411 427874 427690 427991
+BubbleSort with Flag 1000000 1632317 1631902 1632468 1632229
+Insertion Sort 1000 0 0 0 0
+Insertion Sort 2000 1 1 1 1
+Insertion Sort 4000 7 7 7 7
+Insertion Sort 8000 31 31 31 31
+Insertion Sort 16000 128 130 128 128
+Insertion Sort 32000 515 517 518 516
+Insertion Sort 64000 2067 2069 2068 2068
+Insertion Sort 128000 8297 8299 8300 8298
+Insertion Sort 256000 33217 33181 33229 33209
+Insertion Sort 512000 132965 132943 132761 132889
+Insertion Sort 1000000 507286 507087 507191 507188
+Selection Sort 1000 0 0 0 0
+Selection Sort 2000 1 1 1 1
+Selection Sort 4000 7 7 7 7
+Selection Sort 8000 40 40 40 40
+Selection Sort 16000 191 191 192 191
+Selection Sort 32000 820 818 818 818
+Selection Sort 64000 3411 3402 3409 3407
+Selection Sort 128000 13810 13818 13826 13818
+Selection Sort 256000 55377 55419 55361 55385
+Selection Sort 512000 222517 222217 222250 222328
+Selection Sort 1000000 847833 847944 847989 847922
+Heap Sort 1000 0 0 0 0
+Heap Sort 2000 0 0 0 0
+Heap Sort 4000 0 0 0 0
+Heap Sort 8000 0 0 0 0
+Heap Sort 16000 0 0 0 0
+Heap Sort 32000 1 1 1 1
+Heap Sort 64000 2 2 2 2
+Heap Sort 128000 5 5 5 5
+Heap Sort 256000 12 11 11 11
+Heap Sort 512000 24 25 24 24
+Heap Sort 1000000 51 51 52 51
+Merge Sort 1000 0 0 0 0
+Merge Sort 2000 0 0 0 0
+Merge Sort 4000 1 1 1 1
+Merge Sort 8000 2 2 2 2
+Merge Sort 16000 5 5 5 5
+Merge Sort 32000 10 10 10 10
+Merge Sort 64000 22 21 21 21
+Merge Sort 128000 43 44 44 43
+Merge Sort 256000 89 89 91 89
+Merge Sort 512000 183 182 182 182
+Merge Sort 1000000 368 366 371 368
+Quick Sort 1000 0 0 0 0
+Quick Sort 2000 0 0 0 0
+Quick Sort 4000 0 0 0 0
+Quick Sort 8000 0 0 0 0
+Quick Sort 16000 0 0 0 0
+Quick Sort 32000 0 0 0 0
+Quick Sort 64000 1 1 1 1
+Quick Sort 128000 2 2 2 2
+Quick Sort 256000 5 5 5 5
+Quick Sort 512000 12 12 12 12
+Quick Sort 1000000 24 24 24 24
+Radix Sort 1000 0 0 0 0
+Radix Sort 2000 0 0 0 0
+Radix Sort 4000 0 0 0 0
+Radix Sort 8000 1 1 1 1
+Radix Sort 16000 3 3 3 3
+Radix Sort 32000 6 6 6 6
+Radix Sort 64000 12 12 12 12
+Radix Sort 128000 25 25 25 25
+Radix Sort 256000 51 51 51 51
+Radix Sort 512000 102 102 100 101
+Radix Sort 1000000 194 192 194 193
+Counting Sort 1000 7 6 6 6
+Counting Sort 2000 6 6 6 6
+Counting Sort 4000 6 6 6 6
+Counting Sort 8000 6 6 6 6
+Counting Sort 16000 6 6 7 6
+Counting Sort 32000 7 7 7 7
+Counting Sort 64000 7 7 7 7
+Counting Sort 128000 7 7 7 7
+Counting Sort 256000 8 9 9 8
+Counting Sort 512000 11 10 10 10
+Counting Sort 1000000 14 14 14 14
+Smooth Sort 1000 0 0 0 0
+Smooth Sort 2000 0 0 0 0
+Smooth Sort 4000 0 0 0 0
+Smooth Sort 8000 0 0 0 0
+Smooth Sort 16000 1 1 1 1
+Smooth Sort 32000 2 2 2 2
+Smooth Sort 64000 6 6 6 6
+Smooth Sort 128000 12 12 13 12
+Smooth Sort 256000 25 25 25 25
+Smooth Sort 512000 52 56 52 53
+Smooth Sort 1000000 105 105 106 105
+============================================
+ Random
+============================================
+BubbleSort 1000 1 1 1 1
+BubbleSort 2000 4 4 4 4
+BubbleSort 4000 19 19 19 19
+BubbleSort 8000 79 79 80 79
+BubbleSort 16000 324 325 322 323
+BubbleSort 32000 1301 1296 1298 1298
+BubbleSort 64000 5272 5280 5274 5275
+BubbleSort 128000 21182 21230 21192 21201
+BubbleSort 256000 86748 86710 86670 86709
+BubbleSort 512000 355449 355543 355545 355512
+BubbleSort 1000000 1373564 1373897 1373741 1373734
+BubbleSort with Flag 1000 0 0 0 0
+BubbleSort with Flag 2000 2 2 2 2
+BubbleSort with Flag 4000 10 10 10 10
+BubbleSort with Flag 8000 57 57 59 57
+BubbleSort with Flag 16000 276 277 275 276
+BubbleSort with Flag 32000 1230 1226 1227 1227
+BubbleSort with Flag 64000 5168 5161 5152 5160
+BubbleSort with Flag 128000 20985 20976 20972 20977
+BubbleSort with Flag 256000 85605 85526 85615 85582
+BubbleSort with Flag 512000 351347 351399 351573 351439
+BubbleSort with Flag 1000000 1357454 1357522 1357972 1357649
+Insertion Sort 1000 0 0 0 0
+Insertion Sort 2000 1 1 1 1
+Insertion Sort 4000 4 3 3 3
+Insertion Sort 8000 15 15 15 15
+Insertion Sort 16000 64 63 63 63
+Insertion Sort 32000 258 256 255 256
+Insertion Sort 64000 1034 1037 1039 1036
+Insertion Sort 128000 4149 4156 4140 4148
+Insertion Sort 256000 16604 16633 16596 16611
+Insertion Sort 512000 66567 66596 66505 66556
+Insertion Sort 1000000 253653 253785 253591 253676
+Selection Sort 1000 0 0 0 0
+Selection Sort 2000 1 1 1 1
+Selection Sort 4000 3 3 3 3
+Selection Sort 8000 15 15 15 15
+Selection Sort 16000 62 61 61 61
+Selection Sort 32000 244 241 241 242
+Selection Sort 64000 963 965 963 963
+Selection Sort 128000 3867 3870 3864 3867
+Selection Sort 256000 15440 15415 15437 15430
+Selection Sort 512000 61858 61678 61844 61793
+Selection Sort 1000000 235785 235811 235938 235844
+Heap Sort 1000 0 0 0 0
+Heap Sort 2000 0 0 0 0
+Heap Sort 4000 0 0 0 0
+Heap Sort 8000 0 0 0 0
+Heap Sort 16000 0 0 0 0
+Heap Sort 32000 1 1 1 1
+Heap Sort 64000 3 3 3 3
+Heap Sort 128000 7 7 7 7
+Heap Sort 256000 17 18 18 17
+Heap Sort 512000 45 45 45 45
+Heap Sort 1000000 105 103 105 104
+Merge Sort 1000 0 0 0 0
+Merge Sort 2000 0 0 0 0
+Merge Sort 4000 1 1 1 1
+Merge Sort 8000 2 2 2 2
+Merge Sort 16000 5 5 5 5
+Merge Sort 32000 12 12 12 12
+Merge Sort 64000 25 24 25 24
+Merge Sort 128000 53 50 50 51
+Merge Sort 256000 104 104 103 103
+Merge Sort 512000 213 213 211 212
+Merge Sort 1000000 430 429 429 429
+Quick Sort 1000 0 0 0 0
+Quick Sort 2000 0 0 0 0
+Quick Sort 4000 0 0 0 0
+Quick Sort 8000 0 0 0 0
+Quick Sort 16000 0 0 0 0
+Quick Sort 32000 1 1 1 1
+Quick Sort 64000 3 3 3 3
+Quick Sort 128000 7 7 8 7
+Quick Sort 256000 16 16 16 16
+Quick Sort 512000 35 35 35 35
+Quick Sort 1000000 72 71 72 71
+Radix Sort 1000 0 0 0 0
+Radix Sort 2000 0 0 0 0
+Radix Sort 4000 0 0 0 0
+Radix Sort 8000 1 1 1 1
+Radix Sort 16000 2 2 2 2
+Radix Sort 32000 5 5 5 5
+Radix Sort 64000 11 11 11 11
+Radix Sort 128000 23 23 23 23
+Radix Sort 256000 47 47 47 47
+Radix Sort 512000 96 97 95 96
+Radix Sort 1000000 194 196 197 195
+Counting Sort 1000 7 7 6 6
+Counting Sort 2000 6 6 6 6
+Counting Sort 4000 6 6 6 6
+Counting Sort 8000 6 6 6 6
+Counting Sort 16000 7 6 6 6
+Counting Sort 32000 7 7 7 7
+Counting Sort 64000 7 7 7 7
+Counting Sort 128000 8 8 8 8
+Counting Sort 256000 9 9 9 9
+Counting Sort 512000 13 12 12 12
+Counting Sort 1000000 16 15 15 15
+Smooth Sort 1000 0 0 0 0
+Smooth Sort 2000 0 0 0 0
+Smooth Sort 4000 0 0 0 0
+Smooth Sort 8000 0 1 0 0
+Smooth Sort 16000 2 2 2 2
+Smooth Sort 32000 4 4 4 4
+Smooth Sort 64000 9 9 9 9
+Smooth Sort 128000 21 22 20 21
+Smooth Sort 256000 45 48 45 46
+Smooth Sort 512000 105 100 100 101
+Smooth Sort 1000000 212 212 212 212
