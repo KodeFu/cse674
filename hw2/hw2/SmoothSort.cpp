@@ -13,8 +13,8 @@
 //     - Handle large sorts (sorting millions of values)
 //
 
-#define UP(IA,IB) temp = IA; IA += IB + 1; IB = temp;
-#define DOWN(IA,IB) temp = IB; IB = IA - IB - 1; IA = temp;
+#define UP(AA,BB) temp = AA; AA += BB + 1; BB = temp;
+#define DN(AA,BB) temp = BB; BB = AA - BB - 1; AA = temp;
 
 CSmoothSort::CSmoothSort()
 {
@@ -48,7 +48,7 @@ void CSmoothSort::sift(std::vector<int>& A)
 
 		if (!(A[r1 - 1] < A[r2])) {
 			r2 = r1 - 1;
-			DOWN(b1, c1);
+			DN(b1, c1);
 		}
 
 		if (A[r2] < t) {
@@ -57,7 +57,7 @@ void CSmoothSort::sift(std::vector<int>& A)
 		else {
 			A[r1] = A[r2];
 			r1 = r2;
-			DOWN(b1, c1);
+			DN(b1, c1);
 		}
 	}
 
@@ -101,7 +101,7 @@ void CSmoothSort::trinkle(std::vector<int>& A)
 
 					if (!(A[r1 - 1] < A[r2])) {
 						r2 = r1 - 1;
-						DOWN(b1, c1);
+						DN(b1, c1);
 						p1 <<= 1;
 					}
 					if ((A[r2] < A[r3])) {
@@ -110,7 +110,7 @@ void CSmoothSort::trinkle(std::vector<int>& A)
 					else {
 						A[r1] = A[r2];
 						r1 = r2;
-						DOWN(b1, c1);
+						DN(b1, c1);
 						p1 = 0;
 					}
 				}
@@ -162,11 +162,11 @@ void CSmoothSort::sort(std::vector<int>& A)
 				trinkle(A);
 			}
 
-			DOWN(b, c);
+			DN(b, c);
 			p <<= 1;
 
 			while (b > 1) {
-				DOWN(b, c);
+				DN(b, c);
 				p <<= 1;
 			}
 
@@ -199,11 +199,11 @@ void CSmoothSort::sort(std::vector<int>& A)
 				if (p > 0)
 					semiTrinkle(A);
 
-				DOWN(b, c);
+				DN(b, c);
 				p = (p << 1) + 1;
 				r = r + c;
 				semiTrinkle(A);
-				DOWN(b, c);
+				DN(b, c);
 				p = (p << 1) + 1;
 			}
 		}

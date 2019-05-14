@@ -287,3 +287,6 @@ ACKNOWLEDGE AND REFERENCE(S):
 
 5. Smoothsort method to sort strings.
    https://www.programmingalgorithms.com/algorithm/smooth-sort?lang=C%2B%2B
+
+6. Smoothsort Demystified, Keith Schwarz.
+   http://www.keithschwarz.com/smoothsort/
