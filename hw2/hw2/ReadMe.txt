@@ -8,7 +8,8 @@
 /////////////////////////////////////////////////////////////////////////////
 SUPER SHORT HOW-TO
 
-- Run by exectuing hw2.exe. No arguments needed.
+- Run by exectuing hw2.exe. No arguments needed. This will run all sorts
+  for all iterations using data files mentioned below.
     hw2/Release/hw2.exe
 
 - Data files used by hw2.exe are:
@@ -17,11 +18,11 @@ SUPER SHORT HOW-TO
 	hw2/Release/random.txt
 
 - Output of hw2.exe for Data Files listed above in:
-    hw2/output.txt
+    hw2/Release/output.txt
 
 - Charts located in output.xlsx. Three tabs for Asceding, Descending and Random. Also
   an additional tabl for the Program Output (same as output.txt).
-    hw2/output.xlsx
+    hw2/Release/output.xlsx
 
 - If you rebuild, build in Release mode since debug really slows down performance.
 
@@ -97,7 +98,7 @@ The output is in a file called OUTPUT.TXT. This is the output when running again
 current ascending.txt, descending.txt and random.txt files.
 
  ---------OUTPUT START---------
- ============================================
+============================================
  Ascending
 ============================================
 BubbleSort 1000 0 0 0 0
