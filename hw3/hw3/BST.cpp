@@ -12,6 +12,11 @@ CBST::~CBST()
 {
 }
 
+CNode* CBST::getRoot()
+{
+	return root;
+}
+
 // Inorder traversal
 void CBST::inorder(CNode* node) 
 { 
@@ -32,6 +37,10 @@ CNode* CBST::insert(CNode* node, int key)
 		newNode->key = key;
 		newNode->left = NULL;
 		newNode->right = NULL;
+
+		if (root == NULL) {
+			root = newNode;
+		}
 		return newNode;
 	}
 	

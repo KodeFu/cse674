@@ -82,21 +82,29 @@ int main()
 	std::cout << std::endl;*/
 
 	CBST* bst = new CBST();
-	bst->root = bst->insert(bst->root, 50);
-	bst->insert(bst->root, 30);
-	bst->insert(bst->root, 20);
-	bst->insert(bst->root, 40);
+	/*bst->insert(bst->getRoot(), 50);
+	bst->insert(bst->getRoot(), 30);
+	bst->insert(bst->getRoot(), 20);
+	bst->insert(bst->getRoot(), 40);
 
 	std::cout << std::endl;
-	CPrintTree::print_t(bst->root);
-	bst->insert(bst->root, 70);
-	bst->insert(bst->root, 60);
-	bst->insert(bst->root, 80);
+	CPrintTree::print_t(bst->getRoot());
+	bst->insert(bst->getRoot(), 70);
+	bst->insert(bst->getRoot(), 60);
+	bst->insert(bst->getRoot(), 80);
 
-	bst->inorder(bst->root);
+	bst->inorder(bst->getRoot());
 
 	std::cout << std::endl;
-	CPrintTree::print_t(bst->root);
+	CPrintTree::print_t(bst->getRoot());*/
+
+	for (int i = 0; i < 100; i++) {
+		bst->insert(bst->getRoot(), g_S2[i]);
+	}
+
+	bst->inorder(bst->getRoot());
+	std::cout << std::endl;
+	CPrintTree::printBT(bst->getRoot());
 
     return 0;
 }

@@ -4,12 +4,13 @@
 class CBST
 {
 public:
-	CNode *root;
-
 	CBST();
 	~CBST();
 	void inorder(CNode *node);
 	CNode* insert(CNode* node, int key);
+	CNode* getRoot();
 
+private:
+	CNode *root;
 };
 
