@@ -2,6 +2,8 @@
 //
 
 #include "stdafx.h"
+#include "BST.h"
+#include "PrintTree.h"
 
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
 int g_S2[100];  // Stores sequence S2: pseudo-random sequence of distinct numbers of length 100
@@ -64,6 +66,38 @@ void generateS2(unsigned int seed=0)
 int main()
 {
 	std::cout << "hello hw3" << std::endl;
+
+	generateS1();
+	generateS2(55);
+
+	/*
+	for (int i = 0; i < 100; i++) {
+		std::cout << g_S1[i] << " ";
+	}
+	std::cout << std::endl;
+
+	for (int i = 0; i < 100; i++) {
+		std::cout << g_S2[i] << " ";
+	}
+	std::cout << std::endl;*/
+
+	CBST* bst = new CBST();
+	bst->root = bst->insert(bst->root, 50);
+	bst->insert(bst->root, 30);
+	bst->insert(bst->root, 20);
+	bst->insert(bst->root, 40);
+
+	std::cout << std::endl;
+	CPrintTree::print_t(bst->root);
+	bst->insert(bst->root, 70);
+	bst->insert(bst->root, 60);
+	bst->insert(bst->root, 80);
+
+	bst->inorder(bst->root);
+
+	std::cout << std::endl;
+	CPrintTree::print_t(bst->root);
+
     return 0;
 }
 
