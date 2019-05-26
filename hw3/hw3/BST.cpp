@@ -39,7 +39,19 @@ void CBST::inorder(CNode* node)
         inorder(node->right); 
     } 
 } 
-   
+
+// Remove all nodes (postorder)
+void CBST::removeAll(CNode* node)
+{
+	if (node != NULL) 
+    { 
+        removeAll(node->left); 
+        removeAll(node->right); 
+		free(node);
+		node = NULL;
+    }
+}
+
 // Insert a new node
 CNode* CBST::insert(CNode* node, int key) 
 { 

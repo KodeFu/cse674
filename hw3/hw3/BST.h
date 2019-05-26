@@ -21,6 +21,7 @@ public:
 	void inorder(CNode *node);
 	CNode* insert(CNode* node, int key);
 	CNode* remove(CNode* root, int key);
+	void removeAll(CNode* node);
 	CNode* getRoot();
 
 private:

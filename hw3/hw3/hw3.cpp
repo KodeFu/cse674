@@ -91,6 +91,7 @@ int main()
 	std::cout << std::endl;
 
 	bst->inorder(bst->getRoot());
+	bst->removeAll(bst->getRoot());
 #else
 	
 	for (int i = 0; i < 100; i++) {
