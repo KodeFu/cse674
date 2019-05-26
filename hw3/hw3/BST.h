@@ -13,6 +13,6 @@ public:
 
 private:
 	CNode *minValueNode(CNode* node);
-	CNode *root;
+	CNode *_root;
 };
 

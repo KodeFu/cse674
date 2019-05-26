@@ -71,24 +71,27 @@ int main()
 	generateS2(55);
 
 	CBST* bst = new CBST();
-	/*bst->insert(bst->getRoot(), 50);
+#if 1
+	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);
 	bst->insert(bst->getRoot(), 40);
-
-	std::cout << std::endl;
-	CPrintTree::printBT(bst->getRoot());
-	std::cout << std::endl;
-
 	bst->insert(bst->getRoot(), 70);
-	bst->insert(bst->getRoot(), 60);
+	//bst->insert(bst->getRoot(), 60);
 	bst->insert(bst->getRoot(), 80);
 
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
 	std::cout << std::endl;
 
-	bst->inorder(bst->getRoot());*/
+	bst->remove(bst->getRoot(), 70);
+
+	std::cout << std::endl;
+	CPrintTree::printBT(bst->getRoot());
+	std::cout << std::endl;
+
+	bst->inorder(bst->getRoot());
+#else
 	
 	for (int i = 0; i < 100; i++) {
 		bst->insert(bst->getRoot(), g_S2[i]);
@@ -98,10 +101,11 @@ int main()
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
 	
-	bst->insert(bst->getRoot(), 50);
+	bst->remove(bst->getRoot(), 50);
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
 	std::cout << std::endl;
+#endif
     return 0;
 }
 

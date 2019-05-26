@@ -4,7 +4,7 @@
 
 CBST::CBST()
 {
-	root = NULL;
+	_root = NULL;
 }
 
 
@@ -14,7 +14,7 @@ CBST::~CBST()
 
 CNode* CBST::getRoot()
 {
-	return root;
+	return _root;
 }
 
 // Inorder traversal
@@ -38,8 +38,8 @@ CNode* CBST::insert(CNode* node, int key)
 		newNode->left = NULL;
 		newNode->right = NULL;
 
-		if (root == NULL) {
-			root = newNode;
+		if (_root == NULL) {
+			_root = newNode;
 		}
 		return newNode;
 	}
@@ -100,7 +100,7 @@ CNode* CBST::remove(CNode* node, int key)
             free(node); 
             return temp; 
         } 
-        else if (root->right == NULL) 
+        else if (node->right == NULL) 
         { 
             CNode *temp = node->left; 
             free(node); 
