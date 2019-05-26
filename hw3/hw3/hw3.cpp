@@ -70,43 +70,40 @@ int main()
 	generateS1();
 	generateS2(55);
 
+	// Create tree
 	CBST* bst = new CBST();
-#if 1
+#if 0
 	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);
 	bst->insert(bst->getRoot(), 40);
 	bst->insert(bst->getRoot(), 70);
-	//bst->insert(bst->getRoot(), 60);
+	bst->insert(bst->getRoot(), 60);
 	bst->insert(bst->getRoot(), 80);
-
-	std::cout << std::endl;
-	CPrintTree::printBT(bst->getRoot());
-	std::cout << std::endl;
-
-	bst->remove(bst->getRoot(), 70);
-
-	std::cout << std::endl;
-	CPrintTree::printBT(bst->getRoot());
-	std::cout << std::endl;
-
-	bst->inorder(bst->getRoot());
-	bst->removeAll(bst->getRoot());
 #else
-	
+	// Use random data
 	for (int i = 0; i < 100; i++) {
 		bst->insert(bst->getRoot(), g_S2[i]);
 	}
-
+#endif
+	// Print tree
 	bst->inorder(bst->getRoot());
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
+	std::cout << std::endl;
 	
+	// Remove
 	bst->remove(bst->getRoot(), 50);
+
+	// Print tree
+	bst->inorder(bst->getRoot());
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
 	std::cout << std::endl;
-#endif
+
+	bst->removeAll(bst->getRoot());
+	delete bst;
+
     return 0;
 }
 
