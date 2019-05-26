@@ -1,3 +1,15 @@
+/*
+
+	File:
+		BST.cpp
+
+	Purpose:
+		Defines the functions which implement a BST.
+	
+	Author:
+		mpvats@syr.edu
+
+*/
 #include "stdafx.h"
 #include "BST.h"
 
@@ -56,22 +68,18 @@ CNode* CBST::insert(CNode* node, int key)
     return node; 
 } 
 
-/* Given a non-empty binary search tree, return the node with minimum 
-   key value found in that tree. Note that the entire tree does not 
-   need to be searched. */
+// Get minimum value of a tree (subtree)
 CNode *CBST::minValueNode(CNode* node)
 { 
     CNode* current = node; 
   
-    /* loop down to find the leftmost leaf */
     while (current && current->left != NULL) 
         current = current->left; 
   
     return current; 
 } 
 
-/* Given a binary search tree and a key, this function deletes the key 
-   and returns the new root */
+// Remove a node
 CNode* CBST::remove(CNode* node, int key) 
 { 
     // base case 
@@ -79,27 +87,25 @@ CNode* CBST::remove(CNode* node, int key)
 		return node;
 	}
   
-    // If the key to be deleted is smaller than the root's key, 
-    // then it lies in left subtree 
 	if (key < node->key) {
+		// Key in left subtree
 		node->left = remove(node->left, key);
 	}
 	else if (key > node->key) {
-		// If the key to be deleted is greater than the root's key, 
-		// then it lies in right subtree 
+		// Key in right subtree
 		node->right = remove(node->right, key);
 	}
     else  { 
-		// if key is same as root's key, then This is the node 
-		// to be deleted 
+		// Key is this node; Three cases.
 
-        // node with only one child or no child 
+        // Case 1: left child/subtree empty
         if (node->left == NULL) 
         { 
             CNode *temp = node->right; 
             free(node); 
             return temp; 
         } 
+		// Case 2: right child/subtree empty
         else if (node->right == NULL) 
         { 
             CNode *temp = node->left; 
@@ -107,14 +113,14 @@ CNode* CBST::remove(CNode* node, int key)
             return temp; 
         } 
   
-        // node with two children: Get the inorder successor (smallest 
-        // in the right subtree) 
+        // Case 3: both children/subtrees exist
         CNode* temp = minValueNode(node->right); 
   
-        // Copy the inorder successor's content to this node 
+        // Make smallest key into the root node's key
         node->key = temp->key; 
   
-        // Delete the inorder successor 
+        // Delete the smallest key from the right subtree (since
+		// we added that to the root node
         node->right = remove(node->right, temp->key); 
     } 
 

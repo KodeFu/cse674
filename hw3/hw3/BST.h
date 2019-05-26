@@ -1,3 +1,15 @@
+/*
+
+	File:
+		BST.h
+
+	Purpose:
+		Defines the functions which implement a BST.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "Node.h"
 
