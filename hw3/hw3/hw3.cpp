@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "BST.h"
+#include "DSW.h"
 #include "PrintTree.h"
 
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
@@ -71,8 +72,9 @@ int main()
 	generateS2(55);
 
 	// Create tree
-	CBST* bst = new CBST();
-#if 0
+	//CBST* bst = new CBST();
+	CDSW* bst = new CDSW();
+#if 1
 	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);

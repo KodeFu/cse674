@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BST.h" />
+    <ClInclude Include="DSW.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="PrintTree.h" />
     <ClInclude Include="stdafx.h" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BST.cpp" />
+    <ClCompile Include="DSW.cpp" />
     <ClCompile Include="hw3.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="PrintTree.cpp" />
