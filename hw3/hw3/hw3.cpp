@@ -74,7 +74,7 @@ int main()
 	// Create tree
 	//CBST* bst = new CBST();
 	CDSW* bst = new CDSW();
-#if 0
+#if 1
 	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);
@@ -99,6 +99,8 @@ int main()
 	std::cout << std::endl;
 	CPrintTree::printBT(bst->getRoot());
 	std::cout << std::endl;
+
+	std::cout << "height: " << bst->getHeight(bst->getRoot()) << std::endl;
 	/*
 	// Remove
 	bst->remove(bst->getRoot(), 50);

@@ -57,6 +57,27 @@ void CBST::removeAll(CNode* node)
     }
 }
 
+// BST height
+int CBST::getHeight(CNode *node)
+{
+	int leftHeight = 0;
+	int rightHeight = 0;
+
+	if (node == NULL) {
+		return 0;
+	}
+
+	leftHeight = getHeight(node->left);
+	rightHeight = getHeight(node->right);
+
+	if (leftHeight > rightHeight) {
+		return leftHeight + 1;
+	}
+	else {
+		return rightHeight + 1;
+	}
+}
+
 // Insert a new node
 CNode* CBST::insert(CNode* node, int key) 
 { 
