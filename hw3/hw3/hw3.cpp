@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "BST.h"
 #include "DSW.h"
+#include "AVL.h"
 #include "PrintTree.h"
 
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
@@ -70,11 +71,11 @@ int main()
 
 	generateS1();
 	generateS2(55);
-
+#if 0
 	// Create tree
 	//CBST* bst = new CBST();
 	CDSW* bst = new CDSW();
-#if 0
+
 	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);
@@ -82,12 +83,12 @@ int main()
 	bst->insert(bst->getRoot(), 70);
 	bst->insert(bst->getRoot(), 60);
 	bst->insert(bst->getRoot(), 80);
-#else
+
 	// Use random data
 	for (int i = 0; i < 100; i++) {
 		bst->insert(bst->getRoot(), g_S2[i]);
 	}
-#endif
+
 	// Print tree
 	bst->inorder(bst->getRoot());
 	std::cout << std::endl;
@@ -113,6 +114,38 @@ int main()
 	*/
 	bst->removeAll(bst->getRoot());
 	delete bst;
+#endif
+
+	CAVL* avl = new CAVL();
+	
+	/* Constructing tree given in 
+	the above figure */
+	/*avl->setRoot(avl->insert(avl->getRoot(), 10)); 
+	avl->setRoot(avl->insert(avl->getRoot(), 20)); 
+	avl->setRoot(avl->insert(avl->getRoot(), 30)); 
+	avl->setRoot(avl->insert(avl->getRoot(), 40)); 
+	avl->setRoot(avl->insert(avl->getRoot(), 50)); 
+	avl->setRoot(avl->insert(avl->getRoot(), 25)); */
+
+	// Use random data
+	for (int i = 0; i < 100; i++) {
+		avl->setRoot(avl->insert(avl->getRoot(), g_S2[i])); 
+	}
+	
+	/* The constructed AVL Tree would be 
+				30 
+			/ \ 
+			20 40 
+			/ \ \ 
+		10 25 50 
+	*/
+	std::cout << "Preorder traversal of the "
+			"constructed AVL tree is \n"; 
+	avl->inorder(avl->getRoot()); 
+
+	avl->deleteNode(avl->getRoot(), 50);
+
+	avl->inorder(avl->getRoot()); 
 
     return 0;
 }

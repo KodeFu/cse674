@@ -65,8 +65,7 @@ SmoothSort.h/.cpp
 GenInput.h/cpp
  Input generation definition and implementation.
 
-/////////////////////////////////////////////////////////////////////////////
-EXECUTION
+/////////////////////////////////////////////////////////////////////////////EXECUTION
 
 To run the application:
  1. cd Release
@@ -280,11 +279,15 @@ ACKNOWLEDGE AND REFERENCE(S):
 3. Geek for Geeks website. Various articles BST and algorithms.
    http://geeksforgeeks.org/
 
-4. Binary Trees in C, Alex Allain
+4. Binary Trees in C, Alex Allain.
    https://www.cprogramming.com/tutorial/c/lesson18.html
 
-5. DSW Algorithm in Java, Isai Damier
+5. DSW Algorithm in Java, Isai Damier.
    http://www.geekviewpoint.com/java/bst/dsw_algorithm
 
-6. DSW Algorithm, Wikipedia
+6. DSW Algorithm, Wikipedia.
    https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+
+ 7. AVL Algorithm, rathbhupendra.
+   https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
+   https://www.geeksforgeeks.org/avl-tree-set-2-deletion/
