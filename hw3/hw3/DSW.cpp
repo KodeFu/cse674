@@ -65,11 +65,17 @@ void CDSW::createBackbone()
 	while (par != NULL) {
 		chLeft = par->left;
 		if (chLeft != NULL) {
+			// Rotate right about parent and it's left child;
 			gr = rotateRight(gr, par, chLeft);
+
+			// Set parent to the left child that just became the parent
 			par = chLeft;
 		}
 		else {
+			// set grandparent to parent
 			gr = par;
+
+			// set parent to the right child
 			par = par->right;
 		}
 	}
@@ -87,6 +93,7 @@ void CDSW::createPerfectTree()
 		nodes++;
 	}
 
+	// Make n/2 left rotations starting from the top;
 	int m = std::pow(2, (int) (std::log2(nodes+1))) - 1;
 	makeRotations(nodes - m);
 
@@ -104,15 +111,15 @@ void CDSW::makeRotations(int count)
 	CNode* chRight = getRoot()->right;
 
 	while (count > 0) {
-		if (NULL != chRight) {
-			rotateLeft(gr, par, chRight);
-			gr = chRight;
-			par = gr->right;
-			chRight = par->right;
-		}
-		else {
+		if (chRight == NULL) {
 			break;
 		}
+
+		// Make n left rotations starting from the top;
+		rotateLeft(gr, par, chRight);
+		gr = chRight;
+		par = gr->right;
+		chRight = par->right;
 
 		count--;
 	}

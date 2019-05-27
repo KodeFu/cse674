@@ -74,7 +74,7 @@ int main()
 	// Create tree
 	//CBST* bst = new CBST();
 	CDSW* bst = new CDSW();
-#if 1
+#if 0
 	bst->insert(bst->getRoot(), 50);
 	bst->insert(bst->getRoot(), 30);
 	bst->insert(bst->getRoot(), 20);

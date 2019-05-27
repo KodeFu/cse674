@@ -283,5 +283,8 @@ ACKNOWLEDGE AND REFERENCE(S):
 4. Binary Trees in C, Alex Allain
    https://www.cprogramming.com/tutorial/c/lesson18.html
 
-5. DSW Algorithm, Wikipedia
+5. DSW Algorithm in Java, Isai Damier
+   http://www.geekviewpoint.com/java/bst/dsw_algorithm
+
+6. DSW Algorithm, Wikipedia
    https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
