@@ -29,6 +29,11 @@ CNode* CBST::getRoot()
 	return _root;
 }
 
+void CBST::setRoot(CNode* node)
+{
+	_root = node;
+}
+
 // Inorder traversal
 void CBST::inorder(CNode* node) 
 { 

@@ -271,7 +271,7 @@ RANDOM.TXT
 /////////////////////////////////////////////////////////////////////////////
 ACKNOWLEDGE AND REFERENCE(S):
 
-1. Class notes. Binary Trees Lecture 8 and 9.
+1. Class notes. Binary Trees Lecture 8 and 9. DSW Algorithm and Rotations.
    http://trifort.org/ads/index.html
 
 2. Wikipedia. Various articles on BST and alogrithms.
@@ -282,3 +282,6 @@ ACKNOWLEDGE AND REFERENCE(S):
 
 4. Binary Trees in C, Alex Allain
    https://www.cprogramming.com/tutorial/c/lesson18.html
+
+5. DSW Algorithm, Wikipedia
+   https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm

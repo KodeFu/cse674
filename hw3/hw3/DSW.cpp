@@ -24,31 +24,96 @@ CDSW::~CDSW()
 }
 
 // Rotate right
-void CDSW::rotateRight(CNode* gr, CNode* par, CNode* ch)
+CNode* CDSW::rotateRight(CNode* gr, CNode* par, CNode* ch)
 {
-	if (gr->right == par) {
+	if (gr != NULL) {
 		gr->right = ch;
 	}
 	else {
-		gr->left = ch;
+		this->setRoot(ch);
 	}
 
-	CNode* ch_right = ch->right;
-	par->left = ch_right;
+	CNode* chRight = ch->right;
+	par->left = chRight;
 	ch->right = par;
+
+	return gr;
 }
 
 // Rotate left
 void CDSW::rotateLeft(CNode* gr, CNode* par, CNode* ch)
 {
-	if (gr->right == par) {
+	if (gr != NULL) {
 		gr->right = ch;
 	}
 	else {
-		gr->left = ch;
+		setRoot(ch);
 	}
 
-	CNode* ch_left = ch->left;
-	par->right = ch_left;
+	CNode* chLeft = ch->left;
+	par->right = chLeft;
 	ch->left = par;
+}
+
+// Create backbone (ordered linked list)
+void CDSW::createBackbone()
+{
+	CNode* gr = NULL;
+	CNode* par = getRoot();
+	CNode* chLeft = NULL;
+
+	while (par != NULL) {
+		chLeft = par->left;
+		if (chLeft != NULL) {
+			gr = rotateRight(gr, par, chLeft);
+			par = chLeft;
+		}
+		else {
+			gr = par;
+			par = par->right;
+		}
+	}
+}
+
+// Create balanced BST
+void CDSW::createPerfectTree()
+{
+	int nodes = 0;
+
+	createBackbone();
+
+	for (CNode* temp = getRoot(); NULL != temp; temp = temp->right) {
+		// count nodes
+		nodes++;
+	}
+
+	int m = std::pow(2, (int) (std::log2(nodes+1))) - 1;
+	makeRotations(nodes - m);
+
+	while (m > 1) {
+		m = m / 2;
+		makeRotations(m);
+	}
+}
+
+// Make rotations; used by balancedBST to rotate back to a tree
+void CDSW::makeRotations(int count)
+{
+	CNode* gr = NULL;
+	CNode* par = getRoot();
+	CNode* chRight = getRoot()->right;
+
+	while (count > 0) {
+		if (NULL != chRight) {
+			rotateLeft(gr, par, chRight);
+			gr = chRight;
+			par = gr->right;
+			chRight = par->right;
+		}
+		else {
+			break;
+		}
+
+		count--;
+	}
 }

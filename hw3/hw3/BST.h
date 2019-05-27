@@ -23,6 +23,7 @@ public:
 	CNode* remove(CNode* root, int key);
 	void removeAll(CNode* node);
 	CNode* getRoot();
+	void setRoot(CNode* node);
 
 private:
 	CNode *minValueNode(CNode* node);
