@@ -5,6 +5,7 @@
 #include "BST.h"
 #include "DSW.h"
 #include "AVL.h"
+#include "Splay.h"
 #include "PrintTree.h"
 
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
@@ -115,7 +116,7 @@ int main()
 	bst->removeAll(bst->getRoot());
 	delete bst;
 #endif
-
+#if 0
 	CAVL* avl = new CAVL();
 	
 	/* Constructing tree given in 
@@ -146,7 +147,22 @@ int main()
 	avl->deleteNode(avl->getRoot(), 50);
 
 	avl->inorder(avl->getRoot()); 
+#endif
 
+	CSplay* splay = new CSplay();
+
+	splay->setRoot(splay->insert(splay->getRoot(), 10)); 
+	splay->setRoot(splay->insert(splay->getRoot(), 20)); 
+	splay->setRoot(splay->insert(splay->getRoot(), 30)); 
+	splay->setRoot(splay->insert(splay->getRoot(), 40)); 
+	splay->setRoot(splay->insert(splay->getRoot(), 50)); 
+	splay->setRoot(splay->insert(splay->getRoot(), 25));
+    std::cout<<"Preorder traversal of the modified Splay tree is \n";  
+    splay->preOrder(splay->getRoot());  
+	splay->setRoot(splay->delete_key(splay->getRoot(), 20));
+	std::cout<<"Preorder traversal of the modified Splay tree is \n";  
+
+	splay->preOrder(splay->getRoot());  
     return 0;
 }
 
