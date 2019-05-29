@@ -18,6 +18,7 @@ class CBST
 public:
 	CBST();
 	~CBST();
+
 	CNode* GetRoot();
 	void   SetRoot(CNode* node);
 	void   Display(CNode *node);
@@ -28,7 +29,6 @@ public:
 
 private:
 	CNode* SmallestNode(CNode* node);
-
 	CNode* _root;
 };
 

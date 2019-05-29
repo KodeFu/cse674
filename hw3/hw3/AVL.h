@@ -18,6 +18,7 @@ class CAVL
 public:
 	CAVL();
 	~CAVL();
+
 	CAVLNode* GetRoot();
 	void      SetRoot(CAVLNode* node);
 	void      Display(CAVLNode *node);
@@ -31,7 +32,6 @@ private:
 	CAVLNode* RotateRight(CAVLNode *node);
 	CAVLNode* RotateLeft(CAVLNode *node);
 	int       getBalance(CAVLNode *node);
-
 	CAVLNode* _root;
 };
 

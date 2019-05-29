@@ -18,6 +18,7 @@ class CSplay
 public:
 	CSplay();
 	~CSplay();
+
 	CNode* GetRoot();
 	void   SetRoot(CNode* node);
 	void   Display(CNode *node);
@@ -31,7 +32,6 @@ private:
 	CNode* RotateRight(CNode *node);
 	CNode* RotateLeft(CNode *node);
 	CNode* Splay(CNode *node, int key);
-
 	CNode* _root;
 };
 

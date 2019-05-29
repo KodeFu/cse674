@@ -20,11 +20,11 @@ public:
 	~CDSW();
 
 	CNode* RotateRight(CNode* gr, CNode* par, CNode* ch);
-	void RotateLeft(CNode* gr, CNode* par, CNode* ch);
-	void CreatePerfectTree();
+	void   RotateLeft(CNode* gr, CNode* par, CNode* ch);
+	void   CreatePerfectTree();
 
 private:
-	void CreateBackbone();
-	void MakeRotations(int count);
+	void   CreateBackbone();
+	void   MakeRotations(int count);
 };
 
