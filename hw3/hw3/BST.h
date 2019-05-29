@@ -23,7 +23,7 @@ public:
 	void   Display(CNode *node);
 	int    Height(CNode *node);
 	CNode* Insert(CNode* node, int key);
-	CNode* Remove(CNode* root, int key);
+	CNode* Remove(CNode* node, int key);
 	void   RemoveAll(CNode* node);
 
 private:

@@ -50,17 +50,17 @@ int CAVL::Height(CAVLNode *node)
 // A utility function to right 
 // rotate subtree rooted with y 
 // See the diagram given above. 
-CAVLNode *CAVL::RotateRight(CAVLNode *y) 
+CAVLNode *CAVL::RotateRight(CAVLNode *node) 
 { 
-	CAVLNode *x = y->left; 
+	CAVLNode *x = node->left; 
 	CAVLNode *T2 = x->right; 
 
 	// Perform rotation 
-	x->right = y; 
-	y->left = T2; 
+	x->right = node; 
+	node->left = T2; 
 
 	// Update heights 
-	y->height = std::max(Height(y->left), Height(y->right)) + 1; 
+	node->height = std::max(Height(node->left), Height(node->right)) + 1; 
 	x->height = std::max(Height(x->left), Height(x->right)) + 1; 
 
 	// Return new root 
@@ -70,17 +70,17 @@ CAVLNode *CAVL::RotateRight(CAVLNode *y)
 // A utility function to left 
 // rotate subtree rooted with x 
 // See the diagram given above. 
-CAVLNode *CAVL::RotateLeft(CAVLNode *x) 
+CAVLNode *CAVL::RotateLeft(CAVLNode *node) 
 { 
-	CAVLNode *y = x->right; 
+	CAVLNode *y = node->right; 
 	CAVLNode *T2 = y->left; 
 
 	// Perform rotation 
-	y->left = x; 
-	x->right = T2; 
+	y->left = node; 
+	node->right = T2; 
 
 	// Update heights 
-	x->height = std::max(Height(x->left), Height(x->right)) + 1; 
+	node->height = std::max(Height(node->left), Height(node->right)) + 1; 
 	y->height = std::max(Height(y->left), Height(y->right)) + 1; 
 
 	// Return new root 
