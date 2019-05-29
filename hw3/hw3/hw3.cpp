@@ -20,8 +20,8 @@
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
 int g_S2[100];  // Stores sequence S2: pseudo-random sequence of distinct numbers of length 100
 
-void GenerateS1();                    // Generate S1 data set; ordered 1..100
-void GenerateS2(unsigned int seed);   // Generate S2 data set; random range 1..100
+void GenerateS1();                      // Generate S1 data set; ordered 1..100
+void GenerateS2(unsigned int seed=0);   // Generate S2 data set; random range 1..100
 
 int main()
 {
@@ -173,7 +173,7 @@ void GenerateS1()
 // This is a sequence of distinct numbers from 1..100. This function will keep
 // generating random number until all elments are filled.
 //
-void GenerateS2(unsigned int seed=0)
+void GenerateS2(unsigned int seed)
 {
 	// each element represents whether the value has been
 	// stored in the g_S2 array
