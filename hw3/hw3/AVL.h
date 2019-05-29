@@ -8,8 +8,7 @@ public:
 	~CAVL();
 
 	int getHeight(CAVLNode *N);
-	int max(int a, int b);
-	CAVLNode* newNode(int key);
+
 	CAVLNode *rightRotate(CAVLNode *y);
 	CAVLNode *leftRotate(CAVLNode *x);
 	int getBalance(CAVLNode *N);
@@ -18,6 +17,7 @@ public:
 	CAVLNode * minValueNode(CAVLNode* node);
 	void inorder(CAVLNode *node);
 
+	void removeAll(CAVLNode* node);
 	CAVLNode* getRoot();
 	void   setRoot(CAVLNode* node);
 

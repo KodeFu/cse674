@@ -116,7 +116,7 @@ int main()
 	bst->removeAll(bst->getRoot());
 	delete bst;
 #endif
-#if 0
+//#if 0
 	CAVL* avl = new CAVL();
 	
 	/* Constructing tree given in 
@@ -147,8 +147,12 @@ int main()
 	avl->deleteNode(avl->getRoot(), 50);
 
 	avl->inorder(avl->getRoot()); 
-#endif
 
+	avl->removeAll(avl->getRoot());
+
+	delete avl;
+//#endif
+#if 0
 	CSplay* splay = new CSplay();
 
 	splay->setRoot(splay->insert(splay->getRoot(), 10)); 
@@ -163,6 +167,7 @@ int main()
 	std::cout<<"Preorder traversal of the modified Splay tree is \n";  
 
 	splay->preOrder(splay->getRoot());  
+#endif
     return 0;
 }
 

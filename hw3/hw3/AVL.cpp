@@ -12,45 +12,27 @@ CAVL::~CAVL()
 {
 }
 
+// Get root node
 CAVLNode* CAVL::getRoot()
 {
 	return _root;
 }
 
+// Set root node
 void CAVL::setRoot(CAVLNode* node)
 {
 	_root = node;
 }
 
 
-// A utility function to get the 
-// height of the tree 
-int CAVL::getHeight(CAVLNode *N) 
+// Get height of tree
+int CAVL::getHeight(CAVLNode *node) 
 { 
-	if (N == NULL) 
-		return 0; 
-	return N->height; 
-} 
+	if (node == NULL) {
+		return 0;
+	}
 
-// A utility function to get maximum 
-// of two integers 
-int CAVL::max(int a, int b) 
-{ 
-	return (a > b)? a : b; 
-} 
-
-/* Helper function that allocates a 
-new node with the given key and 
-NULL left and right pointers. */
-CAVLNode* CAVL::newNode(int key) 
-{ 
-	CAVLNode* node = new CAVLNode(); 
-	node->key = key; 
-	node->left = NULL; 
-	node->right = NULL; 
-	node->height = 1; // new node is initially 
-					// added at leaf 
-	return(node); 
+	return node->height; 
 } 
 
 // A utility function to right 
@@ -66,9 +48,9 @@ CAVLNode *CAVL::rightRotate(CAVLNode *y)
 	y->left = T2; 
 
 	// Update heights 
-	y->height = max(getHeight(y->left), 
+	y->height = std::max(getHeight(y->left), 
 					getHeight(y->right)) + 1; 
-	x->height = max(getHeight(x->left), 
+	x->height = std::max(getHeight(x->left), 
 					getHeight(x->right)) + 1; 
 
 	// Return new root 
@@ -88,9 +70,9 @@ CAVLNode *CAVL::leftRotate(CAVLNode *x)
 	x->right = T2; 
 
 	// Update heights 
-	x->height = max(getHeight(x->left),	 
+	x->height = std::max(getHeight(x->left),	 
 					getHeight(x->right)) + 1; 
-	y->height = max(getHeight(y->left), 
+	y->height = std::max(getHeight(y->left), 
 					getHeight(y->right)) + 1; 
 
 	// Return new root 
@@ -113,8 +95,11 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 	/* 1. Perform the normal BST insertion */
 	if (node == NULL)
 	{
-		CAVLNode *temp = newNode(key);
-		//_root = temp;
+		CAVLNode *temp = new CAVLNode();
+		temp->key = key; 
+		temp->left = NULL; 
+		temp->right = NULL; 
+		temp->height = 1;
 		return(temp);
 	}
 
@@ -126,7 +111,7 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 		return node; 
 
 	/* 2. Update height of this ancestor node */
-	node->height = 1 + max(getHeight(node->left), 
+	node->height = 1 + std::max(getHeight(node->left), 
 						getHeight(node->right)); 
 
 	/* 3. Get the balance factor of this ancestor 
@@ -163,19 +148,15 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 	return node; 
 } 
 
-/* Given a non-empty binary search tree,  
-return the node with minimum key value  
-found in that tree. Note that the entire  
-tree does not need to be searched. */
-CAVLNode * CAVL::minValueNode(CAVLNode* node)  
-{  
-    CAVLNode* current = node;  
+// Get minimum value of a tree (subtree)
+CAVLNode *CAVL::minValueNode(CAVLNode* node)
+{ 
+    CAVLNode* current = node; 
   
-    /* loop down to find the leftmost leaf */
-    while (current->left != NULL)  
-        current = current->left;  
+    while (current && current->left != NULL) 
+        current = current->left; 
   
-    return current;  
+    return current; 
 } 
 
 // Recursive function to delete a node  
@@ -246,7 +227,7 @@ CAVLNode* CAVL::deleteNode(CAVLNode* root, int key)
     return root;  
   
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
-    root->height = 1 + max(getHeight(root->left),  
+    root->height = 1 + std::max(getHeight(root->left),  
                            getHeight(root->right));  
   
     // STEP 3: GET THE BALANCE FACTOR OF  
@@ -286,10 +267,7 @@ CAVLNode* CAVL::deleteNode(CAVLNode* root, int key)
     return root;  
 }  
 
-// A utility function to print preorder 
-// traversal of the tree. 
-// The function also prints height 
-// of every node 
+// Inorder traversal 
 void CAVL::inorder(CAVLNode *node)
 { 
 	if(node != NULL) 
@@ -299,3 +277,15 @@ void CAVL::inorder(CAVLNode *node)
 		inorder(node->right); 
 	} 
 } 
+
+// Remove all nodes (postorder)
+void CAVL::removeAll(CAVLNode* node)
+{
+	if (node != NULL) 
+    { 
+        removeAll(node->left); 
+        removeAll(node->right); 
+		free(node);
+		node = NULL;
+    }
+}
