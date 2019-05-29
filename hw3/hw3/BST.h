@@ -18,16 +18,17 @@ class CBST
 public:
 	CBST();
 	~CBST();
-	CNode* getRoot();
-	void   inorder(CNode *node);
-	int    getHeight(CNode *node);
-	CNode* insert(CNode* node, int key);
-	CNode* remove(CNode* root, int key);
-	void   removeAll(CNode* node);
-	void   setRoot(CNode* node);
+	CNode* GetRoot();
+	void   SetRoot(CNode* node);
+	void   Display(CNode *node);
+	int    Height(CNode *node);
+	CNode* Insert(CNode* node, int key);
+	CNode* Remove(CNode* root, int key);
+	void   RemoveAll(CNode* node);
 
 private:
-	CNode *minValueNode(CNode* node);
-	CNode *_root;
+	CNode* SmallestNode(CNode* node);
+
+	CNode* _root;
 };
 

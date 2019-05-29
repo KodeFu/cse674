@@ -1,3 +1,15 @@
+/*
+
+	File:
+		Splay.cpp
+
+	Purpose:
+		Defines the functions which implement a Splay Tree.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #include "stdafx.h"
 #include "Splay.h"
 
@@ -12,12 +24,12 @@ CSplay::~CSplay()
 {
 }
 
-CNode* CSplay::getRoot()
+CNode* CSplay::GetRoot()
 {
 	return _root;
 }
 
-void CSplay::setRoot(CNode* node)
+void CSplay::SetRoot(CNode* node)
 {
 	_root = node;
 }
@@ -37,22 +49,24 @@ CNode* CSplay::newNode(int key)
 // A utility function to right 
 // rotate subtree rooted with y  
 // See the diagram given above.  
-CNode *CSplay::rightRotate(CNode *x)  
+CNode *CSplay::RotateRight(CNode *node)  
 {  
-    CNode *y = x->left;  
-    x->left = y->right;  
-    y->right = x;  
+    CNode *y = node->left;  
+    node->left = y->right;  
+    y->right = node;  
+
     return y;  
 }  
   
 // A utility function to left 
 // rotate subtree rooted with x  
 // See the diagram given above.  
-CNode *CSplay::leftRotate(CNode *x)  
+CNode *CSplay::RotateLeft(CNode *node)  
 {  
-    CNode *y = x->right;  
-    x->right = y->left;  
-    y->left = x;  
+	CNode *y = node->right;
+    node->right = y->left;
+    y->left = node;  
+
     return y;  
 }  
   
@@ -62,96 +76,96 @@ CNode *CSplay::leftRotate(CNode *x)
 // brings the last accessed item at  
 // root. This function modifies the  
 // tree and returns the new root  
-CNode *CSplay::splay(CNode *root, int key)  
+CNode *CSplay::Splay(CNode *node, int key)  
 {  
     // Base cases: root is NULL or  
     // key is present at root  
-    if (root == NULL || root->key == key)  
-        return root;  
+    if (node == NULL || node->key == key)  
+        return node;  
   
     // Key lies in left subtree  
-    if (root->key > key)  
+    if (node->key > key)  
     {  
         // Key is not in tree, we are done  
-        if (root->left == NULL) return root;  
+        if (node->left == NULL) return node;  
   
         // Zig-Zig (Left Left)  
-        if (root->left->key > key)  
+        if (node->left->key > key)  
         {  
             // First recursively bring the 
             // key as root of left-left  
-            root->left->left = splay(root->left->left, key);  
+            node->left->left = Splay(node->left->left, key);  
   
             // Do first rotation for root,  
             // second rotation is done after else  
-            root = rightRotate(root);  
+            node = RotateRight(node);  
         }  
-        else if (root->left->key < key) // Zig-Zag (Left Right)  
+        else if (node->left->key < key) // Zig-Zag (Left Right)  
         {  
             // First recursively bring  
             // the key as root of left-right  
-            root->left->right = splay(root->left->right, key);  
+            node->left->right = Splay(node->left->right, key);  
   
             // Do first rotation for root->left  
-            if (root->left->right != NULL)  
-                root->left = leftRotate(root->left);  
+            if (node->left->right != NULL)  
+                node->left = RotateLeft(node->left);  
         }  
   
         // Do second rotation for root  
-        return (root->left == NULL)? root: rightRotate(root);  
+        return (node->left == NULL)? node: RotateRight(node);  
     }  
     else // Key lies in right subtree  
     {  
         // Key is not in tree, we are done  
-        if (root->right == NULL) return root;  
+        if (node->right == NULL) return node;  
   
         // Zig-Zag (Right Left)  
-        if (root->right->key > key)  
+        if (node->right->key > key)  
         {  
             // Bring the key as root of right-left  
-            root->right->left = splay(root->right->left, key);  
+            node->right->left = Splay(node->right->left, key);  
   
             // Do first rotation for root->right  
-            if (root->right->left != NULL)  
-                root->right = rightRotate(root->right);  
+            if (node->right->left != NULL)  
+                node->right = RotateRight(node->right);  
         }  
-        else if (root->right->key < key)// Zag-Zag (Right Right)  
+        else if (node->right->key < key)// Zag-Zag (Right Right)  
         {  
             // Bring the key as root of  
             // right-right and do first rotation  
-            root->right->right = splay(root->right->right, key);  
-            root = leftRotate(root);  
+            node->right->right = Splay(node->right->right, key);  
+            node = RotateLeft(node);  
         }  
   
         // Do second rotation for root  
-        return (root->right == NULL)? root: leftRotate(root);  
+        return (node->right == NULL)? node: RotateLeft(node);  
     }  
 }  
   
 // Function to insert a new key k  
 // in splay tree with given root  
-CNode *CSplay::insert(CNode *root, int k)  
+CNode *CSplay::Insert(CNode *node, int key)  
 {  
     // Simple Case: If tree is empty  
-    if (root == NULL) return newNode(k);  
+    if (node == NULL) return newNode(key);  
   
     // Bring the closest leaf node to root  
-    root = splay(root, k);  
+    node = Splay(node, key);
   
     // If key is already present, then return  
-    if (root->key == k) return root;  
+    if (node->key == key) return node;  
   
     // Otherwise allocate memory for new node  
-    CNode *newnode = newNode(k);  
+    CNode *newnode = newNode(key);  
   
     // If root's key is greater, make  
     // root as right child of newnode  
     // and copy the left child of root to newnode  
-    if (root->key > k)  
+    if (node->key > key)
     {  
-        newnode->right = root;  
-        newnode->left = root->left;  
-        root->left = NULL;  
+        newnode->right = node;  
+        newnode->left = node->left;  
+        node->left = NULL;  
     }  
   
     // If root's key is smaller, make  
@@ -159,9 +173,9 @@ CNode *CSplay::insert(CNode *root, int k)
     // and copy the right child of root to newnode  
     else
     {  
-        newnode->left = root;  
-        newnode->right = root->right;  
-        root->right = NULL;  
+        newnode->left = node;  
+        newnode->right = node->right;  
+        node->right = NULL;  
     }  
   
     return newnode; // newnode becomes new root  
@@ -169,14 +183,14 @@ CNode *CSplay::insert(CNode *root, int k)
   
 // The delete function for Splay tree. Note that this function 
 // returns the new root of Splay Tree after removing the key  
-CNode* CSplay::delete_key(CNode* root, int key) 
+CNode* CSplay::Remove(CNode* root, int key) 
 { 
     CNode *temp; 
     if (!root) 
         return NULL; 
       
     // Splay the given key     
-    root = splay(root, key); 
+    root = Splay(root, key); 
       
     // If key is not present, then 
     // return root 
@@ -202,7 +216,7 @@ CNode* CSplay::delete_key(CNode* root, int key)
         the tree we get will have no right child tree 
         and maximum node in left subtree will get splayed*/
         // New root 
-        root = splay(root->left, key); 
+        root = Splay(root->left, key); 
           
         // Make right child of previous root  as 
         // new root's right child 
@@ -218,15 +232,46 @@ CNode* CSplay::delete_key(CNode* root, int key)
       
 } 
 
-// A utility function to print  
-// preorder traversal of the tree.  
-// The function also prints height of every node  
-void CSplay::preOrder(CNode *root)  
-{  
-    if (root != NULL)  
-    {  
-		std::cout << root->key << " ";
-        preOrder(root->left);  
-        preOrder(root->right);  
-    }  
-}  
+// Display nodes via inorder traversal
+void CSplay::Display(CNode* node) 
+{ 
+    if (node != NULL) 
+    { 
+        Display(node->left); 
+		std::cout << node->key << " ";
+        Display(node->right); 
+    } 
+} 
+
+// Remove all nodes (postorder)
+void CSplay::RemoveAll(CNode* node)
+{
+	if (node != NULL) 
+    { 
+        RemoveAll(node->left); 
+        RemoveAll(node->right); 
+		free(node);
+		node = NULL;
+    }
+}
+
+// BST height
+int CSplay::Height(CNode *node)
+{
+	int leftHeight = 0;
+	int rightHeight = 0;
+
+	if (node == NULL) {
+		return 0;
+	}
+
+	leftHeight = Height(node->left);
+	rightHeight = Height(node->right);
+
+	if (leftHeight > rightHeight) {
+		return leftHeight + 1;
+	}
+	else {
+		return rightHeight + 1;
+	}
+}

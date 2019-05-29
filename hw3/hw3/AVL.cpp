@@ -1,3 +1,15 @@
+/*
+
+	File:
+		AVL.cpp
+
+	Purpose:
+		Defines the functions which implement a AVL Tree.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #include "stdafx.h"
 #include "AVL.h"
 
@@ -13,20 +25,20 @@ CAVL::~CAVL()
 }
 
 // Get root node
-CAVLNode* CAVL::getRoot()
+CAVLNode* CAVL::GetRoot()
 {
 	return _root;
 }
 
 // Set root node
-void CAVL::setRoot(CAVLNode* node)
+void CAVL::SetRoot(CAVLNode* node)
 {
 	_root = node;
 }
 
 
 // Get height of tree
-int CAVL::getHeight(CAVLNode *node) 
+int CAVL::Height(CAVLNode *node) 
 { 
 	if (node == NULL) {
 		return 0;
@@ -38,7 +50,7 @@ int CAVL::getHeight(CAVLNode *node)
 // A utility function to right 
 // rotate subtree rooted with y 
 // See the diagram given above. 
-CAVLNode *CAVL::rightRotate(CAVLNode *y) 
+CAVLNode *CAVL::RotateRight(CAVLNode *y) 
 { 
 	CAVLNode *x = y->left; 
 	CAVLNode *T2 = x->right; 
@@ -48,10 +60,8 @@ CAVLNode *CAVL::rightRotate(CAVLNode *y)
 	y->left = T2; 
 
 	// Update heights 
-	y->height = std::max(getHeight(y->left), 
-					getHeight(y->right)) + 1; 
-	x->height = std::max(getHeight(x->left), 
-					getHeight(x->right)) + 1; 
+	y->height = std::max(Height(y->left), Height(y->right)) + 1; 
+	x->height = std::max(Height(x->left), Height(x->right)) + 1; 
 
 	// Return new root 
 	return x; 
@@ -60,7 +70,7 @@ CAVLNode *CAVL::rightRotate(CAVLNode *y)
 // A utility function to left 
 // rotate subtree rooted with x 
 // See the diagram given above. 
-CAVLNode *CAVL::leftRotate(CAVLNode *x) 
+CAVLNode *CAVL::RotateLeft(CAVLNode *x) 
 { 
 	CAVLNode *y = x->right; 
 	CAVLNode *T2 = y->left; 
@@ -70,10 +80,8 @@ CAVLNode *CAVL::leftRotate(CAVLNode *x)
 	x->right = T2; 
 
 	// Update heights 
-	x->height = std::max(getHeight(x->left),	 
-					getHeight(x->right)) + 1; 
-	y->height = std::max(getHeight(y->left), 
-					getHeight(y->right)) + 1; 
+	x->height = std::max(Height(x->left), Height(x->right)) + 1; 
+	y->height = std::max(Height(y->left), Height(y->right)) + 1; 
 
 	// Return new root 
 	return y; 
@@ -86,11 +94,11 @@ int CAVL::getBalance(CAVLNode *node)
 		return 0;
 	}
 
-	return getHeight(node->left) - getHeight(node->right); 
+	return Height(node->left) - Height(node->right); 
 } 
 
 // Insert a new node 
-CAVLNode* CAVL::insert(CAVLNode* node, int key) 
+CAVLNode* CAVL::Insert(CAVLNode* node, int key) 
 { 
 	// Create and return new node
 	if (node == NULL) {
@@ -105,18 +113,18 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 
 	if (key < node->key) {
 		// Go down left tree
-		node->left = insert(node->left, key);
+		node->left = Insert(node->left, key);
 	}
 	else if (key > node->key) {
 		// Go down right tree
-		node->right = insert(node->right, key);
+		node->right = Insert(node->right, key);
 	}
 	else {
 		return node;
 	}
 
 	/* 2. Update height of this ancestor node */
-	node->height = 1 + std::max(getHeight(node->left), getHeight(node->right)); 
+	node->height = 1 + std::max(Height(node->left), Height(node->right)); 
 
 	/* 3. Get the balance factor of this ancestor 
 		node to check whether this node became 
@@ -128,24 +136,24 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 
 	// Left Left Case 
 	if (balance > 1 && key < node->left->key) 
-		return rightRotate(node); 
+		return RotateRight(node); 
 
 	// Right Right Case 
 	if (balance < -1 && key > node->right->key) 
-		return leftRotate(node); 
+		return RotateLeft(node); 
 
 	// Left Right Case 
 	if (balance > 1 && key > node->left->key) 
 	{ 
-		node->left = leftRotate(node->left); 
-		return rightRotate(node); 
+		node->left = RotateLeft(node->left); 
+		return RotateRight(node); 
 	} 
 
 	// Right Left Case 
 	if (balance < -1 && key < node->right->key) 
 	{ 
-		node->right = rightRotate(node->right); 
-		return leftRotate(node); 
+		node->right = RotateRight(node->right); 
+		return RotateLeft(node); 
 	} 
 
 	/* return the (unchanged) node pointer */
@@ -153,7 +161,7 @@ CAVLNode* CAVL::insert(CAVLNode* node, int key)
 } 
 
 // Get minimum value of a tree (subtree)
-CAVLNode *CAVL::minValueNode(CAVLNode* node)
+CAVLNode *CAVL::SmallestNode(CAVLNode* node)
 { 
     CAVLNode* current = node; 
   
@@ -165,7 +173,7 @@ CAVLNode *CAVL::minValueNode(CAVLNode* node)
 } 
 
 // Remove a node
-CAVLNode* CAVL::remove(CAVLNode* node, int key)
+CAVLNode* CAVL::Remove(CAVLNode* node, int key)
 {
 
 	// base case
@@ -175,11 +183,11 @@ CAVLNode* CAVL::remove(CAVLNode* node, int key)
 
 	if (key < node->key) {
 		// Key in left subtree
-		node->left = remove(node->left, key);
+		node->left = Remove(node->left, key);
 	} 
 	else if (key > node->key) {
 		// Key in right subtree
-		node->right = remove(node->right, key);
+		node->right = Remove(node->right, key);
 	}
     else
     {
@@ -201,14 +209,14 @@ CAVLNode* CAVL::remove(CAVLNode* node, int key)
         } 
   
         // Case 3: both children/subtrees exist
-        CAVLNode* temp = minValueNode(node->right); 
+        CAVLNode* temp = SmallestNode(node->right); 
   
         // Make smallest key into the root node's key
         node->key = temp->key; 
   
         // Delete the smallest key from the right subtree (since
 		// we added that to the root node
-        node->right = remove(node->right, temp->key);  
+        node->right = Remove(node->right, temp->key);  
     }  
   
     // If the tree had only one node 
@@ -217,8 +225,7 @@ CAVLNode* CAVL::remove(CAVLNode* node, int key)
 		return node;  
   
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
-    node->height = 1 + std::max(getHeight(node->left),  
-                           getHeight(node->right));  
+    node->height = 1 + std::max(Height(node->left), Height(node->right));  
   
     // STEP 3: GET THE BALANCE FACTOR OF  
     // THIS NODE (to check whether this  
@@ -231,50 +238,50 @@ CAVLNode* CAVL::remove(CAVLNode* node, int key)
     // Left Left Case  
     if (balance > 1 &&  
         getBalance(node->left) >= 0)  
-        return rightRotate(node);  
+        return RotateRight(node);  
   
     // Left Right Case  
     if (balance > 1 &&  
         getBalance(node->left) < 0)  
     {  
-        node->left = leftRotate(node->left);  
-        return rightRotate(node);  
+        node->left = RotateLeft(node->left);  
+        return RotateRight(node);  
     }  
   
     // Right Right Case  
     if (balance < -1 &&  
         getBalance(node->right) <= 0)  
-        return leftRotate(node);  
+        return RotateLeft(node);  
   
     // Right Left Case  
     if (balance < -1 &&  
         getBalance(node->right) > 0)  
     {  
-        node->right = rightRotate(node->right);  
-        return leftRotate(node);  
+        node->right = RotateRight(node->right);  
+        return RotateLeft(node);  
     }  
   
     return node;  
 }  
 
 // Inorder traversal 
-void CAVL::inorder(CAVLNode *node)
+void CAVL::Display(CAVLNode *node)
 { 
 	if(node != NULL) 
 	{ 
-		inorder(node->left); 
+		Display(node->left); 
 		std::cout << node->key << " ";
-		inorder(node->right); 
+		Display(node->right); 
 	} 
 } 
 
 // Remove all nodes (postorder)
-void CAVL::removeAll(CAVLNode* node)
+void CAVL::RemoveAll(CAVLNode* node)
 {
 	if (node != NULL) 
     { 
-        removeAll(node->left); 
-        removeAll(node->right); 
+        RemoveAll(node->left); 
+        RemoveAll(node->right); 
 		free(node);
 		node = NULL;
     }

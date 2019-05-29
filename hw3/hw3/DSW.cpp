@@ -24,13 +24,13 @@ CDSW::~CDSW()
 }
 
 // Rotate right
-CNode* CDSW::rotateRight(CNode* gr, CNode* par, CNode* ch)
+CNode* CDSW::RotateRight(CNode* gr, CNode* par, CNode* ch)
 {
 	if (gr != NULL) {
 		gr->right = ch;
 	}
 	else {
-		this->setRoot(ch);
+		this->SetRoot(ch);
 	}
 
 	CNode* chRight = ch->right;
@@ -41,13 +41,13 @@ CNode* CDSW::rotateRight(CNode* gr, CNode* par, CNode* ch)
 }
 
 // Rotate left
-void CDSW::rotateLeft(CNode* gr, CNode* par, CNode* ch)
+void CDSW::RotateLeft(CNode* gr, CNode* par, CNode* ch)
 {
 	if (gr != NULL) {
 		gr->right = ch;
 	}
 	else {
-		setRoot(ch);
+		SetRoot(ch);
 	}
 
 	CNode* chLeft = ch->left;
@@ -56,17 +56,17 @@ void CDSW::rotateLeft(CNode* gr, CNode* par, CNode* ch)
 }
 
 // Create backbone (ordered linked list)
-void CDSW::createBackbone()
+void CDSW::CreateBackbone()
 {
 	CNode* gr = NULL;
-	CNode* par = getRoot();
+	CNode* par = GetRoot();
 	CNode* chLeft = NULL;
 
 	while (par != NULL) {
 		chLeft = par->left;
 		if (chLeft != NULL) {
 			// Rotate right about parent and it's left child;
-			gr = rotateRight(gr, par, chLeft);
+			gr = RotateRight(gr, par, chLeft);
 
 			// Set parent to the left child that just became the parent
 			par = chLeft;
@@ -82,33 +82,33 @@ void CDSW::createBackbone()
 }
 
 // Create balanced BST
-void CDSW::createPerfectTree()
+void CDSW::CreatePerfectTree()
 {
 	int nodes = 0;
 
-	createBackbone();
+	CreateBackbone();
 
-	for (CNode* temp = getRoot(); NULL != temp; temp = temp->right) {
+	for (CNode* temp = GetRoot(); NULL != temp; temp = temp->right) {
 		// count nodes
 		nodes++;
 	}
 
 	// Make n/2 left rotations starting from the top;
 	int m = std::pow(2, (int) (std::log2(nodes+1))) - 1;
-	makeRotations(nodes - m);
+	MakeRotations(nodes - m);
 
 	while (m > 1) {
 		m = m / 2;
-		makeRotations(m);
+		MakeRotations(m);
 	}
 }
 
 // Make rotations; used by balancedBST to rotate back to a tree
-void CDSW::makeRotations(int count)
+void CDSW::MakeRotations(int count)
 {
 	CNode* gr = NULL;
-	CNode* par = getRoot();
-	CNode* chRight = getRoot()->right;
+	CNode* par = GetRoot();
+	CNode* chRight = GetRoot()->right;
 
 	while (count > 0) {
 		if (chRight == NULL) {
@@ -116,7 +116,7 @@ void CDSW::makeRotations(int count)
 		}
 
 		// Make n left rotations starting from the top;
-		rotateLeft(gr, par, chRight);
+		RotateLeft(gr, par, chRight);
 		gr = chRight;
 		par = gr->right;
 		chRight = par->right;

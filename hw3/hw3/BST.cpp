@@ -24,41 +24,41 @@ CBST::~CBST()
 {
 }
 
-CNode* CBST::getRoot()
+CNode* CBST::GetRoot()
 {
 	return _root;
 }
 
-void CBST::setRoot(CNode* node)
+void CBST::SetRoot(CNode* node)
 {
 	_root = node;
 }
 
-// Inorder traversal
-void CBST::inorder(CNode* node) 
+// Display nodes via inorder traversal
+void CBST::Display(CNode* node) 
 { 
     if (node != NULL) 
     { 
-        inorder(node->left); 
+        Display(node->left); 
 		std::cout << node->key << " ";
-        inorder(node->right); 
+        Display(node->right); 
     } 
 } 
 
 // Remove all nodes (postorder)
-void CBST::removeAll(CNode* node)
+void CBST::RemoveAll(CNode* node)
 {
 	if (node != NULL) 
     { 
-        removeAll(node->left); 
-        removeAll(node->right); 
+        RemoveAll(node->left); 
+        RemoveAll(node->right); 
 		free(node);
 		node = NULL;
     }
 }
 
 // BST height
-int CBST::getHeight(CNode *node)
+int CBST::Height(CNode *node)
 {
 	int leftHeight = 0;
 	int rightHeight = 0;
@@ -67,8 +67,8 @@ int CBST::getHeight(CNode *node)
 		return 0;
 	}
 
-	leftHeight = getHeight(node->left);
-	rightHeight = getHeight(node->right);
+	leftHeight = Height(node->left);
+	rightHeight = Height(node->right);
 
 	if (leftHeight > rightHeight) {
 		return leftHeight + 1;
@@ -79,7 +79,7 @@ int CBST::getHeight(CNode *node)
 }
 
 // Insert a new node
-CNode* CBST::insert(CNode* node, int key) 
+CNode* CBST::Insert(CNode* node, int key) 
 { 
     // Create and return new node
 	if (node == NULL) {
@@ -96,18 +96,18 @@ CNode* CBST::insert(CNode* node, int key)
 	
 	if (key < node->key) {
 		// Go down left tree
-		node->left = insert(node->left, key);
+		node->left = Insert(node->left, key);
 	}
 	else if (key > node->key) {
 		// Go down right tree
-		node->right = insert(node->right, key);
+		node->right = Insert(node->right, key);
 	}
   
     return node; 
 } 
 
 // Get minimum value of a tree (subtree)
-CNode *CBST::minValueNode(CNode* node)
+CNode *CBST::SmallestNode(CNode* node)
 { 
     CNode* current = node; 
   
@@ -119,7 +119,7 @@ CNode *CBST::minValueNode(CNode* node)
 } 
 
 // Remove a node
-CNode* CBST::remove(CNode* node, int key) 
+CNode* CBST::Remove(CNode* node, int key) 
 { 
     // base case 
 	if (node == NULL) {
@@ -128,11 +128,11 @@ CNode* CBST::remove(CNode* node, int key)
   
 	if (key < node->key) {
 		// Key in left subtree
-		node->left = remove(node->left, key);
+		node->left = Remove(node->left, key);
 	}
 	else if (key > node->key) {
 		// Key in right subtree
-		node->right = remove(node->right, key);
+		node->right = Remove(node->right, key);
 	}
     else  { 
 		// Key is this node; Three cases.
@@ -153,14 +153,14 @@ CNode* CBST::remove(CNode* node, int key)
         } 
   
         // Case 3: both children/subtrees exist
-        CNode* temp = minValueNode(node->right); 
+        CNode* temp = SmallestNode(node->right); 
   
         // Make smallest key into the root node's key
         node->key = temp->key; 
   
         // Delete the smallest key from the right subtree (since
 		// we added that to the root node
-        node->right = remove(node->right, temp->key); 
+        node->right = Remove(node->right, temp->key); 
     } 
 
     return node; 

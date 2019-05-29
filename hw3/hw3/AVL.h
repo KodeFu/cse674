@@ -1,3 +1,15 @@
+/*
+
+	File:
+		AVL.h
+
+	Purpose:
+		Defines the functions which implement a AVL Tree.
+
+	Author:
+		mpvats@syr.edu
+
+*/
 #pragma once
 #include "AVLNode.h"
 
@@ -6,22 +18,20 @@ class CAVL
 public:
 	CAVL();
 	~CAVL();
-
-	int getHeight(CAVLNode *N);
-
-	CAVLNode *rightRotate(CAVLNode *y);
-	CAVLNode *leftRotate(CAVLNode *x);
-	int getBalance(CAVLNode *node);
-	CAVLNode* insert(CAVLNode* node, int key);
-	CAVLNode* remove(CAVLNode* node, int key);
-	CAVLNode * minValueNode(CAVLNode* node);
-	void inorder(CAVLNode *node);
-
-	void removeAll(CAVLNode* node);
-	CAVLNode* getRoot();
-	void   setRoot(CAVLNode* node);
+	CAVLNode* GetRoot();
+	void      SetRoot(CAVLNode* node);
+	void      Display(CAVLNode *node);
+	int       Height(CAVLNode *node);
+	CAVLNode* Insert(CAVLNode* node, int key);
+	CAVLNode* Remove(CAVLNode* node, int key);
+	void      RemoveAll(CAVLNode* node);
 
 private:
-	CAVLNode *_root;
+	CAVLNode* SmallestNode(CAVLNode* node);
+	CAVLNode* RotateRight(CAVLNode *y);
+	CAVLNode* RotateLeft(CAVLNode *x);
+	int       getBalance(CAVLNode *node);
+
+	CAVLNode* _root;
 };
 
