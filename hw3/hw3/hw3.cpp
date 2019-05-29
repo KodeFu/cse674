@@ -144,7 +144,7 @@ int main()
 			"constructed AVL tree is \n"; 
 	avl->inorder(avl->getRoot()); 
 
-	avl->deleteNode(avl->getRoot(), 50);
+	avl->remove(avl->getRoot(), 50);
 
 	avl->inorder(avl->getRoot()); 
 

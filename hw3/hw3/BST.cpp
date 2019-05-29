@@ -111,8 +111,9 @@ CNode *CBST::minValueNode(CNode* node)
 { 
     CNode* current = node; 
   
-    while (current && current->left != NULL) 
-        current = current->left; 
+	while (current && current->left != NULL) {
+		current = current->left;
+	}
   
     return current; 
 } 

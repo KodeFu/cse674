@@ -80,39 +80,43 @@ CAVLNode *CAVL::leftRotate(CAVLNode *x)
 } 
 
 // Get Balance factor of node N 
-int CAVL::getBalance(CAVLNode *N) 
+int CAVL::getBalance(CAVLNode *node) 
 { 
-	if (N == NULL) 
-		return 0; 
-	return getHeight(N->left) - getHeight(N->right); 
-} 
-
-// Recursive function to insert a key 
-// in the subtree rooted with node and 
-// returns the new root of the subtree. 
-CAVLNode* CAVL::insert(CAVLNode* node, int key) 
-{ 
-	/* 1. Perform the normal BST insertion */
-	if (node == NULL)
-	{
-		CAVLNode *temp = new CAVLNode();
-		temp->key = key; 
-		temp->left = NULL; 
-		temp->right = NULL; 
-		temp->height = 1;
-		return(temp);
+	if (node == NULL) {
+		return 0;
 	}
 
-	if (key < node->key) 
-		node->left = insert(node->left, key); 
-	else if (key > node->key) 
-		node->right = insert(node->right, key); 
-	else // Equal keys are not allowed in BST 
-		return node; 
+	return getHeight(node->left) - getHeight(node->right); 
+} 
+
+// Insert a new node 
+CAVLNode* CAVL::insert(CAVLNode* node, int key) 
+{ 
+	// Create and return new node
+	if (node == NULL) {
+		CAVLNode *newNode = new CAVLNode();
+		newNode->key = key; 
+		newNode->left = NULL; 
+		newNode->right = NULL; 
+		newNode->height = 1;
+
+		return(newNode);
+	}
+
+	if (key < node->key) {
+		// Go down left tree
+		node->left = insert(node->left, key);
+	}
+	else if (key > node->key) {
+		// Go down right tree
+		node->right = insert(node->right, key);
+	}
+	else {
+		return node;
+	}
 
 	/* 2. Update height of this ancestor node */
-	node->height = 1 + std::max(getHeight(node->left), 
-						getHeight(node->right)); 
+	node->height = 1 + std::max(getHeight(node->left), getHeight(node->right)); 
 
 	/* 3. Get the balance factor of this ancestor 
 		node to check whether this node became 
@@ -153,118 +157,104 @@ CAVLNode *CAVL::minValueNode(CAVLNode* node)
 { 
     CAVLNode* current = node; 
   
-    while (current && current->left != NULL) 
-        current = current->left; 
+	while (current && current->left != NULL) {
+		current = current->left;
+	}
   
     return current; 
 } 
 
-// Recursive function to delete a node  
-// with given key from subtree with  
-// given root. It returns root of the  
-// modified subtree.  
-CAVLNode* CAVL::deleteNode(CAVLNode* root, int key)  
-{  
-      
-    // STEP 1: PERFORM STANDARD BST DELETE  
-    if (root == NULL)  
-        return root;  
-  
-    // If the key to be deleted is smaller  
-    // than the root's key, then it lies 
-    // in left subtree  
-    if ( key < root->key )  
-        root->left = deleteNode(root->left, key);  
-  
-    // If the key to be deleted is greater  
-    // than the root's key, then it lies  
-    // in right subtree  
-    else if( key > root->key )  
-        root->right = deleteNode(root->right, key);  
-  
-    // if key is same as root's key, then  
-    // This is the node to be deleted  
+// Remove a node
+CAVLNode* CAVL::remove(CAVLNode* node, int key)
+{
+
+	// base case
+	if (node == NULL) {
+		return node;
+	}
+
+	if (key < node->key) {
+		// Key in left subtree
+		node->left = remove(node->left, key);
+	} 
+	else if (key > node->key) {
+		// Key in right subtree
+		node->right = remove(node->right, key);
+	}
     else
-    {  
-        // node with only one child or no child  
-        if( (root->left == NULL) || 
-            (root->right == NULL) )  
-        {  
-            CAVLNode *temp = root->left ?  
-                         root->left :  
-                         root->right;  
+    {
+		// Key is this node; Three cases.
+
+        // Case 1: left child/subtree empty
+        if (node->left == NULL) 
+        { 
+            CAVLNode *temp = node->right; 
+            free(node); 
+            return temp; 
+        } 
+		// Case 2: right child/subtree empty
+        else if (node->right == NULL) 
+        { 
+            CAVLNode *temp = node->left; 
+            free(node); 
+            return temp; 
+        } 
   
-            // No child case  
-            if (temp == NULL)  
-            {  
-                temp = root;  
-                root = NULL;  
-            }  
-            else // One child case  
-            *root = *temp; // Copy the contents of  
-                           // the non-empty child  
-            free(temp);  
-        }  
-        else
-        {  
-            // node with two children: Get the inorder  
-            // successor (smallest in the right subtree)  
-            CAVLNode* temp = minValueNode(root->right);  
+        // Case 3: both children/subtrees exist
+        CAVLNode* temp = minValueNode(node->right); 
   
-            // Copy the inorder successor's  
-            // data to this node  
-            root->key = temp->key;  
+        // Make smallest key into the root node's key
+        node->key = temp->key; 
   
-            // Delete the inorder successor  
-            root->right = deleteNode(root->right,  
-                                     temp->key);  
-        }  
+        // Delete the smallest key from the right subtree (since
+		// we added that to the root node
+        node->right = remove(node->right, temp->key);  
     }  
   
     // If the tree had only one node 
     // then return  
-    if (root == NULL)  
-    return root;  
+    if (node == NULL)  
+		return node;  
   
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
-    root->height = 1 + std::max(getHeight(root->left),  
-                           getHeight(root->right));  
+    node->height = 1 + std::max(getHeight(node->left),  
+                           getHeight(node->right));  
   
     // STEP 3: GET THE BALANCE FACTOR OF  
     // THIS NODE (to check whether this  
     // node became unbalanced)  
-    int balance = getBalance(root);  
+    int balance = getBalance(node);  
   
     // If this node becomes unbalanced,  
     // then there are 4 cases  
   
     // Left Left Case  
     if (balance > 1 &&  
-        getBalance(root->left) >= 0)  
-        return rightRotate(root);  
+        getBalance(node->left) >= 0)  
+        return rightRotate(node);  
   
     // Left Right Case  
     if (balance > 1 &&  
-        getBalance(root->left) < 0)  
+        getBalance(node->left) < 0)  
     {  
-        root->left = leftRotate(root->left);  
-        return rightRotate(root);  
+        node->left = leftRotate(node->left);  
+        return rightRotate(node);  
     }  
   
     // Right Right Case  
     if (balance < -1 &&  
-        getBalance(root->right) <= 0)  
-        return leftRotate(root);  
+        getBalance(node->right) <= 0)  
+        return leftRotate(node);  
   
     // Right Left Case  
     if (balance < -1 &&  
-        getBalance(root->right) > 0)  
+        getBalance(node->right) > 0)  
     {  
-        root->right = rightRotate(root->right);  
-        return leftRotate(root);  
+        node->right = rightRotate(node->right);  
+        return leftRotate(node);  
     }  
   
-    return root;  
+    return node;  
 }  
 
 // Inorder traversal 

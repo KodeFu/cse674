@@ -11,9 +11,9 @@ public:
 
 	CAVLNode *rightRotate(CAVLNode *y);
 	CAVLNode *leftRotate(CAVLNode *x);
-	int getBalance(CAVLNode *N);
+	int getBalance(CAVLNode *node);
 	CAVLNode* insert(CAVLNode* node, int key);
-	CAVLNode* deleteNode(CAVLNode* root, int key);
+	CAVLNode* remove(CAVLNode* node, int key);
 	CAVLNode * minValueNode(CAVLNode* node);
 	void inorder(CAVLNode *node);
 
