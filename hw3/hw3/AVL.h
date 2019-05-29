@@ -31,7 +31,7 @@ private:
 	CAVLNode* SmallestNode(CAVLNode* node);
 	CAVLNode* RotateRight(CAVLNode *node);
 	CAVLNode* RotateLeft(CAVLNode *node);
-	int       getBalance(CAVLNode *node);
+	int       GetBalanceFactor(CAVLNode *node);
 	CAVLNode* _root;
 };
 

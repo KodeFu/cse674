@@ -88,7 +88,7 @@ CAVLNode *CAVL::RotateLeft(CAVLNode *node)
 } 
 
 // Get Balance factor of node N 
-int CAVL::getBalance(CAVLNode *node) 
+int CAVL::GetBalanceFactor(CAVLNode *node) 
 { 
 	if (node == NULL) {
 		return 0;
@@ -129,7 +129,7 @@ CAVLNode* CAVL::Insert(CAVLNode* node, int key)
 	/* 3. Get the balance factor of this ancestor 
 		node to check whether this node became 
 		unbalanced */
-	int balance = getBalance(node); 
+	int balance = GetBalanceFactor(node); 
 
 	// If this node becomes unbalanced, then 
 	// there are 4 cases 
@@ -230,19 +230,19 @@ CAVLNode* CAVL::Remove(CAVLNode* node, int key)
     // STEP 3: GET THE BALANCE FACTOR OF  
     // THIS NODE (to check whether this  
     // node became unbalanced)  
-    int balance = getBalance(node);  
+    int balance = GetBalanceFactor(node);  
   
     // If this node becomes unbalanced,  
     // then there are 4 cases  
   
     // Left Left Case  
     if (balance > 1 &&  
-        getBalance(node->left) >= 0)  
+        GetBalanceFactor(node->left) >= 0)  
         return RotateRight(node);  
   
     // Left Right Case  
     if (balance > 1 &&  
-        getBalance(node->left) < 0)  
+        GetBalanceFactor(node->left) < 0)  
     {  
         node->left = RotateLeft(node->left);  
         return RotateRight(node);  
@@ -250,12 +250,12 @@ CAVLNode* CAVL::Remove(CAVLNode* node, int key)
   
     // Right Right Case  
     if (balance < -1 &&  
-        getBalance(node->right) <= 0)  
+        GetBalanceFactor(node->right) <= 0)  
         return RotateLeft(node);  
   
     // Right Left Case  
     if (balance < -1 &&  
-        getBalance(node->right) > 0)  
+        GetBalanceFactor(node->right) > 0)  
     {  
         node->right = RotateRight(node->right);  
         return RotateLeft(node);  
