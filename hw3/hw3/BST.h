@@ -22,13 +22,16 @@ public:
 	CNode* GetRoot();
 	void   SetRoot(CNode* node);
 	void   Display(CNode *node);
-	int    Height(CNode *node);
-	CNode* Insert(CNode* node, int key);
-	CNode* Remove(CNode* node, int key);
 	void   RemoveAll(CNode* node);
+	
+	virtual int    Height(CNode *node);
+	virtual CNode* Insert(CNode* node, int key);
+	virtual CNode* Remove(CNode* node, int key);
 
 private:
 	CNode* SmallestNode(CNode* node);
+
+protected:
 	CNode* _root;
 };
 

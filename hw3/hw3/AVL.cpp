@@ -24,19 +24,6 @@ CAVL::~CAVL()
 {
 }
 
-// Get root node
-CNode* CAVL::GetRoot()
-{
-	return _root;
-}
-
-// Set root node
-void CAVL::SetRoot(CNode* node)
-{
-	_root = node;
-}
-
-
 // Get height of tree
 int CAVL::Height(CNode *node) 
 { 
@@ -47,44 +34,62 @@ int CAVL::Height(CNode *node)
 	return node->height; 
 } 
 
-// A utility function to right 
-// rotate subtree rooted with y 
-// See the diagram given above. 
+// Rotate Right
+//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
+//  - In ASCII form below.
+//
+//     Q              P
+//    / \            / \
+//   P   C  ---->   A   Q
+//  / \                / \
+// A   B              B   C
+//
 CNode *CAVL::RotateRight(CNode *node) 
 { 
-	CNode *x = node->left; 
-	CNode *T2 = x->right; 
+	// Assign P, Q, B (left tree in diagram above)
+	CNode* Q = node;
+	CNode* P = node->left; 
+	CNode* B = P->right; 
 
-	// Perform rotation 
-	x->right = node; 
-	node->left = T2; 
+	// Rotate right
+	P->right = Q; 
+	Q->left = B; 
 
 	// Update heights 
-	node->height = std::max(Height(node->left), Height(node->right)) + 1; 
-	x->height = std::max(Height(x->left), Height(x->right)) + 1; 
+	Q->height = std::max(Height(Q->left), Height(Q->right)) + 1; 
+	P->height = std::max(Height(P->left), Height(P->right)) + 1; 
 
 	// Return new root 
-	return x; 
+	return P; 
 } 
 
-// A utility function to left 
-// rotate subtree rooted with x 
-// See the diagram given above. 
+// Roatate Left
+//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
+//  - In ASCII form below.
+//
+//     Q              P
+//    / \            / \
+//   P   C  <----   A   Q
+//  / \                / \
+// A   B              B   C
+//
 CNode *CAVL::RotateLeft(CNode *node) 
 { 
-	CNode *y = node->right; 
-	CNode *T2 = y->left; 
+	// Assign P, Q, B (right tree in diagram above)
+	CNode* P = node;
+	CNode* Q = P->right; 
+	CNode* B = Q->left; 
 
-	// Perform rotation 
-	y->left = node; 
-	node->right = T2; 
+	// Rotate left
+	Q->left = P; 
+	P->right = B; 
 
 	// Update heights 
-	node->height = std::max(Height(node->left), Height(node->right)) + 1; 
-	y->height = std::max(Height(y->left), Height(y->right)) + 1; 
+	P->height = std::max(Height(P->left), Height(P->right)) + 1; 
+	Q->height = std::max(Height(Q->left), Height(Q->right)) + 1; 
 
-	// Return new root 
-	return y; 
+	// Return new root
+	return Q; 
 } 
 
 // Get Balance factor of node N 
@@ -100,28 +105,8 @@ int CAVL::GetBalanceFactor(CNode *node)
 // Insert a new node 
 CNode* CAVL::Insert(CNode* node, int key) 
 { 
-	// Create and return new node
-	if (node == NULL) {
-		CNode *newNode = new CNode();
-		newNode->key = key; 
-		newNode->left = NULL; 
-		newNode->right = NULL; 
-		newNode->height = 1;
-
-		return(newNode);
-	}
-
-	if (key < node->key) {
-		// Go down left tree
-		node->left = Insert(node->left, key);
-	}
-	else if (key > node->key) {
-		// Go down right tree
-		node->right = Insert(node->right, key);
-	}
-	else {
-		return node;
-	}
+	// Call the base class
+	node = CBST::Insert(node, key);
 
 	/* 2. Update height of this ancestor node */
 	node->height = 1 + std::max(Height(node->left), Height(node->right)); 
@@ -264,25 +249,3 @@ CNode* CAVL::Remove(CNode* node, int key)
     return node;  
 }  
 
-// Inorder traversal 
-void CAVL::Display(CNode *node)
-{ 
-	if(node != NULL) 
-	{ 
-		Display(node->left); 
-		std::cout << node->key << " ";
-		Display(node->right); 
-	} 
-} 
-
-// Remove all nodes (postorder)
-void CAVL::RemoveAll(CNode* node)
-{
-	if (node != NULL) 
-    { 
-        RemoveAll(node->left); 
-        RemoveAll(node->right); 
-		free(node);
-		node = NULL;
-    }
-}

@@ -23,17 +23,6 @@ CSplay::CSplay()
 CSplay::~CSplay()
 {
 }
-
-CNode* CSplay::GetRoot()
-{
-	return _root;
-}
-
-void CSplay::SetRoot(CNode* node)
-{
-	_root = node;
-}
-
  
 /* Helper function that allocates  
 a new node with the given key and  
@@ -231,29 +220,6 @@ CNode* CSplay::Remove(CNode* root, int key)
     return root; 
       
 } 
-
-// Display nodes via inorder traversal
-void CSplay::Display(CNode* node) 
-{ 
-    if (node != NULL) 
-    { 
-        Display(node->left); 
-		std::cout << node->key << " ";
-        Display(node->right); 
-    } 
-} 
-
-// Remove all nodes (postorder)
-void CSplay::RemoveAll(CNode* node)
-{
-	if (node != NULL) 
-    { 
-        RemoveAll(node->left); 
-        RemoveAll(node->right); 
-		free(node);
-		node = NULL;
-    }
-}
 
 // BST height
 int CSplay::Height(CNode *node)

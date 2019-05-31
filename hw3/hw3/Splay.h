@@ -11,21 +11,18 @@
 
 */
 #pragma once
+#include "BST.h"
 #include "Node.h"
 
-class CSplay
+class CSplay : public CBST
 {
 public:
 	CSplay();
 	~CSplay();
 
-	CNode* GetRoot();
-	void   SetRoot(CNode* node);
-	void   Display(CNode *node);
 	int    Height(CNode *node);
 	CNode* Insert(CNode *node, int key);
 	CNode* Remove(CNode* node, int key);
-	void   RemoveAll(CNode* node);
 
 private:
 	CNode* newNode(int key);
