@@ -16,7 +16,7 @@
 
 CAVL::CAVL()
 {
-	_root = NULL;
+
 }
 
 
@@ -145,64 +145,12 @@ CNode* CAVL::Insert(CNode* node, int key)
 	return node; 
 } 
 
-// Get minimum value of a tree (subtree)
-CNode *CAVL::SmallestNode(CNode* node)
-{ 
-    CNode* current = node; 
-  
-	while (current && current->left != NULL) {
-		current = current->left;
-	}
-  
-    return current; 
-} 
-
 // Remove a node
 CNode* CAVL::Remove(CNode* node, int key)
 {
 
-	// base case
-	if (node == NULL) {
-		return node;
-	}
-
-	if (key < node->key) {
-		// Key in left subtree
-		node->left = Remove(node->left, key);
-	} 
-	else if (key > node->key) {
-		// Key in right subtree
-		node->right = Remove(node->right, key);
-	}
-    else
-    {
-		// Key is this node; Three cases.
-
-        // Case 1: left child/subtree empty
-        if (node->left == NULL) 
-        { 
-            CNode *temp = node->right; 
-            free(node); 
-            return temp; 
-        } 
-		// Case 2: right child/subtree empty
-        else if (node->right == NULL) 
-        { 
-            CNode *temp = node->left; 
-            free(node); 
-            return temp; 
-        } 
-  
-        // Case 3: both children/subtrees exist
-        CNode* temp = SmallestNode(node->right); 
-  
-        // Make smallest key into the root node's key
-        node->key = temp->key; 
-  
-        // Delete the smallest key from the right subtree (since
-		// we added that to the root node
-        node->right = Remove(node->right, temp->key);  
-    }  
+	// Call the base class
+	node = CBST::Remove(node, key);
   
     // If the tree had only one node 
     // then return  

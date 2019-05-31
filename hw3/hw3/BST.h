@@ -28,10 +28,10 @@ public:
 	virtual CNode* Insert(CNode* node, int key);
 	virtual CNode* Remove(CNode* node, int key);
 
-private:
+protected:
 	CNode* SmallestNode(CNode* node);
 
-protected:
+private:
 	CNode* _root;
 };
 

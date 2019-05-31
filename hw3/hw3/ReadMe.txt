@@ -276,18 +276,11 @@ ACKNOWLEDGE AND REFERENCE(S):
 2. Wikipedia. Various articles on BST and alogrithms.
    https://www.wikipedia.org/
 
-3. Geek for Geeks website. Various articles BST and algorithms.
-   http://geeksforgeeks.org/
-
-4. Binary Trees in C, Alex Allain.
+3. Binary Trees in C, Alex Allain.
    https://www.cprogramming.com/tutorial/c/lesson18.html
 
-5. DSW Algorithm in Java, Isai Damier.
-   http://www.geekviewpoint.com/java/bst/dsw_algorithm
-
-6. DSW Algorithm, Wikipedia.
+4. DSW Algorithm, Wikipedia.
    https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
 
- 7. AVL Algorithm, rathbhupendra.
-   https://www.geeksforgeeks.org/avl-tree-set-1-insertion/
-   https://www.geeksforgeeks.org/avl-tree-set-2-deletion/
+5. DSW Algorithm, DSW
+   http://web.eecs.umich.edu/~qstout/pap/CACM86.pdf

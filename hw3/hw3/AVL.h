@@ -25,7 +25,6 @@ public:
 	CNode* Remove(CNode* node, int key);
 
 private:
-	CNode* SmallestNode(CNode* node);
 	CNode* RotateRight(CNode *node);
 	CNode* RotateLeft(CNode *node);
 	int    GetBalanceFactor(CNode *node);

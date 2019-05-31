@@ -25,7 +25,7 @@ public:
 
 private:
 	void   TreeToVine(CNode* root);
-	void   VineToTree(CNode* root, int size);
+	void   VineToTree(CNode* root);
 	void   Compress(CNode* root, int count);
 
 	// Deprecate

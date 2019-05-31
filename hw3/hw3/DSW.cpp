@@ -88,12 +88,7 @@ void CDSW::CreateBackbone()
 // 
 void CDSW::TreeToVine(CNode* root)
 {
-	// Allocate "pseudo-root" and set right child to point to root
-	CNode* pseudoNode = new CNode();
-	pseudoNode->right = root;
-	pseudoNode->left = NULL;
-
-	CNode* tail = pseudoNode;
+	CNode* tail = root;
 	CNode* rest = tail->right;
 
 	while (rest != NULL) {
@@ -112,18 +107,16 @@ void CDSW::TreeToVine(CNode* root)
 
 	// Set the root back to pseudoNode's right child
 	//SetRoot(pseudoNode->right);
-	SetRoot(pseudoNode);
+	//SetRoot(pseudoNode);
 }
 
-void CDSW::VineToTree(CNode* root, int size)
+void CDSW::VineToTree(CNode* root)
 {
-	//
-	size = 0;
+	// Count the nodes (this is "size")
+	int size = 0;
 	for (CNode* temp = GetRoot(); NULL != temp; temp = temp->right) {
-		// count nodes
 		size++;
 	}
-	//
 
 	int leaves = size + 1 - std::pow(2, (int)(std::log2(size + 1)));
 	Compress(root, leaves);
@@ -133,8 +126,6 @@ void CDSW::VineToTree(CNode* root, int size)
 		Compress(root, floor(size / 2.0));
 		size = floor(size / 2.0);
 	}
-
-	SetRoot(root->right);
 }
 
 void CDSW::Compress(CNode* root, int count)
@@ -153,8 +144,20 @@ void CDSW::Compress(CNode* root, int count)
 // Balance the tree
 void CDSW::BalanceTree(CNode* node)
 {
-	TreeToVine(GetRoot());
-	VineToTree(GetRoot(), 0);
+	// Allocate "pseudo-root" and set right child to point to root
+	CNode* pseudoNode = new CNode();
+	pseudoNode->right = GetRoot();
+	pseudoNode->left = NULL;
+	SetRoot(pseudoNode);
+
+	// Create the backbone
+	TreeToVine(pseudoNode);
+
+	// Create tree from backbone
+	VineToTree(pseudoNode);
+
+	// Revert root
+	SetRoot(GetRoot()->right);
 }
 
 // Create balanced BST
