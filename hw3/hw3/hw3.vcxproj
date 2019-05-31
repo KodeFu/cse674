@@ -139,6 +139,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AVL.h" />
     <ClInclude Include="BST.h" />
     <ClInclude Include="DSW.h" />
     <ClInclude Include="Node.h" />
@@ -149,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AVL.cpp" />
-    <ClCompile Include="AVLNode.cpp" />
     <ClCompile Include="BST.cpp" />
     <ClCompile Include="DSW.cpp" />
     <ClCompile Include="hw3.cpp" />
