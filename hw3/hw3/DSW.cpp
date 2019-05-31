@@ -101,11 +101,13 @@ void CDSW::VineToTree(CNode* root, int size)
 	}
 }
 
+// Compress
 void CDSW::Compress(CNode* root, int count)
 {
 	CNode* scanner = root;
 
 	for (int i = 0; i < count; i++) {
+		// Left rotate
 		CNode* child = scanner->right;
 		scanner->right = child->right;
 		scanner = scanner->right;
