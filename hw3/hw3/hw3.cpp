@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-
+	/*
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -59,7 +59,7 @@ int main()
 
 	bst->RemoveAll(bst->GetRoot());
 	delete bst;
-
+	*/
 	////////////////////////////////////////////////////////////
 	// DSW
 	////////////////////////////////////////////////////////////
@@ -78,22 +78,25 @@ int main()
 	//std::cout << std::endl;
 
 	// Remove
-	dsw->Remove(dsw->GetRoot(), 50);
+	//dsw->Remove(dsw->GetRoot(), 50);
 
 	std::cout << "height: " << dsw->Height(dsw->GetRoot()) << std::endl;
 
 	// Create the tree
-	dsw->CreatePerfectTree();
+	//dsw->CreatePerfectTree();
+	dsw->BalanceTree(dsw->GetRoot());
+
+	std::cout << "height: " << dsw->Height(dsw->GetRoot()) << std::endl;
 
 	// Print Tree
 	dsw->Display(dsw->GetRoot());
 	std::cout << std::endl;
-	//CPrintTree::printBT(dsw->GetRoot());
-	//std::cout << std::endl;
+	CPrintTree::printBT(dsw->GetRoot());
+	std::cout << std::endl;
 
 	dsw->RemoveAll(dsw->GetRoot());
 	delete dsw;
-
+	return 0;
 	////////////////////////////////////////////////////////////
 	// AVL
 	////////////////////////////////////////////////////////////

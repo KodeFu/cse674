@@ -21,9 +21,15 @@ public:
 
 	CNode* RotateRight(CNode* gr, CNode* par, CNode* ch);
 	void   RotateLeft(CNode* gr, CNode* par, CNode* ch);
-	void   CreatePerfectTree();
+	void   BalanceTree(CNode* node);
 
 private:
+	void   TreeToVine(CNode* root);
+	void   VineToTree(CNode* root, int size);
+	void   Compress(CNode* root, int count);
+
+	// Deprecate
+	void   CreatePerfectTree();
 	void   CreateBackbone();
 	void   MakeRotations(int count);
 };

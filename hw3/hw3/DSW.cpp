@@ -81,6 +81,82 @@ void CDSW::CreateBackbone()
 	}
 }
 
+
+// Create backbone (ordered linked list)
+//
+// TreeToVine based on pseudocode from https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
+// 
+void CDSW::TreeToVine(CNode* root)
+{
+	// Allocate "pseudo-root" and set right child to point to root
+	CNode* pseudoNode = new CNode();
+	pseudoNode->right = root;
+	pseudoNode->left = NULL;
+
+	CNode* tail = pseudoNode;
+	CNode* rest = tail->right;
+
+	while (rest != NULL) {
+		if (rest->left == NULL) {
+			tail = rest;
+			rest = rest->right;
+		}
+		else {
+			CNode* temp = rest->left;
+			rest->left = temp->right;
+			temp->right = rest;
+			rest = temp;
+			tail->right = temp;
+		}
+	}
+
+	// Set the root back to pseudoNode's right child
+	//SetRoot(pseudoNode->right);
+	SetRoot(pseudoNode);
+}
+
+void CDSW::VineToTree(CNode* root, int size)
+{
+	//
+	size = 0;
+	for (CNode* temp = GetRoot(); NULL != temp; temp = temp->right) {
+		// count nodes
+		size++;
+	}
+	//
+
+	int leaves = size + 1 - std::pow(2, (int)(std::log2(size + 1)));
+	Compress(root, leaves);
+	size = size - leaves;
+	
+	while (size > 1) {
+		Compress(root, floor(size / 2.0));
+		size = floor(size / 2.0);
+	}
+
+	SetRoot(root->right);
+}
+
+void CDSW::Compress(CNode* root, int count)
+{
+	CNode* scanner = root;
+
+	for (int i = 0; i < count; i++) {
+		CNode* child = scanner->right;
+		scanner->right = child->right;
+		scanner = scanner->right;
+		child->right = scanner->left;
+		scanner->left = child;
+	}
+}
+
+// Balance the tree
+void CDSW::BalanceTree(CNode* node)
+{
+	TreeToVine(GetRoot());
+	VineToTree(GetRoot(), 0);
+}
+
 // Create balanced BST
 void CDSW::CreatePerfectTree()
 {
