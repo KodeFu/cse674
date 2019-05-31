@@ -83,41 +83,41 @@ void CDSW::CreateBackbone()
 
 
 // Create backbone (ordered linked list)
-//
-// TreeToVine based on pseudocode from https://en.wikipedia.org/wiki/Day%E2%80%93Stout%E2%80%93Warren_algorithm
-// 
-void CDSW::TreeToVine(CNode* root)
+void CDSW::TreeToVine(CNode* root, int& size)
 {
 	CNode* tail = root;
 	CNode* rest = tail->right;
 
+	size = 0;
+
 	while (rest != NULL) {
 		if (rest->left == NULL) {
+			// No left, so advance the vine
 			tail = rest;
 			rest = rest->right;
+
+			// Per DSW paper, we get size here so we don't have
+			// to traverse list again to get size for VineToTree()
+			size++;
 		}
 		else {
+			// Rotate right
 			CNode* temp = rest->left;
 			rest->left = temp->right;
 			temp->right = rest;
+
+			// Update vine pointers
 			rest = temp;
 			tail->right = temp;
 		}
 	}
 
-	// Set the root back to pseudoNode's right child
-	//SetRoot(pseudoNode->right);
-	//SetRoot(pseudoNode);
+	std::cout << "size: " << size << std::endl;
 }
 
-void CDSW::VineToTree(CNode* root)
+// Create tree from vine (ordered linked list)
+void CDSW::VineToTree(CNode* root, int size)
 {
-	// Count the nodes (this is "size")
-	int size = 0;
-	for (CNode* temp = GetRoot(); NULL != temp; temp = temp->right) {
-		size++;
-	}
-
 	int leaves = size + 1 - std::pow(2, (int)(std::log2(size + 1)));
 	Compress(root, leaves);
 	size = size - leaves;
@@ -144,6 +144,8 @@ void CDSW::Compress(CNode* root, int count)
 // Balance the tree
 void CDSW::BalanceTree(CNode* node)
 {
+	int size;
+
 	// Allocate "pseudo-root" and set right child to point to root
 	CNode* pseudoNode = new CNode();
 	pseudoNode->right = GetRoot();
@@ -151,10 +153,10 @@ void CDSW::BalanceTree(CNode* node)
 	SetRoot(pseudoNode);
 
 	// Create the backbone
-	TreeToVine(pseudoNode);
+	TreeToVine(pseudoNode, size);
 
 	// Create tree from backbone
-	VineToTree(pseudoNode);
+	VineToTree(pseudoNode, size);
 
 	// Revert root
 	SetRoot(GetRoot()->right);

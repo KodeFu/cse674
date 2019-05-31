@@ -24,8 +24,8 @@ public:
 	void   BalanceTree(CNode* node);
 
 private:
-	void   TreeToVine(CNode* root);
-	void   VineToTree(CNode* root);
+	void   TreeToVine(CNode* root, int& size);
+	void   VineToTree(CNode* root, int size);
 	void   Compress(CNode* root, int count);
 
 	// Deprecate
