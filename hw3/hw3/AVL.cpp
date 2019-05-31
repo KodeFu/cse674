@@ -25,20 +25,20 @@ CAVL::~CAVL()
 }
 
 // Get root node
-CAVLNode* CAVL::GetRoot()
+CNode* CAVL::GetRoot()
 {
 	return _root;
 }
 
 // Set root node
-void CAVL::SetRoot(CAVLNode* node)
+void CAVL::SetRoot(CNode* node)
 {
 	_root = node;
 }
 
 
 // Get height of tree
-int CAVL::Height(CAVLNode *node) 
+int CAVL::Height(CNode *node) 
 { 
 	if (node == NULL) {
 		return 0;
@@ -50,10 +50,10 @@ int CAVL::Height(CAVLNode *node)
 // A utility function to right 
 // rotate subtree rooted with y 
 // See the diagram given above. 
-CAVLNode *CAVL::RotateRight(CAVLNode *node) 
+CNode *CAVL::RotateRight(CNode *node) 
 { 
-	CAVLNode *x = node->left; 
-	CAVLNode *T2 = x->right; 
+	CNode *x = node->left; 
+	CNode *T2 = x->right; 
 
 	// Perform rotation 
 	x->right = node; 
@@ -70,10 +70,10 @@ CAVLNode *CAVL::RotateRight(CAVLNode *node)
 // A utility function to left 
 // rotate subtree rooted with x 
 // See the diagram given above. 
-CAVLNode *CAVL::RotateLeft(CAVLNode *node) 
+CNode *CAVL::RotateLeft(CNode *node) 
 { 
-	CAVLNode *y = node->right; 
-	CAVLNode *T2 = y->left; 
+	CNode *y = node->right; 
+	CNode *T2 = y->left; 
 
 	// Perform rotation 
 	y->left = node; 
@@ -88,7 +88,7 @@ CAVLNode *CAVL::RotateLeft(CAVLNode *node)
 } 
 
 // Get Balance factor of node N 
-int CAVL::GetBalanceFactor(CAVLNode *node) 
+int CAVL::GetBalanceFactor(CNode *node) 
 { 
 	if (node == NULL) {
 		return 0;
@@ -98,11 +98,11 @@ int CAVL::GetBalanceFactor(CAVLNode *node)
 } 
 
 // Insert a new node 
-CAVLNode* CAVL::Insert(CAVLNode* node, int key) 
+CNode* CAVL::Insert(CNode* node, int key) 
 { 
 	// Create and return new node
 	if (node == NULL) {
-		CAVLNode *newNode = new CAVLNode();
+		CNode *newNode = new CNode();
 		newNode->key = key; 
 		newNode->left = NULL; 
 		newNode->right = NULL; 
@@ -161,9 +161,9 @@ CAVLNode* CAVL::Insert(CAVLNode* node, int key)
 } 
 
 // Get minimum value of a tree (subtree)
-CAVLNode *CAVL::SmallestNode(CAVLNode* node)
+CNode *CAVL::SmallestNode(CNode* node)
 { 
-    CAVLNode* current = node; 
+    CNode* current = node; 
   
 	while (current && current->left != NULL) {
 		current = current->left;
@@ -173,7 +173,7 @@ CAVLNode *CAVL::SmallestNode(CAVLNode* node)
 } 
 
 // Remove a node
-CAVLNode* CAVL::Remove(CAVLNode* node, int key)
+CNode* CAVL::Remove(CNode* node, int key)
 {
 
 	// base case
@@ -196,20 +196,20 @@ CAVLNode* CAVL::Remove(CAVLNode* node, int key)
         // Case 1: left child/subtree empty
         if (node->left == NULL) 
         { 
-            CAVLNode *temp = node->right; 
+            CNode *temp = node->right; 
             free(node); 
             return temp; 
         } 
 		// Case 2: right child/subtree empty
         else if (node->right == NULL) 
         { 
-            CAVLNode *temp = node->left; 
+            CNode *temp = node->left; 
             free(node); 
             return temp; 
         } 
   
         // Case 3: both children/subtrees exist
-        CAVLNode* temp = SmallestNode(node->right); 
+        CNode* temp = SmallestNode(node->right); 
   
         // Make smallest key into the root node's key
         node->key = temp->key; 
@@ -265,7 +265,7 @@ CAVLNode* CAVL::Remove(CAVLNode* node, int key)
 }  
 
 // Inorder traversal 
-void CAVL::Display(CAVLNode *node)
+void CAVL::Display(CNode *node)
 { 
 	if(node != NULL) 
 	{ 
@@ -276,7 +276,7 @@ void CAVL::Display(CAVLNode *node)
 } 
 
 // Remove all nodes (postorder)
-void CAVL::RemoveAll(CAVLNode* node)
+void CAVL::RemoveAll(CNode* node)
 {
 	if (node != NULL) 
     { 

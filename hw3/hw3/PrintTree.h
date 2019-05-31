@@ -21,7 +21,6 @@
 */
 #pragma once
 #include "Node.h"
-#include "AVLNode.h"
 
 class CPrintTree
 {
@@ -32,7 +31,5 @@ public:
 	static void printBT(const std::string& prefix, const CNode* node, bool isLeft);
 	static void printBT(const CNode* node);
 
-	static void printAVL(const std::string& prefix, const CAVLNode* node, bool isLeft);
-	static void printAVL(const CAVLNode* node);
 };
 

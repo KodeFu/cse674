@@ -53,25 +53,3 @@ void CPrintTree::printBT(const CNode* node)
 {
     printBT("", node, false);    
 }
-
-void CPrintTree::printAVL(const std::string& prefix, const CAVLNode* node, bool isLeft)
-{
-    if( node != nullptr )
-    {
-        std::cout << prefix;
-
-        std::cout << (isLeft ? "|--" : "|--" );
-
-        // print the value of the node
-        std::cout << node->key << std::endl;
-
-        // enter the next tree level - left and right branch
-        printAVL( prefix + (isLeft ? "|   " : "    "), node->left, true);
-        printAVL( prefix + (isLeft ? "|   " : "    "), node->right, false);
-    }
-}
-
-void CPrintTree::printAVL(const CAVLNode* node)
-{
-    printAVL("", node, false);    
-}

@@ -36,12 +36,6 @@
     <ClInclude Include="DSW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AVLNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AVL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Splay.h">
       <Filter>Header Files</Filter>
     </ClInclude>

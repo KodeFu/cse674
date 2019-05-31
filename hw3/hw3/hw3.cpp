@@ -105,7 +105,7 @@ int main()
 		avl->SetRoot(avl->Insert(avl->GetRoot(), g_S2[i])); 
 	}
 
-	//CPrintTree::printAVL(avl->getRoot());
+	//CPrintTree::printBT(avl->getRoot());
 	//std::cout << std::endl;
 	avl->Display(avl->GetRoot()); 
 	std::cout << std::endl;
@@ -114,7 +114,7 @@ int main()
 
 	std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
-	//CPrintTree::printAVL(avl->getRoot());
+	//CPrintTree::printBT(avl->getRoot());
 	//std::cout << std::endl;
 	avl->Display(avl->GetRoot()); 
 	std::cout << std::endl;

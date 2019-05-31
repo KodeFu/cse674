@@ -139,8 +139,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AVL.h" />
-    <ClInclude Include="AVLNode.h" />
     <ClInclude Include="BST.h" />
     <ClInclude Include="DSW.h" />
     <ClInclude Include="Node.h" />
