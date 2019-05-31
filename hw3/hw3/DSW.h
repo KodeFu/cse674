@@ -27,10 +27,5 @@ private:
 	void   TreeToVine(CNode* root, int& size);
 	void   VineToTree(CNode* root, int size);
 	void   Compress(CNode* root, int count);
-
-	// Deprecate
-	void   CreatePerfectTree();
-	void   CreateBackbone();
-	void   MakeRotations(int count);
 };
 
