@@ -25,13 +25,14 @@ public:
 	void   RemoveAll(CNode* node);
 	
 	virtual int    Height(CNode *node);
-	virtual CNode* Insert(CNode* node, int key);
+	virtual void   Insert(CNode*& node, int key);
 	virtual CNode* Remove(CNode* node, int key);
 
+	CNode* _root;
 protected:
 	CNode* SmallestNode(CNode* node);
 
-private:
-	CNode* _root;
+//private:
+//	CNode* _root;
 };
 

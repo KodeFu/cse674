@@ -103,10 +103,10 @@ int CAVL::GetBalanceFactor(CNode *node)
 } 
 
 // Insert a new node 
-CNode* CAVL::Insert(CNode* node, int key) 
+void CAVL::Insert(CNode*& node, int key) 
 { 
 	// Call the base class
-	node = CBST::Insert(node, key);
+	CBST::Insert(node, key);
 
 	/* 2. Update height of this ancestor node */
 	node->height = 1 + std::max(Height(node->left), Height(node->right)); 
@@ -121,28 +121,25 @@ CNode* CAVL::Insert(CNode* node, int key)
 
 	// Left Left Case 
 	if (balance > 1 && key < node->left->key) 
-		return RotateRight(node); 
+		node = RotateRight(node); 
 
 	// Right Right Case 
 	if (balance < -1 && key > node->right->key) 
-		return RotateLeft(node); 
+		node = RotateLeft(node); 
 
 	// Left Right Case 
 	if (balance > 1 && key > node->left->key) 
 	{ 
 		node->left = RotateLeft(node->left); 
-		return RotateRight(node); 
+		node = RotateRight(node); 
 	} 
 
 	// Right Left Case 
 	if (balance < -1 && key < node->right->key) 
 	{ 
 		node->right = RotateRight(node->right); 
-		return RotateLeft(node); 
+		node = RotateLeft(node); 
 	} 
-
-	/* return the (unchanged) node pointer */
-	return node; 
 } 
 
 // Remove a node

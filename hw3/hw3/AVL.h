@@ -21,7 +21,7 @@ public:
 	~CAVL();
 
 	int    Height(CNode *node);
-	CNode* Insert(CNode* node, int key);
+	void   Insert(CNode*& node, int key);
 	CNode* Remove(CNode* node, int key);
 
 private:

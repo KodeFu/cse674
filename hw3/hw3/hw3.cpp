@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-	/*
+	
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -36,30 +36,32 @@ int main()
 	CBST* bst = new CBST();
 
 	// Use random data
-	for (int i = 0; i < 100; i++) {
-		bst->Insert(bst->GetRoot(), g_S2[i]);
+	for (int i = 0; i < 5; i++) {
+		bst->Insert(bst->_root, g_S2[i]);
+		std::cout << bst->_root << std::endl;
 	}
 
 	// Print tree
-	bst->Display(bst->GetRoot());
+	bst->Display(bst->_root);
 	std::cout << std::endl;
 	//CPrintTree::printBT(bst->GetRoot());
 	//std::cout << std::endl;
 
-	std::cout << "height: " << bst->Height(bst->GetRoot()) << std::endl;
+	std::cout << "height: " << bst->Height(bst->_root) << std::endl;
 	
 	// Remove
-	bst->Remove(bst->GetRoot(), 50);
+	bst->Remove(bst->_root, 50);
 
 	// Print tree
-	bst->Display(bst->GetRoot());
+	bst->Display(bst->_root);
 	std::cout << std::endl;
 	//CPrintTree::printBT(bst->GetRoot());
 	//std::cout << std::endl;
 
-	bst->RemoveAll(bst->GetRoot());
+	bst->RemoveAll(bst->_root);
 	delete bst;
-	*/
+
+	
 	////////////////////////////////////////////////////////////
 	// DSW
 	////////////////////////////////////////////////////////////
@@ -68,7 +70,7 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 100; i++) {
-		dsw->Insert(dsw->GetRoot(), g_S2[i]);
+		dsw->Insert(dsw->_root, g_S2[i]);
 	}
 
 	// Print tree
@@ -104,31 +106,37 @@ int main()
 	CAVL* avl = new CAVL();
 
 	// Use random data
-	for (int i = 0; i < 100; i++) {
-		avl->SetRoot(avl->Insert(avl->GetRoot(), g_S2[i])); 
+	for (int i = 0; i < 20; i++) {
+		std::cout << avl->_root << " inserting: " << g_S2[i] << std::endl;
+		//avl->SetRoot(avl->Insert(avl->_root, g_S2[i])); 
+		avl->Insert(avl->_root, g_S2[i]);
+		std::cout << avl->_root << std::endl;
+		CPrintTree::printBT(avl->_root);
+		std::cout << std::endl;
 	}
 
-	//CPrintTree::printBT(avl->getRoot());
-	//std::cout << std::endl;
-	avl->Display(avl->GetRoot()); 
+	CPrintTree::printBT(avl->_root);
+	std::cout << std::endl;
+	avl->Display(avl->_root); 
 	std::cout << std::endl;
 
-	avl->Remove(avl->GetRoot(), 50);
+	//avl->Remove(avl->GetRoot(), 50);
 
-	std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
+	//std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
 	//CPrintTree::printBT(avl->getRoot());
 	//std::cout << std::endl;
-	avl->Display(avl->GetRoot()); 
+	avl->Display(avl->_root); 
 	std::cout << std::endl;
 
-	avl->RemoveAll(avl->GetRoot());
+	avl->RemoveAll(avl->_root);
 
 	delete avl;
 	return 0;
 	////////////////////////////////////////////////////////////
 	// Splay
 	////////////////////////////////////////////////////////////
+#if defined false
 	std::cout << "===== SPLAY =====" << std::endl;
 	CSplay* splay = new CSplay();
 
@@ -149,7 +157,7 @@ int main()
 
 	splay->RemoveAll(splay->GetRoot());
 	delete splay;
-
+#endif
     return 0;
 }
 

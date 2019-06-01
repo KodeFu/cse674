@@ -79,7 +79,7 @@ int CBST::Height(CNode *node)
 }
 
 // Insert a new node
-CNode* CBST::Insert(CNode* node, int key) 
+void CBST::Insert(CNode*& node, int key) 
 { 
     // Create and return new node
 	if (node == NULL) {
@@ -88,22 +88,22 @@ CNode* CBST::Insert(CNode* node, int key)
 		newNode->left = NULL;
 		newNode->right = NULL;
 
+		node = newNode;
+
 		if (_root == NULL) {
 			_root = newNode;
 		}
-		return newNode;
 	}
 	
 	if (key < node->key) {
 		// Go down left tree
-		node->left = Insert(node->left, key);
+		Insert(node->left, key);
 	}
 	else if (key > node->key) {
 		// Go down right tree
-		node->right = Insert(node->right, key);
+		Insert(node->right, key);
 	}
-  
-    return node; 
+ 
 } 
 
 // Get minimum value of a tree (subtree)
