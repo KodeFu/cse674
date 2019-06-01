@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-#if defined false
+//#if defined false
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -36,9 +36,8 @@ int main()
 	CBST* bst = new CBST();
 
 	// Use random data
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 100; i++) {
 		bst->Insert(bst->_root, g_S2[i]);
-		std::cout << bst->_root << std::endl;
 	}
 
 	// Print tree
@@ -50,8 +49,7 @@ int main()
 	std::cout << "height: " << bst->Height(bst->_root) << std::endl;
 	
 	// Remove
-	bst->Remove(bst->_root, 58);
-	bst->Remove(bst->_root, 1);
+	bst->Remove(bst->_root, 50);
 
 	// Print tree
 	bst->Display(bst->_root);
@@ -92,12 +90,12 @@ int main()
 	// Print Tree
 	dsw->Display(dsw->_root);
 	std::cout << std::endl;
-	CPrintTree::printBT(dsw->_root);
-	std::cout << std::endl;
+	//CPrintTree::printBT(dsw->_root);
+	//std::cout << std::endl;
 
 	dsw->RemoveAll(dsw->_root);
 	delete dsw;
-#endif
+//#endif
 	////////////////////////////////////////////////////////////
 	// AVL
 	////////////////////////////////////////////////////////////
@@ -105,21 +103,21 @@ int main()
 	CAVL* avl = new CAVL();
 
 	// Use random data
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < 100; i++) {
 		avl->Insert(avl->_root, g_S2[i]);
 	}
 
-	CPrintTree::printBT(avl->_root);
-	std::cout << std::endl;
+	//CPrintTree::printBT(avl->_root);
+	//std::cout << std::endl;
 	avl->Display(avl->_root); 
 	std::cout << std::endl;
 
-	avl->Remove(avl->_root, 28);
+	avl->Remove(avl->_root, 50);
 
 	//std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
-	CPrintTree::printBT(avl->_root);
-	std::cout << std::endl;
+	//CPrintTree::printBT(avl->_root);
+	//std::cout << std::endl;
 	avl->Display(avl->_root); 
 	std::cout << std::endl;
 

@@ -29,10 +29,9 @@ public:
 	virtual void  Remove(CNode*& node, int key);
 
 	CNode* _root;
+
 protected:
 	CNode* SmallestNode(CNode* node);
 
-//private:
-//	CNode* _root;
 };
 

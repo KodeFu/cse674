@@ -128,7 +128,6 @@ void CBST::Remove(CNode*& node, int key)
 { 
     // Bail out if node is NULL
 	if (node == NULL) {
-		//return node;
 		return;
 	}
   

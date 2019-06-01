@@ -19,8 +19,6 @@ public:
 	CDSW();
 	~CDSW();
 
-	CNode* RotateRight(CNode* gr, CNode* par, CNode* ch);
-	void   RotateLeft(CNode* gr, CNode* par, CNode* ch);
 	void   BalanceTree(CNode* node);
 
 private:

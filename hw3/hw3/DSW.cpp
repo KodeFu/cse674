@@ -23,38 +23,6 @@ CDSW::~CDSW()
 {
 }
 
-// Rotate right
-CNode* CDSW::RotateRight(CNode* gr, CNode* par, CNode* ch)
-{
-	if (gr != NULL) {
-		gr->right = ch;
-	}
-	else {
-		this->SetRoot(ch);
-	}
-
-	CNode* chRight = ch->right;
-	par->left = chRight;
-	ch->right = par;
-
-	return gr;
-}
-
-// Rotate left
-void CDSW::RotateLeft(CNode* gr, CNode* par, CNode* ch)
-{
-	if (gr != NULL) {
-		gr->right = ch;
-	}
-	else {
-		SetRoot(ch);
-	}
-
-	CNode* chLeft = ch->left;
-	par->right = chLeft;
-	ch->left = par;
-}
-
 // Create vine (linked list)
 void CDSW::TreeToVine(CNode* root, int& size)
 {
