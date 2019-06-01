@@ -88,8 +88,10 @@ void CBST::Insert(CNode*& node, int key)
 		newNode->left = NULL;
 		newNode->right = NULL;
 
+		// Set current node to new node
 		node = newNode;
 
+		// Assign root if root doesn't exist
 		if (_root == NULL) {
 			_root = newNode;
 		}
@@ -102,6 +104,9 @@ void CBST::Insert(CNode*& node, int key)
 	else if (key > node->key) {
 		// Go down right tree
 		Insert(node->right, key);
+	}
+	else {
+		// Equal keys, don't insert
 	}
  
 } 
@@ -121,7 +126,7 @@ CNode *CBST::SmallestNode(CNode* node)
 // Remove a node
 CNode* CBST::Remove(CNode* node, int key) 
 { 
-    // base case 
+    // Bail out if node is NULL
 	if (node == NULL) {
 		return node;
 	}
