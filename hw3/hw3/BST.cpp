@@ -124,20 +124,21 @@ CNode *CBST::SmallestNode(CNode* node)
 } 
 
 // Remove a node
-CNode* CBST::Remove(CNode* node, int key) 
+void CBST::Remove(CNode*& node, int key) 
 { 
     // Bail out if node is NULL
 	if (node == NULL) {
-		return node;
+		//return node;
+		return;
 	}
   
 	if (key < node->key) {
 		// Key in left subtree
-		node->left = Remove(node->left, key);
+		Remove(node->left, key);
 	}
 	else if (key > node->key) {
 		// Key in right subtree
-		node->right = Remove(node->right, key);
+		Remove(node->right, key);
 	}
     else  { 
 		// Key is this node; Three cases.
@@ -146,15 +147,17 @@ CNode* CBST::Remove(CNode* node, int key)
         if (node->left == NULL) 
         { 
             CNode *temp = node->right; 
-            free(node); 
-            return temp; 
+            delete node; 
+			node = temp;
+            return; 
         } 
 		// Case 2: right child/subtree empty
         else if (node->right == NULL) 
         { 
             CNode *temp = node->left; 
-            free(node); 
-            return temp; 
+            delete node; 
+			node = temp;
+            return; 
         } 
   
         // Case 3: both children/subtrees exist
@@ -165,9 +168,8 @@ CNode* CBST::Remove(CNode* node, int key)
   
         // Delete the smallest key from the right subtree (since
 		// we added that to the root node
-        node->right = Remove(node->right, temp->key); 
+        Remove(node->right, temp->key); 
     } 
 
-    return node; 
 }
 

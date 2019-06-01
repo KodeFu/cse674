@@ -22,7 +22,7 @@ public:
 
 	int    Height(CNode *node);
 	void   Insert(CNode*& node, int key);
-	CNode* Remove(CNode* node, int key);
+	void   Remove(CNode*& node, int key);
 
 private:
 	CNode* RotateRight(CNode *node);

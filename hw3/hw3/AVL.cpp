@@ -143,16 +143,15 @@ void CAVL::Insert(CNode*& node, int key)
 } 
 
 // Remove a node
-CNode* CAVL::Remove(CNode* node, int key)
+void CAVL::Remove(CNode*& node, int key)
 {
-
 	// Call the base class
-	node = CBST::Remove(node, key);
+	CBST::Remove(node, key);
   
     // If the tree had only one node 
     // then return  
     if (node == NULL)  
-		return node;  
+		return;  
   
     // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
     node->height = 1 + std::max(Height(node->left), Height(node->right));  
@@ -166,31 +165,36 @@ CNode* CAVL::Remove(CNode* node, int key)
     // then there are 4 cases  
   
     // Left Left Case  
-    if (balance > 1 &&  
-        GetBalanceFactor(node->left) >= 0)  
-        return RotateRight(node);  
+	if (balance > 1 &&
+		GetBalanceFactor(node->left) >= 0) {
+		RotateRight(node);
+		return;
+	}
   
     // Left Right Case  
     if (balance > 1 &&  
         GetBalanceFactor(node->left) < 0)  
     {  
         node->left = RotateLeft(node->left);  
-        return RotateRight(node);  
+        node = RotateRight(node); 
+		return;
     }  
   
     // Right Right Case  
-    if (balance < -1 &&  
-        GetBalanceFactor(node->right) <= 0)  
-        return RotateLeft(node);  
+	if (balance < -1 &&
+		GetBalanceFactor(node->right) <= 0) {
+		node = RotateLeft(node);
+		return;
+	}
   
     // Right Left Case  
     if (balance < -1 &&  
         GetBalanceFactor(node->right) > 0)  
     {  
         node->right = RotateRight(node->right);  
-        return RotateLeft(node);  
+        node = RotateLeft(node);  
+		return;
     }  
-  
-    return node;  
+
 }  
 

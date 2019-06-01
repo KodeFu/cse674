@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-	
+#if defined false
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -50,7 +50,8 @@ int main()
 	std::cout << "height: " << bst->Height(bst->_root) << std::endl;
 	
 	// Remove
-	bst->Remove(bst->_root, 50);
+	bst->Remove(bst->_root, 58);
+	bst->Remove(bst->_root, 1);
 
 	// Print tree
 	bst->Display(bst->_root);
@@ -60,7 +61,6 @@ int main()
 
 	bst->RemoveAll(bst->_root);
 	delete bst;
-
 	
 	////////////////////////////////////////////////////////////
 	// DSW
@@ -80,25 +80,24 @@ int main()
 	//std::cout << std::endl;
 
 	// Remove
-	//dsw->Remove(dsw->GetRoot(), 50);
+	dsw->Remove(dsw->_root, 50);
 
-	std::cout << "height: " << dsw->Height(dsw->GetRoot()) << std::endl;
+	std::cout << "height: " << dsw->Height(dsw->_root) << std::endl;
 
-	// Create the tree
-	//dsw->CreatePerfectTree();
-	dsw->BalanceTree(dsw->GetRoot());
+	// Balance tree using DSW algorithm
+	dsw->BalanceTree(dsw->_root);
 
-	std::cout << "height: " << dsw->Height(dsw->GetRoot()) << std::endl;
+	std::cout << "height: " << dsw->Height(dsw->_root) << std::endl;
 
 	// Print Tree
-	dsw->Display(dsw->GetRoot());
+	dsw->Display(dsw->_root);
 	std::cout << std::endl;
-	CPrintTree::printBT(dsw->GetRoot());
+	CPrintTree::printBT(dsw->_root);
 	std::cout << std::endl;
 
-	dsw->RemoveAll(dsw->GetRoot());
+	dsw->RemoveAll(dsw->_root);
 	delete dsw;
-	
+#endif
 	////////////////////////////////////////////////////////////
 	// AVL
 	////////////////////////////////////////////////////////////
@@ -107,12 +106,7 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 20; i++) {
-		std::cout << avl->_root << " inserting: " << g_S2[i] << std::endl;
-		//avl->SetRoot(avl->Insert(avl->_root, g_S2[i])); 
 		avl->Insert(avl->_root, g_S2[i]);
-		std::cout << avl->_root << std::endl;
-		CPrintTree::printBT(avl->_root);
-		std::cout << std::endl;
 	}
 
 	CPrintTree::printBT(avl->_root);
@@ -120,12 +114,12 @@ int main()
 	avl->Display(avl->_root); 
 	std::cout << std::endl;
 
-	//avl->Remove(avl->GetRoot(), 50);
+	avl->Remove(avl->_root, 28);
 
 	//std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
-	//CPrintTree::printBT(avl->getRoot());
-	//std::cout << std::endl;
+	CPrintTree::printBT(avl->_root);
+	std::cout << std::endl;
 	avl->Display(avl->_root); 
 	std::cout << std::endl;
 

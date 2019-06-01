@@ -24,9 +24,9 @@ public:
 	void   Display(CNode *node);
 	void   RemoveAll(CNode* node);
 	
-	virtual int    Height(CNode *node);
-	virtual void   Insert(CNode*& node, int key);
-	virtual CNode* Remove(CNode* node, int key);
+	virtual int   Height(CNode *node);
+	virtual void  Insert(CNode*& node, int key);
+	virtual void  Remove(CNode*& node, int key);
 
 	CNode* _root;
 protected:
