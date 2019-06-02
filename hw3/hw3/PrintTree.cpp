@@ -78,7 +78,7 @@ void CPrintTree::show_tree(const CNode *root, struct trunk *prev, int is_left)
  
 	struct trunk this_disp = { prev, "    " };
 	char *prev_str = this_disp.str;
-	show_tree(root->left, &this_disp, 1);
+	show_tree(root->right, &this_disp, 1);
  
 	if (!prev)
 		this_disp.str = "---";
@@ -96,7 +96,7 @@ void CPrintTree::show_tree(const CNode *root, struct trunk *prev, int is_left)
 	if (prev) prev->str = prev_str;
 	this_disp.str = "   |";
  
-	show_tree(root->right, &this_disp, 0);
+	show_tree(root->left, &this_disp, 0);
 	if (!prev) puts("");
 }
 
