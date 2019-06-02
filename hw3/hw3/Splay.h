@@ -20,7 +20,7 @@ public:
 	CSplay();
 	~CSplay();
 
-	CNode* CSplay::Search(CNode* root, int key);
+	CNode* Search(CNode* root, int key);
 	CNode* Insert(CNode* node, int key);
 	CNode* Remove(CNode* node, int key);
 
