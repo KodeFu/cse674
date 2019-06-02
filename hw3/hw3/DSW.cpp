@@ -31,8 +31,10 @@ void CDSW::TreeToVine(CNode* root, int& size)
 
 	size = 0;
 
-	while (rest != NULL) {
-		if (rest->left == NULL) {
+	while (rest != NULL) 
+	{
+		if (rest->left == NULL) 
+		{
 			// No left, so advance the vine
 			tail = rest;
 			rest = rest->right;
@@ -41,7 +43,8 @@ void CDSW::TreeToVine(CNode* root, int& size)
 			// to traverse list again to get size for VineToTree()
 			size++;
 		}
-		else {
+		else 
+		{
 			// Rotate right
 			CNode* temp = rest->left;
 			rest->left = temp->right;
@@ -59,13 +62,13 @@ void CDSW::TreeToVine(CNode* root, int& size)
 // Create tree from vine (linked list)
 void CDSW::VineToTree(CNode* root, int size)
 {
-	int leaves = size + 1 - ( (int) std::pow(2, (int)(std::log2(size + 1))) );
+	int leaves = size + 1 - ((int)std::pow(2, (int)(std::log2(size + 1))));
 	Compress(root, leaves);
 	size = size - leaves;
-	
+
 	while (size > 1) {
-		Compress(root, (int) floor(size / 2.0));
-		size = (int) floor(size / 2.0);
+		Compress(root, (int)floor(size / 2.0));
+		size = (int)floor(size / 2.0);
 	}
 }
 
@@ -74,7 +77,8 @@ void CDSW::Compress(CNode* root, int count)
 {
 	CNode* scanner = root;
 
-	for (int i = 0; i < count; i++) {
+	for (int i = 0; i < count; i++) 
+	{
 		// Left rotate
 		CNode* child = scanner->right;
 		scanner->right = child->right;

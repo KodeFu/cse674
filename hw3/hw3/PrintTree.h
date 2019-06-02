@@ -5,12 +5,12 @@
 
 	Purpose:
 		Defines the functions to visually display a BST.
-	
+
 	Code adapted from:
 	https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
 
 	Author:
-	    Adrian Schneider
+		Adrian Schneider
 		mpvats@syr.edu
 
 	Changelog:

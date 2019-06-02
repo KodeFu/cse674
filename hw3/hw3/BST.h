@@ -23,7 +23,7 @@ public:
 	void   SetRoot(CNode* node);
 	void   Display(CNode *node);
 	void   RemoveAll(CNode* node);
-	
+
 	virtual int   Height(CNode *node);
 	virtual void  Insert(CNode*& node, int key);
 	virtual void  Remove(CNode*& node, int key);

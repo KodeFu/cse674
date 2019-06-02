@@ -21,14 +21,14 @@ int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
 int g_S2[100];  // Stores sequence S2: pseudo-random sequence of distinct numbers of length 100
 
 void GenerateS1();                      // Generate S1 data set; ordered 1..100
-void GenerateS2(unsigned int seed=0);   // Generate S2 data set; random range 1..100
+void GenerateS2(unsigned int seed = 0);   // Generate S2 data set; random range 1..100
 
 int main()
 {
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-//#if defined false
+#if defined false
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -47,7 +47,7 @@ int main()
 	//std::cout << std::endl;
 
 	std::cout << "height: " << bst->Height(bst->_root) << std::endl;
-	
+
 	// Remove
 	bst->Remove(bst->_root, 50);
 
@@ -59,7 +59,7 @@ int main()
 
 	bst->RemoveAll(bst->_root);
 	delete bst;
-	
+
 	////////////////////////////////////////////////////////////
 	// DSW
 	////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ int main()
 
 	dsw->RemoveAll(dsw->_root);
 	delete dsw;
-//#endif
+#endif
 	////////////////////////////////////////////////////////////
 	// AVL
 	////////////////////////////////////////////////////////////
@@ -109,7 +109,7 @@ int main()
 
 	//CPrintTree::printBT(avl->_root);
 	//std::cout << std::endl;
-	avl->Display(avl->_root); 
+	avl->Display(avl->_root);
 	std::cout << std::endl;
 
 	avl->Remove(avl->_root, 50);
@@ -118,7 +118,7 @@ int main()
 
 	//CPrintTree::printBT(avl->_root);
 	//std::cout << std::endl;
-	avl->Display(avl->_root); 
+	avl->Display(avl->_root);
 	std::cout << std::endl;
 
 	avl->RemoveAll(avl->_root);
@@ -134,10 +134,10 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 100; i++) {
-		splay->SetRoot(splay->Insert(splay->GetRoot(), g_S2[i])); 
+		splay->SetRoot(splay->Insert(splay->GetRoot(), g_S2[i]));
 	}
 
-    splay->Display(splay->GetRoot());
+	splay->Display(splay->GetRoot());
 	std::cout << std::endl;
 
 	splay->SetRoot(splay->Remove(splay->GetRoot(), 50));
@@ -150,7 +150,7 @@ int main()
 	splay->RemoveAll(splay->GetRoot());
 	delete splay;
 #endif
-    return 0;
+	return 0;
 }
 
 //
@@ -164,7 +164,7 @@ void GenerateS1()
 	memset(g_S1, 0, sizeof(g_S1));
 
 	// each element is 1 to 100
-	for (int i=0; i < 100; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		g_S1[i] = i + 1;
 	}
@@ -188,7 +188,7 @@ void GenerateS2(unsigned int seed)
 
 	// generate seed
 	(!seed) ? srand((unsigned)time(NULL)) : srand(seed);
-	
+
 	for (int i = 0; i < 100; i++)
 	{
 		// get distinct numbers

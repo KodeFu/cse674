@@ -5,12 +5,12 @@
 
 	Purpose:
 		Defines the functions to visually display a BST.
-	
+
 	Code adapted from:
 	https://stackoverflow.com/questions/801740/c-how-to-draw-a-binary-tree-to-the-console
 
 	Author:
-	    Adrian Schneider
+		Adrian Schneider
 		mpvats@syr.edu
 
 	Changelog:
@@ -34,22 +34,22 @@ CPrintTree::~CPrintTree()
 
 void CPrintTree::printBT(const std::string& prefix, const CNode* node, bool isLeft)
 {
-    if( node != nullptr )
-    {
-        std::cout << prefix;
+	if (node != nullptr)
+	{
+		std::cout << prefix;
 
-        std::cout << (isLeft ? "|--" : "|--" );
+		std::cout << (isLeft ? "|--" : "|--");
 
-        // print the value of the node
-        std::cout << node->key << std::endl;
+		// print the value of the node
+		std::cout << node->key << std::endl;
 
-        // enter the next tree level - left and right branch
-        printBT( prefix + (isLeft ? "|   " : "    "), node->left, true);
-        printBT( prefix + (isLeft ? "|   " : "    "), node->right, false);
-    }
+		// enter the next tree level - left and right branch
+		printBT(prefix + (isLeft ? "|   " : "    "), node->left, true);
+		printBT(prefix + (isLeft ? "|   " : "    "), node->right, false);
+	}
 }
 
 void CPrintTree::printBT(const CNode* node)
 {
-    printBT("", node, false);    
+	printBT("", node, false);
 }
