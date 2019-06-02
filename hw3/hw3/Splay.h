@@ -20,7 +20,6 @@ public:
 	CSplay();
 	~CSplay();
 
-	int    Height(CNode *node);
 	CNode* Insert(CNode *node, int key);
 	CNode* Remove(CNode* node, int key);
 

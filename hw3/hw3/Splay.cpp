@@ -196,24 +196,3 @@ CNode* CSplay::Remove(CNode* root, int key)
 	return root;
 
 }
-
-// BST height
-int CSplay::Height(CNode *node)
-{
-	int leftHeight = 0;
-	int rightHeight = 0;
-
-	if (node == NULL) {
-		return 0;
-	}
-
-	leftHeight = Height(node->left);
-	rightHeight = Height(node->right);
-
-	if (leftHeight > rightHeight) {
-		return leftHeight + 1;
-	}
-	else {
-		return rightHeight + 1;
-	}
-}
