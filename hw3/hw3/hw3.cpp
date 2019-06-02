@@ -140,6 +140,7 @@ int main()
 	splay->Display(splay->GetRoot());
 	std::cout << std::endl;
 
+	splay->SetRoot(splay->Search(splay->GetRoot(), 50));
 	splay->SetRoot(splay->Remove(splay->GetRoot(), 50));
 
 	std::cout << "height: " << splay->Height(splay->GetRoot()) << std::endl;

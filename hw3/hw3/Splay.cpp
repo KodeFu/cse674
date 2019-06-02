@@ -107,6 +107,15 @@ CNode *CSplay::Splay(CNode *node, int key)
 	}
 }
 
+// The search function for Splay tree.  
+// Note that this function returns the  
+// new root of Splay Tree. If key is  
+// present in tree then, it is moved to root.  
+CNode* CSplay::Search(CNode *root, int key)  
+{  
+    return Splay(root, key);  
+} 
+
 // Function to insert a new key k  
 // in splay tree with given root  
 CNode *CSplay::Insert(CNode *node, int key)
