@@ -47,6 +47,7 @@ int CAVL::Height(CNode *node)
 //
 CNode *CAVL::RotateRight(CNode *node)
 {
+	std::cout << "RotateRight" << std::endl;
 	// Assign P, Q, B (left tree in diagram above)
 	CNode* Q = node;
 	CNode* P = node->left;
@@ -76,6 +77,7 @@ CNode *CAVL::RotateRight(CNode *node)
 //
 CNode *CAVL::RotateLeft(CNode *node)
 {
+	std::cout << "RotateLeft" << std::endl;
 	// Assign P, Q, B (right tree in diagram above)
 	CNode* P = node;
 	CNode* Q = P->right;
@@ -101,7 +103,9 @@ int CAVL::GetBalanceFactor(CNode *node)
 		return 0;
 	}
 
-	return Height(node->left) - Height(node->right);
+	//return Height(node->left) - Height(node->right);
+	
+	return Height(node->right) - Height(node->left) ;
 }
 
 // Insert a new node 
@@ -117,31 +121,32 @@ void CAVL::Insert(CNode*& node, int key)
 		node to check whether this node became
 		unbalanced */
 	int balance = GetBalanceFactor(node);
+	std::cout << balance << std::endl;
 
 	// If this node becomes unbalanced, then 
 	// there are 4 cases 
-
+	
 	// Left Left Case 
-	if (balance > 1 && key < node->left->key)
+	if (balance < -1 && key < node->left->key)
 	{
 		node = RotateRight(node);
 	}
 
 	// Right Right Case 
-	if (balance < -1 && key > node->right->key)
+	if (balance > 1 && key > node->right->key)
 	{
 		node = RotateLeft(node);
 	}
 
 	// Left Right Case 
-	if (balance > 1 && key > node->left->key)
+	if (balance < -1 && key > node->left->key)
 	{
 		node->left = RotateLeft(node->left);
 		node = RotateRight(node);
 	}
 
 	// Right Left Case 
-	if (balance < -1 && key < node->right->key)
+	if (balance > 1 && key < node->right->key)
 	{
 		node->right = RotateRight(node->right);
 		node = RotateLeft(node);
@@ -170,38 +175,30 @@ void CAVL::Remove(CNode*& node, int key)
 	// If this node becomes unbalanced,  
 	// then there are 4 cases  
 
-	// Left Left Case  
-	if (balance > 1 &&
-		GetBalanceFactor(node->left) >= 0) 
+	// Left Left Case 
+	if (balance < -1 && key < node->left->key)
 	{
-		RotateRight(node);
-		return;
+		node = RotateRight(node);
 	}
 
-	// Left Right Case  
-	if (balance > 1 &&
-		GetBalanceFactor(node->left) < 0)
+	// Right Right Case 
+	if (balance > 1 && key > node->right->key)
+	{
+		node = RotateLeft(node);
+	}
+
+	// Left Right Case 
+	if (balance < -1 && key > node->left->key)
 	{
 		node->left = RotateLeft(node->left);
 		node = RotateRight(node);
-		return;
 	}
 
-	// Right Right Case  
-	if (balance < -1 &&
-		GetBalanceFactor(node->right) <= 0) 
-	{
-		node = RotateLeft(node);
-		return;
-	}
-
-	// Right Left Case  
-	if (balance < -1 &&
-		GetBalanceFactor(node->right) > 0)
+	// Right Left Case 
+	if (balance > 1 && key < node->right->key)
 	{
 		node->right = RotateRight(node->right);
 		node = RotateLeft(node);
-		return;
 	}
 
 }

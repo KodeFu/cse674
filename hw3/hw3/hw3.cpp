@@ -104,7 +104,10 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 100; i++) {
+		std::cout << "inserting: " << g_S2[i] << std::endl;
 		avl->Insert(avl->_root, g_S2[i]);
+		CPrintTree::printBT(avl->_root);
+		std::cout << std::endl;
 	}
 
 	//CPrintTree::printBT(avl->_root);
@@ -114,10 +117,10 @@ int main()
 
 	avl->Remove(avl->_root, 50);
 
-	//std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
+	std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
-	CPrintTree::printBT(avl->_root);
-	std::cout << std::endl;
+	//CPrintTree::printBT(avl->_root);
+	//std::cout << std::endl;
 	avl->Display(avl->_root);
 	std::cout << std::endl;
 
