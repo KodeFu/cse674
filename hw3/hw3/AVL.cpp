@@ -35,64 +35,6 @@ int CAVL::Height(CNode *node)
 	return node->height;
 }
 
-// Rotate Right
-//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
-//  - In ASCII form below.
-//
-//     Q              P
-//    / \            / \
-//   P   C  ---->   A   Q
-//  / \                / \
-// A   B              B   C
-//
-CNode *CAVL::RotateRight(CNode *node)
-{
-	// Assign P, Q, B (left tree in diagram above)
-	CNode* Q = node;
-	CNode* P = node->left;
-	CNode* B = P->right;
-
-	// Rotate right
-	P->right = Q;
-	Q->left = B;
-
-	// Update heights 
-	Q->height = std::max(Height(Q->left), Height(Q->right)) + 1;
-	P->height = std::max(Height(P->left), Height(P->right)) + 1;
-
-	// Return new root 
-	return P;
-}
-
-// Roatate Left
-//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
-//  - In ASCII form below.
-//
-//     Q              P
-//    / \            / \
-//   P   C  <----   A   Q
-//  / \                / \
-// A   B              B   C
-//
-CNode *CAVL::RotateLeft(CNode *node)
-{
-	// Assign P, Q, B (right tree in diagram above)
-	CNode* P = node;
-	CNode* Q = P->right;
-	CNode* B = Q->left;
-
-	// Rotate left
-	Q->left = P;
-	P->right = B;
-
-	// Update heights 
-	P->height = std::max(Height(P->left), Height(P->right)) + 1;
-	Q->height = std::max(Height(Q->left), Height(Q->right)) + 1;
-
-	// Return new root
-	return Q;
-}
-
 // Get Balance factor of node N 
 int CAVL::GetBalanceFactor(CNode *node)
 {
@@ -119,13 +61,13 @@ void CAVL::Rebalance(CNode*& node, int key)
 		if (key < node->left->key)
 		{
 			// Left Left Case 
-			node = RotateRight(node);
+			node = RotateRight(node, true);
 		}
 		else
 		{
 			// Left Right Case
-			node->left = RotateLeft(node->left);
-			node = RotateRight(node);
+			node->left = RotateLeft(node->left, true);
+			node = RotateRight(node, true);
 		}
 	}
 	// Right subtree
@@ -134,13 +76,13 @@ void CAVL::Rebalance(CNode*& node, int key)
 		if (key > node->right->key)
 		{
 			// Right Right Case 
-			node = RotateLeft(node);
+			node = RotateLeft(node, true);
 		}
 		else
 		{
 			// Right Left Case 
-			node->right = RotateRight(node->right);
-			node = RotateLeft(node);
+			node->right = RotateRight(node->right, true);
+			node = RotateLeft(node, true);
 		}
 	}
 }

@@ -143,7 +143,7 @@ CNode *CBST::SmallestNode(CNode* node)
 //  / \                / \
 // A   B              B   C
 //
-CNode *CBST::RotateRight(CNode *node)
+CNode *CBST::RotateRight(CNode *node, bool updateHeight)
 {
 	// Assign P, Q, B (left tree in diagram above)
 	CNode* Q = node;
@@ -153,6 +153,14 @@ CNode *CBST::RotateRight(CNode *node)
 	// Rotate right
 	P->right = Q;
 	Q->left = B;
+
+	// Update heights (used by aglos like AVL!)
+	if (updateHeight)
+	{
+		// Update heights 
+		Q->height = std::max(Height(Q->left), Height(Q->right)) + 1;
+		P->height = std::max(Height(P->left), Height(P->right)) + 1;
+	}
 
 	// Return new root 
 	return P;
@@ -168,7 +176,7 @@ CNode *CBST::RotateRight(CNode *node)
 //  / \                / \
 // A   B              B   C
 //
-CNode *CBST::RotateLeft(CNode *node)
+CNode *CBST::RotateLeft(CNode *node, bool updateHeight)
 {
 	// Assign P, Q, B (right tree in diagram above)
 	CNode* P = node;
@@ -178,6 +186,14 @@ CNode *CBST::RotateLeft(CNode *node)
 	// Rotate left
 	Q->left = P;
 	P->right = B;
+
+	// Update heights (used by aglos like AVL!)
+	if (updateHeight)
+	{
+		// Update heights 
+		P->height = std::max(Height(P->left), Height(P->right)) + 1;
+		Q->height = std::max(Height(Q->left), Height(Q->right)) + 1;
+	}
 
 	// Return new root
 	return Q;

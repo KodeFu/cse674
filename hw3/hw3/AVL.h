@@ -25,8 +25,6 @@ public:
 	void   Remove(CNode*& node, int key);
 
 private:
-	CNode* RotateRight(CNode *node);
-	CNode* RotateLeft(CNode *node);
 	int    GetBalanceFactor(CNode *node);
 	void   Rebalance(CNode*& node, int key);
 };
