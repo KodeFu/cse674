@@ -47,7 +47,6 @@ int CAVL::Height(CNode *node)
 //
 CNode *CAVL::RotateRight(CNode *node)
 {
-	std::cout << "RotateRight" << std::endl;
 	// Assign P, Q, B (left tree in diagram above)
 	CNode* Q = node;
 	CNode* P = node->left;
@@ -77,7 +76,6 @@ CNode *CAVL::RotateRight(CNode *node)
 //
 CNode *CAVL::RotateLeft(CNode *node)
 {
-	std::cout << "RotateLeft" << std::endl;
 	// Assign P, Q, B (right tree in diagram above)
 	CNode* P = node;
 	CNode* Q = P->right;

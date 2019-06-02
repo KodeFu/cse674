@@ -55,8 +55,6 @@ void CDSW::TreeToVine(CNode* root, int& size)
 			tail->right = temp;
 		}
 	}
-
-	std::cout << "size: " << size << std::endl;
 }
 
 // Create tree from vine (linked list)

@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-#if defined false
+
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ int main()
 
 	dsw->RemoveAll(dsw->_root);
 	delete dsw;
-#endif
+
 	////////////////////////////////////////////////////////////
 	// AVL
 	////////////////////////////////////////////////////////////
@@ -104,10 +104,7 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 100; i++) {
-		std::cout << "inserting: " << g_S2[i] << std::endl;
 		avl->Insert(avl->_root, g_S2[i]);
-		CPrintTree::printBT(avl->_root);
-		std::cout << std::endl;
 	}
 
 	//CPrintTree::printBT(avl->_root);
