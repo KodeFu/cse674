@@ -4,6 +4,10 @@
 
 CNode::CNode()
 {
+	key = 0;
+	left = NULL;
+	right = NULL;
+	height = 0;
 }
 
 
