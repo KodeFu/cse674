@@ -116,8 +116,8 @@ int main()
 
 	//std::cout << "height: " << avl->Height(avl->GetRoot()) << std::endl;
 
-	//CPrintTree::printBT(avl->_root);
-	//std::cout << std::endl;
+	CPrintTree::printBT(avl->_root);
+	std::cout << std::endl;
 	avl->Display(avl->_root);
 	std::cout << std::endl;
 
