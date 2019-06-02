@@ -64,7 +64,8 @@ void CDSW::VineToTree(CNode* root, int size)
 	Compress(root, leaves);
 	size = size - leaves;
 
-	while (size > 1) {
+	while (size > 1) 
+	{
 		Compress(root, (int)floor(size / 2.0));
 		size = (int)floor(size / 2.0);
 	}
