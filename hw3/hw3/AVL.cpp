@@ -103,8 +103,6 @@ int CAVL::GetBalanceFactor(CNode *node)
 		return 0;
 	}
 
-	//return Height(node->left) - Height(node->right);
-	
 	return Height(node->right) - Height(node->left) ;
 }
 
@@ -114,42 +112,46 @@ void CAVL::Insert(CNode*& node, int key)
 	// Call the base class
 	CBST::Insert(node, key);
 
-	/* 2. Update height of this ancestor node */
-	node->height = 1 + std::max(Height(node->left), Height(node->right));
+	// Update node height
+	node->height = std::max(Height(node->left), Height(node->right)) + 1;
 
-	/* 3. Get the balance factor of this ancestor
-		node to check whether this node became
-		unbalanced */
+	// Get the balance factor
 	int balance = GetBalanceFactor(node);
-	std::cout << balance << std::endl;
 
-	// If this node becomes unbalanced, then 
-	// there are 4 cases 
-	
-	// Left Left Case 
-	if (balance < -1 && key < node->left->key)
+	//////////////////////////////
+	// Rebalance
+	//////////////////////////////
+
+	// Left subtree
+	if (balance < -1)
 	{
-		node = RotateRight(node);
+		
+		if (key < node->left->key)
+		{
+			// Left Left Case 
+			node = RotateRight(node);
+		}
+		else
+		{
+			// Left Right Case
+			node->left = RotateLeft(node->left);
+			node = RotateRight(node);
+		}
 	}
-
-	// Right Right Case 
-	if (balance > 1 && key > node->right->key)
+	// Right subtree
+	else if (balance > 1)
 	{
-		node = RotateLeft(node);
-	}
-
-	// Left Right Case 
-	if (balance < -1 && key > node->left->key)
-	{
-		node->left = RotateLeft(node->left);
-		node = RotateRight(node);
-	}
-
-	// Right Left Case 
-	if (balance > 1 && key < node->right->key)
-	{
-		node->right = RotateRight(node->right);
-		node = RotateLeft(node);
+		if (key > node->right->key)
+		{
+			// Right Right Case 
+			node = RotateLeft(node);
+		}
+		else
+		{
+			// Right Left Case 
+			node->right = RotateRight(node->right);
+			node = RotateLeft(node);
+		}
 	}
 }
 
@@ -159,46 +161,53 @@ void CAVL::Remove(CNode*& node, int key)
 	// Call the base class
 	CBST::Remove(node, key);
 
-	// If the tree had only one node 
-	// then return  
+	// Bail out if node is NULL
 	if (node == NULL)
+	{
 		return;
+	}
 
-	// STEP 2: UPDATE HEIGHT OF THE CURRENT NODE  
-	node->height = 1 + std::max(Height(node->left), Height(node->right));
+	// Update node height
+	node->height = std::max(Height(node->left), Height(node->right)) + 1;
 
-	// STEP 3: GET THE BALANCE FACTOR OF  
-	// THIS NODE (to check whether this  
-	// node became unbalanced)  
+	// Get the balance factor
 	int balance = GetBalanceFactor(node);
 
-	// If this node becomes unbalanced,  
-	// then there are 4 cases  
+	//////////////////////////////
+	// Rebalance
+	//////////////////////////////
 
-	// Left Left Case 
-	if (balance < -1 && key < node->left->key)
+	// Left subtree
+	if (balance < -1)
 	{
-		node = RotateRight(node);
-	}
-
-	// Right Right Case 
-	if (balance > 1 && key > node->right->key)
+		
+		if (key < node->left->key)
+		{
+			// Left Left Case 
+			node = RotateRight(node);
+		}
+		else
+		{
+			// Left Right Case
+			node->left = RotateLeft(node->left);
+			node = RotateRight(node);
+		}
+	} 
+	// Right subtree
+	else if (balance > 1)
 	{
-		node = RotateLeft(node);
-	}
-
-	// Left Right Case 
-	if (balance < -1 && key > node->left->key)
-	{
-		node->left = RotateLeft(node->left);
-		node = RotateRight(node);
-	}
-
-	// Right Left Case 
-	if (balance > 1 && key < node->right->key)
-	{
-		node->right = RotateRight(node->right);
-		node = RotateLeft(node);
+		
+		if (key > node->right->key)
+		{
+			// Right Right Case 
+			node = RotateLeft(node);
+		}
+		else
+		{
+			// Right Left Case 
+			node->right = RotateRight(node->right);
+			node = RotateLeft(node);
+		}
 	}
 
 }
