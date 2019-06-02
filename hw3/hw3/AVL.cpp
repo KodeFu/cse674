@@ -104,26 +104,18 @@ int CAVL::GetBalanceFactor(CNode *node)
 	return Height(node->right) - Height(node->left) ;
 }
 
-// Insert a new node 
-void CAVL::Insert(CNode*& node, int key)
+// Rebalance
+void CAVL::Rebalance(CNode*& node, int key)
 {
-	// Call the base class
-	CBST::Insert(node, key);
-
 	// Update node height
 	node->height = std::max(Height(node->left), Height(node->right)) + 1;
 
 	// Get the balance factor
 	int balance = GetBalanceFactor(node);
 
-	//////////////////////////////
-	// Rebalance
-	//////////////////////////////
-
 	// Left subtree
 	if (balance < -1)
-	{
-		
+	{	
 		if (key < node->left->key)
 		{
 			// Left Left Case 
@@ -153,60 +145,23 @@ void CAVL::Insert(CNode*& node, int key)
 	}
 }
 
+// Insert a new node 
+void CAVL::Insert(CNode*& node, int key)
+{
+	// Call the base class
+	CBST::Insert(node, key);
+
+	// Rebalance subtree
+	Rebalance(node, key);
+}
+
 // Remove a node
 void CAVL::Remove(CNode*& node, int key)
 {
 	// Call the base class
 	CBST::Remove(node, key);
 
-	// Bail out if node is NULL
-	if (node == NULL)
-	{
-		return;
-	}
-
-	// Update node height
-	node->height = std::max(Height(node->left), Height(node->right)) + 1;
-
-	// Get the balance factor
-	int balance = GetBalanceFactor(node);
-
-	//////////////////////////////
-	// Rebalance
-	//////////////////////////////
-
-	// Left subtree
-	if (balance < -1)
-	{
-		
-		if (key < node->left->key)
-		{
-			// Left Left Case 
-			node = RotateRight(node);
-		}
-		else
-		{
-			// Left Right Case
-			node->left = RotateLeft(node->left);
-			node = RotateRight(node);
-		}
-	} 
-	// Right subtree
-	else if (balance > 1)
-	{
-		
-		if (key > node->right->key)
-		{
-			// Right Right Case 
-			node = RotateLeft(node);
-		}
-		else
-		{
-			// Right Left Case 
-			node->right = RotateRight(node->right);
-			node = RotateLeft(node);
-		}
-	}
-
+	// Rebalance subtree
+	Rebalance(node, key);
 }
 
