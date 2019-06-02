@@ -26,8 +26,6 @@ public:
 
 private:
 	CNode* newNode(int key);
-	CNode* RotateRight(CNode *node);
-	CNode* RotateLeft(CNode *node);
 	CNode* Splay(CNode *node, int key);
 	CNode* _root;
 };

@@ -31,7 +31,9 @@ public:
 	CNode* _root;
 
 protected:
-	CNode* SmallestNode(CNode* node);
+	virtual CNode* SmallestNode(CNode* node);
+	virtual CNode* RotateRight(CNode* node);
+	virtual CNode* RotateLeft(CNode* node);
 
 };
 

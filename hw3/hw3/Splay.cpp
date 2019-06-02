@@ -35,30 +35,6 @@ CNode* CSplay::newNode(int key)
 	return (Node);
 }
 
-// A utility function to right 
-// rotate subtree rooted with y  
-// See the diagram given above.  
-CNode *CSplay::RotateRight(CNode *node)
-{
-	CNode *y = node->left;
-	node->left = y->right;
-	y->right = node;
-
-	return y;
-}
-
-// A utility function to left 
-// rotate subtree rooted with x  
-// See the diagram given above.  
-CNode *CSplay::RotateLeft(CNode *node)
-{
-	CNode *y = node->right;
-	node->right = y->left;
-	y->left = node;
-
-	return y;
-}
-
 // This function brings the key at  
 // root if key is present in tree.  
 // If key is not present, then it  

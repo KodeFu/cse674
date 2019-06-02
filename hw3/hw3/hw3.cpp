@@ -28,7 +28,7 @@ int main()
 	// Generate S1 and S2 data sets
 	GenerateS1();
 	GenerateS2(55); // seeding 55 just for repeatability
-
+//#if 0
 	////////////////////////////////////////////////////////////
 	// BST
 	////////////////////////////////////////////////////////////
@@ -124,11 +124,11 @@ int main()
 	avl->RemoveAll(avl->_root);
 
 	delete avl;
-	return 0;
+	
 	////////////////////////////////////////////////////////////
 	// Splay
 	////////////////////////////////////////////////////////////
-#if defined false
+//#endif
 	std::cout << "===== SPLAY =====" << std::endl;
 	CSplay* splay = new CSplay();
 
@@ -149,7 +149,7 @@ int main()
 
 	splay->RemoveAll(splay->GetRoot());
 	delete splay;
-#endif
+
 	return 0;
 }
 

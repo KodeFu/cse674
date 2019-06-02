@@ -133,6 +133,56 @@ CNode *CBST::SmallestNode(CNode* node)
 	return current;
 }
 
+// Rotate Right
+//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
+//  - In ASCII form below.
+//
+//     Q              P
+//    / \            / \
+//   P   C  ---->   A   Q
+//  / \                / \
+// A   B              B   C
+//
+CNode *CBST::RotateRight(CNode *node)
+{
+	// Assign P, Q, B (left tree in diagram above)
+	CNode* Q = node;
+	CNode* P = node->left;
+	CNode* B = P->right;
+
+	// Rotate right
+	P->right = Q;
+	Q->left = B;
+
+	// Return new root 
+	return P;
+}
+
+// Roatate Left
+//  - This follows diagram give in ADs and https://en.wikipedia.org/wiki/Tree_rotation.
+//  - In ASCII form below.
+//
+//     Q              P
+//    / \            / \
+//   P   C  <----   A   Q
+//  / \                / \
+// A   B              B   C
+//
+CNode *CBST::RotateLeft(CNode *node)
+{
+	// Assign P, Q, B (right tree in diagram above)
+	CNode* P = node;
+	CNode* Q = P->right;
+	CNode* B = Q->left;
+
+	// Rotate left
+	Q->left = P;
+	P->right = B;
+
+	// Return new root
+	return Q;
+}
+
 // Remove a node
 void CBST::Remove(CNode*& node, int key)
 {
