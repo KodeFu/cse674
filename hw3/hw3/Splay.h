@@ -26,6 +26,5 @@ public:
 private:
 	CNode* newNode(int key);
 	CNode* Splay(CNode *node, int key);
-	CNode* _root;
 };
 
