@@ -264,7 +264,7 @@ void Task4()
 
 	// Search 50 in tree and print the height of the tree and the tree structure.
 	std::cout << "searching 50" << std::endl;
-	bst->SetRoot(bst->SplaySearch(bst->_root, 50));
+	bst->SetRoot(bst->Search(bst->_root, 50));
 	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
 	CPrintTree::printBT(bst->_root);
 	std::cout << std::endl;
@@ -293,7 +293,7 @@ void Task4()
 
 	// Search 50 in tree and print the height of the tree and the tree structure.
 	std::cout << "searching 50" << std::endl;
-	bst->SetRoot(bst->SplaySearch(bst->_root, 50));
+	bst->SetRoot(bst->Search(bst->_root, 50));
 	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
 	CPrintTree::printBT(bst->_root);
 	std::cout << std::endl;

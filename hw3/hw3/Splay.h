@@ -24,8 +24,6 @@ public:
 	void   Insert(CNode*& node, int key);
 	void   Remove(CNode*& node, int key);
 
-	CNode* SplaySearch(CNode* root, int key);
-
 private:
 	void   Splay(CNode*& node, int key);
 };

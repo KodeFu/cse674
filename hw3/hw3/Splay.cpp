@@ -108,8 +108,8 @@ void CSplay::Splay(CNode*& node, int key)
 	}
 }
 
-// Splay the tree
-CNode* CSplay::SplaySearch(CNode* root, int key)
+// Seach for a node
+CNode* CSplay::Search(CNode* root, int key)
 // This function brings the key at  
 // root if key is present in tree.  
 // If key is not present, then it  
@@ -133,7 +133,7 @@ CNode* CSplay::SplaySearch(CNode* root, int key)
         {  
             // First recursively bring the 
             // key as root of left-left  
-            root->left->left = SplaySearch(root->left->left, key);  
+            root->left->left = Search(root->left->left, key);  
   
             // Do first rotation for root,  
             // second rotation is done after else  
@@ -143,7 +143,7 @@ CNode* CSplay::SplaySearch(CNode* root, int key)
         {  
             // First recursively bring  
             // the key as root of left-right  
-            root->left->right = SplaySearch(root->left->right, key);  
+            root->left->right = Search(root->left->right, key);  
   
             // Do first rotation for root->left  
             if (root->left->right != NULL)  
@@ -162,7 +162,7 @@ CNode* CSplay::SplaySearch(CNode* root, int key)
         if (root->right->key > key)  
         {  
             // Bring the key as root of right-left  
-            root->right->left = SplaySearch(root->right->left, key);  
+            root->right->left = Search(root->right->left, key);  
   
             // Do first rotation for root->right  
             if (root->right->left != NULL)  
@@ -172,7 +172,7 @@ CNode* CSplay::SplaySearch(CNode* root, int key)
         {  
             // Bring the key as root of  
             // right-right and do first rotation  
-            root->right->right = SplaySearch(root->right->right, key);  
+            root->right->right = Search(root->right->right, key);  
             root = RotateLeft(root);  
         }  
   
@@ -181,17 +181,6 @@ CNode* CSplay::SplaySearch(CNode* root, int key)
     }  
 }  
   
-
-// Seach for a node
-CNode* CSplay::Search(CNode *node, int key)  
-{  
-	// Splay it, which brings searched for node to the root
-    Splay(node, key);  
-
-	// Return the found (root) node
-	return node;
-} 
-
 // Insert a node 
 void CSplay::Insert(CNode*& node, int key)
 {
