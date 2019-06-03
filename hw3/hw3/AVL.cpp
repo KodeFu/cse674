@@ -49,6 +49,12 @@ int CAVL::GetBalanceFactor(CNode *node)
 // Rebalance
 void CAVL::Rebalance(CNode*& node, int key)
 {
+	// Bail out if node is null
+	if (node == NULL)
+	{
+		return;
+	}
+
 	// Update node height
 	node->height = std::max(Height(node->left), Height(node->right)) + 1;
 
