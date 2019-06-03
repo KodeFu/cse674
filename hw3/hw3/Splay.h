@@ -21,11 +21,12 @@ public:
 	~CSplay();
 
 	CNode* Search(CNode* root, int key);
-	CNode* Insert(CNode* node, int key);
-	CNode* Remove(CNode* node, int key);
+	void   Insert(CNode*& node, int key);
+	void   Remove(CNode*& node, int key);
+
+	CNode* SplaySearch(CNode* root, int key);
 
 private:
-	CNode* newNode(int key);
-	CNode* Splay(CNode* node, int key);
+	void   Splay(CNode*& node, int key);
 };
 

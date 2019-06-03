@@ -134,21 +134,25 @@ int main()
 
 	// Use random data
 	for (int i = 0; i < 100; i++) {
-		splay->SetRoot(splay->Insert(splay->GetRoot(), g_S2[i]));
+		std::cout << "inserting: " << g_S2[i] << std::endl;
+		splay->Insert(splay->_root, g_S2[i]);
+		CPrintTree::printBT(splay->_root);
+		std::cout << std::endl;
 	}
 
 	splay->Display(splay->GetRoot());
 	std::cout << std::endl;
 
-	splay->SetRoot(splay->Search(splay->GetRoot(), 50));
-	splay->SetRoot(splay->Remove(splay->GetRoot(), 50));
+	//splay->Search(splay->_root, 28);
+	splay->SetRoot(splay->SplaySearch(splay->_root, 50));
+	splay->Remove(splay->_root, 50);
 
-	std::cout << "height: " << splay->Height(splay->GetRoot()) << std::endl;
+	std::cout << "height: " << splay->Height(splay->_root) << std::endl;
 
-	splay->Display(splay->GetRoot());
+	splay->Display(splay->_root);
 	std::cout << std::endl;
 
-	splay->RemoveAll(splay->GetRoot());
+	splay->RemoveAll(splay->_root);
 	delete splay;
 
 	return 0;
