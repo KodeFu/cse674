@@ -55,14 +55,14 @@ void CSplay::Splay(CNode*& node, int key)
 			// Splay to root
 			Splay(node->left->right, key);
 
-			if (node->left->right != NULL)
+			if (node->left->right)
 			{
 				// Zag rotation
 				node->left = RotateLeft(node->left);
 			}
 		}
 
-		if (node->left != NULL)
+		if (node->left)
 		{
 			// Zig rotation
 			node = RotateRight(node);
@@ -82,13 +82,13 @@ void CSplay::Splay(CNode*& node, int key)
 			// Splay to root 
 			Splay(node->right->left, key);
 
-			if (node->right->left != NULL)
+			if (node->right->left)
 			{
 				// Zig rotation
 				node->right = RotateRight(node->right);
 			}
 		}
-		else if (key > node->right->key)// Zag-Zag (Right Right)  
+		else if (key > node->right->key)
 		{
 			// Splay to root
 			Splay(node->right->right, key);
@@ -97,7 +97,7 @@ void CSplay::Splay(CNode*& node, int key)
 			node = RotateLeft(node);
 		}
 
-		if (node->right != NULL)
+		if (node->right)
 		{
 			// Zag rotation
 			node = RotateLeft(node);
@@ -105,7 +105,7 @@ void CSplay::Splay(CNode*& node, int key)
 	}
 	else
 	{
-		// This node is the key! Just return.
+		// This node is the key. Just return.
 		return;
 	}
 
