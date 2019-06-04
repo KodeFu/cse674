@@ -27,85 +27,85 @@ CSplay::~CSplay()
 // Splay the tree
 void CSplay::Splay(CNode*& node, int key)
 {
-	// Bail out if node is NULL or this node has the key
 	if (node == NULL)
 	{
+		// Bail out if node is NULL
 		return;
 	}
 
-	// Key lies in left subtree  
+	// Left subtree
 	if (key < node->key)
 	{
-		// Key is not in tree, we are done  
 		if (node->left == NULL)
 		{
+			// Bail out since key is not in tree
 			return;
 		}
 
-		// Zig-Zig (Left Left)  
 		if (key < node->left->key)
 		{
-			// First recursively bring the 
-			// key as root of left-left  
+			// Splay to root
 			Splay(node->left->left, key);
 
-			// Do first rotation for root,  
-			// second rotation is done after else  
+			// Zig rotation
 			node = RotateRight(node);
 		}
-		else if (key > node->left->key) // Zig-Zag (Left Right)  
+		else if (key > node->left->key)
 		{
-			// First recursively bring  
-			// the key as root of left-right  
+			// Splay to root
 			Splay(node->left->right, key);
 
-			// Do first rotation for root->left  
 			if (node->left->right != NULL)
 			{
+				// Zag rotation
 				node->left = RotateLeft(node->left);
 			}
 		}
 
-		// Do second rotation for root  
 		if (node->left != NULL)
 		{
+			// Zig rotation
 			node = RotateRight(node);
 		}
 	}
-	else if (key > node->key) // Key lies in right subtree  
+	// Right subtree
+	else if (key > node->key)
 	{
-		// Key is not in tree, we are done  
-		if (node->right == NULL) return;
+		if (node->right == NULL)
+		{
+			// Bail out since key is not in tree
+			return;
+		}
 
-		// Zig-Zag (Right Left)  
 		if (key < node->right->key)
 		{
-			// Bring the key as root of right-left  
+			// Splay to root 
 			Splay(node->right->left, key);
 
-			// Do first rotation for root->right  
 			if (node->right->left != NULL)
 			{
+				// Zig rotation
 				node->right = RotateRight(node->right);
 			}
 		}
 		else if (key > node->right->key)// Zag-Zag (Right Right)  
 		{
-			// Bring the key as root of  
-			// right-right and do first rotation  
+			// Splay to root
 			Splay(node->right->right, key);
+
+			// Zag rotation
 			node = RotateLeft(node);
 		}
 
-		// Do second rotation for root  
 		if (node->right != NULL)
 		{
+			// Zag rotation
 			node = RotateLeft(node);
 		}
 	}
 	else
 	{
-		// This node is the key! Just return
+		// This node is the key! Just return.
 		return;
 	}
 
@@ -117,7 +117,8 @@ CNode* CSplay::Search(CNode*& node, int key)
 	// Splay it, which brings searched for node to the root
 	Splay(node, key);
 
-	// Return found (root) node
+	// Return found (root) node; it's also the passed in node,
+	// but returned here as well for convenience.
 	return node;
 }
 

@@ -94,9 +94,9 @@ void CDSW::BalanceTree(CNode* node)
 
 	// Allocate "pseudo-root" and set right child to point to root
 	CNode* pseudoNode = new CNode();
-	pseudoNode->right = GetRoot();
+	pseudoNode->right = _root;
 	pseudoNode->left = NULL;
-	SetRoot(pseudoNode);
+	_root = pseudoNode;
 
 	// Create the backbone
 	TreeToVine(pseudoNode, size);
@@ -105,5 +105,5 @@ void CDSW::BalanceTree(CNode* node)
 	VineToTree(pseudoNode, size);
 
 	// Revert root
-	SetRoot(GetRoot()->right);
+	_root = _root->right;
 }

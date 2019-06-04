@@ -8,267 +8,210 @@
 /////////////////////////////////////////////////////////////////////////////
 SUPER SHORT HOW-TO
 
-- Run by exectuing hw2.exe. No arguments needed. This will run all sorts
-  for all iterations using data files mentioned below.
-    hw2/Release/hw2.exe
+- Run by exectuing hw3.exe. No arguments needed. This will run all tasks.
+    hw3/Release/hw3.exe
 
-- Data files used by hw2.exe are:
-    hw2/Release/ascending.txt
-	hw2/Release/descending.txt
-	hw2/Release/random.txt
+- Output of hw3.exe:
+    hw3/Release/Output.txt
 
-- Output of hw2.exe for Data Files listed above in:
-    hw2/Release/output.txt
-
-- Charts located in output.xlsx. Three tabs for Asceding, Descending and Random. Also
-  an additional tabl for the Program Output (same as output.txt).
-    hw2/Release/output.xlsx
-
-- If you rebuild, build in Release mode since debug really slows down performance.
+- If you rebuild, build in Release mode for the x86 CPU.
 
 /////////////////////////////////////////////////////////////////////////////
-Files in this application:
+FILES
 
-hw2.cpp
+hw3.cpp
  This is the main application source file.
 
-BubbleSort.h/.cpp
- BubbleSort definition and implementation.
+BST.h/.cpp
+ Binary Sort Tree definition and implementation.
 
-BubbleSortWithFlag.h/.cpp
- BubbleSort w/Flag definition and implementation.
+AVL.h/.cpp
+ AVL Tree definition and implementation.
 
-InsertionSort.h/.cpp
- InsertionSort definition and implementation.
+DSW.h/.cpp
+ DSW tree rebalanancing definition and implementation.
 
-SelectionSort.h/.cpp
- SelectionSort definition and implementation.
+Node.h/.cpp
+ Node class definition and implementation.
 
-HeapSort.h/.cpp
- Heap Sort definition and implementation.
+Splay.h/.cpp
+ Splay Tree definition and implementation.
 
-MergeSort.h/.cpp
- Merge Sort definition and implementation.
 
-QuickSort.h/.cpp
- Quick Sort definition and implementation.
+PrintTree.h/.cpp
+ Tree visualization definition and implementation.
 
-RadixSort.h/.cpp
- Radix Sort definition and implementation.
-
-CountingSort.h/.cpp
- Counting Sort definition and implementation.
-
-SmoothSort.h/.cpp
- Smooth Sort definition and implementation.
-
-GenInput.h/cpp
- Input generation definition and implementation.
-
-/////////////////////////////////////////////////////////////////////////////EXECUTION
+/////////////////////////////////////////////////////////////////////////////
+EXECUTION
 
 To run the application:
  1. cd Release
- 2. hw2.exe
+ 2. hw3.exe
 
- This will run the hw2.exe program, running through all of the sorting methods.
- The data files which will be used are already in the executables directory. They
- are ascending.txt, descending.txt and random.txt.
+ This will run the hw3.exe program, running through all of the homework task.
+ 
+ The data used as input for this assignment are defined in hw3.cpp. There are three
+ data sets: g_S1, g_S2 and g_S3.
+
+int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
+int g_S2[100];  // Stores sequence S2: pseudo-random sequence of distinct numbers of length 100
+int g_S3[] = {  // Stores sequence S3: this is S1 arranged in Binary Search Fashion order
+	50, 25, 12,  6,  3,  1,  2,  4,  5,  9,  7,  8, 10, 11, 18, 15, 13, 14, 16, 17,
+	21, 19, 20, 23, 22, 24, 37, 31, 28, 26, 27, 29, 30, 34, 32, 33, 35, 36, 43, 40,
+	38, 39, 41, 42, 46, 44, 45, 48, 47, 49, 75, 62, 56, 53, 51, 52, 54, 55, 59, 57,
+	58, 60, 61, 68, 65, 63, 64, 66, 67, 71, 69, 70, 73, 72, 74, 87, 81, 78, 76, 77,
+	79, 80, 84, 82, 83, 85, 86, 93, 90, 88, 89, 91, 92, 96, 94, 95, 98, 97, 99, 100
+};
+
+ g_S1 and g_S2 are sufficiently described. g_S3 are the number 1..100 ordered in Binary
+ Search Fashion as described in class. I created a recursive function is printed out the
+ number and then placed them here. The function is give at the bottom of this readme.
 
  The output of the execution will be similar to the OUTPUT pasted below. There will
- be three sections Ascending, Descending and Random. Only Ascending is shown here. The
- format of each line is:
+ be four sections Task 1, Task 2, Task 3 and Task 3. Each section will be broken down
+ into "sub-task 1", "sub-task 2", and "sub-task 3".
 
- <sort type> <step> <first run time> <second run time> <third run time> <average run time>
+ A task looks like this:
+=================================
+========== Task 1: BST ==========
+=================================
+===== BST sub-task 1 =====
+tree height: 10
+                                    .--10
+                                .--9
+                            .--8
+                        .--7
+                    .--6
+                .--5
+            .--4
+        .--3
+    .--2
+---1
 
- For example using a line from BubbleSort we see:
- 
-  BubbleSort 32000 281 279 281 280
 
-  This means:
-   Sort type is BubbleSort.
-   This is the 32000 step. 
-   The first run time is 281.
-   The second run time is 279.
-   The third run time is 281.
-   The average run time 280.
+1 2 3 4 5 6 7 8 9 10 
 
-The output is in a file called OUTPUT.TXT. This is the output when running against the
-current ascending.txt, descending.txt and random.txt files.
+ A sub-task looks like this:
+ ===== BST sub-task 2 =====
+tree height: 6
+        .--100
+       |   |        .--87
+       |   |    .--84
+       |    `--60
+    .--58
+   |   |    .--49
+   |    `--28
+---19
+   |    .--11
+    `--1
 
- ---------OUTPUT START---------
-============================================
- Ascending
-============================================
-BubbleSort 1000 0 0 0 0
-BubbleSort 2000 1 1 1 1
-BubbleSort 4000 4 4 4 4
-BubbleSort 8000 17 17 17 17
-BubbleSort 16000 69 69 70 69
-BubbleSort 32000 281 279 281 280
-BubbleSort 64000 1125 1121 1132 1126
-BubbleSort 128000 4491 4530 4539 4520
-BubbleSort 256000 18122 18089 18153 18121
-BubbleSort 512000 72355 72302 72364 72340
-BubbleSort 1000000 276569 276238 277836 276881
-BubbleSort with Flag 1000 0 0 0 0
-BubbleSort with Flag 2000 0 0 0 0
-BubbleSort with Flag 4000 0 0 0 0
-BubbleSort with Flag 8000 0 0 0 0
-BubbleSort with Flag 16000 0 0 0 0
-BubbleSort with Flag 32000 0 0 0 0
-BubbleSort with Flag 64000 0 0 0 0
-BubbleSort with Flag 128000 0 0 0 0
-BubbleSort with Flag 256000 0 0 0 0
-BubbleSort with Flag 512000 0 0 0 0
-BubbleSort with Flag 1000000 0 0 0 0
-Insertion Sort 1000 0 0 0 0
-Insertion Sort 2000 0 0 0 0
-Insertion Sort 4000 0 0 0 0
-Insertion Sort 8000 0 0 0 0
-Insertion Sort 16000 0 0 0 0
-Insertion Sort 32000 0 0 0 0
-Insertion Sort 64000 0 0 0 0
-Insertion Sort 128000 0 0 0 0
-Insertion Sort 256000 0 0 0 0
-Insertion Sort 512000 0 0 0 0
-Insertion Sort 1000000 0 0 0 0
-Selection Sort 1000 0 0 0 0
-Selection Sort 2000 0 0 0 0
-Selection Sort 4000 3 4 3 3
-Selection Sort 8000 14 15 16 15
-Selection Sort 16000 69 60 60 63
-Selection Sort 32000 240 239 242 240
-Selection Sort 64000 961 960 970 963
-Selection Sort 128000 3839 3849 3856 3848
-Selection Sort 256000 15379 15366 15446 15397
-Selection Sort 512000 61699 61618 61712 61676
-Selection Sort 1000000 235874 235908 235901 235894
-Heap Sort 1000 0 0 0 0
-Heap Sort 2000 0 0 0 0
-Heap Sort 4000 0 0 0 0
-Heap Sort 8000 0 0 0 0
-Heap Sort 16000 0 0 0 0
-Heap Sort 32000 1 1 1 1
-Heap Sort 64000 2 2 2 2
-Heap Sort 128000 5 5 5 5
-Heap Sort 256000 11 11 11 11
-Heap Sort 512000 34 24 25 27
-Heap Sort 1000000 55 53 53 53
-Merge Sort 1000 0 0 0 0
-Merge Sort 2000 0 0 0 0
-Merge Sort 4000 1 1 1 1
-Merge Sort 8000 2 2 2 2
-Merge Sort 16000 5 5 5 5
-Merge Sort 32000 11 10 10 10
-Merge Sort 64000 22 21 21 21
-Merge Sort 128000 44 43 43 43
-Merge Sort 256000 91 88 88 89
-Merge Sort 512000 180 178 179 179
-Merge Sort 1000000 361 360 361 360
-Quick Sort 1000 0 0 0 0
-Quick Sort 2000 0 0 0 0
-Quick Sort 4000 0 0 0 0
-Quick Sort 8000 0 0 0 0
-Quick Sort 16000 0 0 0 0
-Quick Sort 32000 0 0 0 0
-Quick Sort 64000 1 1 1 1
-Quick Sort 128000 2 2 2 2
-Quick Sort 256000 4 4 4 4
-Quick Sort 512000 9 9 9 9
-Quick Sort 1000000 18 18 18 18
-Radix Sort 1000 0 0 0 0
-Radix Sort 2000 0 0 0 0
-Radix Sort 4000 0 0 0 0
-Radix Sort 8000 1 1 1 1
-Radix Sort 16000 2 2 2 2
-Radix Sort 32000 5 5 5 5
-Radix Sort 64000 10 10 10 10
-Radix Sort 128000 21 21 21 21
-Radix Sort 256000 45 45 45 45
-Radix Sort 512000 91 91 91 91
-Radix Sort 1000000 174 178 173 175
-Counting Sort 1000 7 6 6 6
-Counting Sort 2000 6 6 6 6
-Counting Sort 4000 6 6 6 6
-Counting Sort 8000 7 6 6 6
-Counting Sort 16000 6 7 6 6
-Counting Sort 32000 7 7 7 7
-Counting Sort 64000 7 7 6 6
-Counting Sort 128000 7 7 7 7
-Counting Sort 256000 7 7 7 7
-Counting Sort 512000 8 8 8 8
-Counting Sort 1000000 10 10 10 10
-Smooth Sort 1000 0 0 0 0
-Smooth Sort 2000 0 0 0 0
-Smooth Sort 4000 0 0 0 0
-Smooth Sort 8000 0 0 0 0
-Smooth Sort 16000 0 0 0 0
-Smooth Sort 32000 0 0 0 0
-Smooth Sort 64000 0 0 0 0
-Smooth Sort 128000 1 1 1 1
-Smooth Sort 256000 2 2 2 2
-Smooth Sort 512000 5 5 5 5
-Smooth Sort 1000000 10 10 10 10
----------OUTPUT END---------
+
+1 11 19 28 49 58 60 84 87 100 
+----
+Note, the tree height is indicated by "tree height:". Below that, we should the Tree Visualization.
+
+PLEASE NOTE: Set your fonts small and your application wide to view the visualization. They can 
+extend quite a bit horizontally.
+
+Following the tree structure, the series of number are the inorder traversal of the elements in
+the tree.
+
+You may also see "deleting 50" and "searching 50" for some of the tree operations. The mean
+deleting node with key 50 (used by Tasks 1-3) and searching for node with key 50 (used by 
+Task 4).
+
 
 /////////////////////////////////////////////////////////////////////////////
-CHARTS
+PROGRAM STRUCTURE
 
-The output of each run Ascending, Descening and Random are manually entered
-into an Excel spreadsheet.
+The programs is structed in an object oriented manner. CBST is the base class
+for all tree algorithms - CDSW, CAVL and CSplay.
 
-There are three tabs: One for Asceding, one for Descending and one for Random.
+CBST ---> CDSW
+     |--> CAVL
+	 |--> CSplay
 
-Each tab contains the average time for each sort for each step and the line
-chart showing their performance.
+CBST
+  - Binary Search Tree operations.
+    - Height()        Get the height of the tree.
+	- Insert()        Insert a key.
+	- Remove()        Remove a node.
+	- SmallestNode()  Get the smallest node in the tree.
+	- RotateRight()   Rotate right operation.
+	- RotateLeft()    Rotate left operation.
+	- _root           Root node pointer.
+  - Base class for all BST operations.
 
-This file is called OUTPUT.XLSX.
+CDSW
+  - DSW algorithm operations.
+    - BalanceTree()   Perform balancing operation using DSW.
+	- TreeToVine()    Transform BST to a Vine (backbone).
+	- VineToTree()    Transform Vine to BST.
+	- Compress()      Perform roations used by VineToTree().
+  - Derives from CBST.
 
-There is also one additional tab for Program Output. This is the same as
-output.txt which contains the program output, which is the times for each
-sorting meting for a particular step.
+CAVL
+  - AVL tree operations.
+    - Height()        Get tree height as stored in the node.
+	- Insert()        Insert by calling base class and Rebalance().
+	- Remove()        Remove by calling base class and Rebalance().
+	- GetBalanceFactor()
+	                  Get balance factor between right/left subtrees.
+	- Rebalance()     Peform AVL algorithm to balance tree using balance factors.
+  - Derives from CBST.
+
+CSPLAY
+  - Splay tree operations.
+    - Search()        Search for key; call Splay() and return node.
+	- Insert()        Insert by calling base class and Splay().
+	- Remove()        Remove by calling base class and Splay().
+	- Splay()         Perform Splay algorith to Zig/Zag to balance tree.
+  - Derives from CBST.
+
+  All of these classes use the CNode class which defines the binary tree node.
+
+  CNode
+    - Defines node structure used by algorithms.
+	  - int key      Defines an integer key.
+	  - CNode left   Defines a pointer to the left subtree.
+	  - CNode right  Defines a pointer to the right subtree.
+	  - int height   Defines the height of the tree. This is only used for AVL trees.
 
 /////////////////////////////////////////////////////////////////////////////
-ALGORITHMS
+REFERENCE CODE (created by me)
 
-Algorithms:
- BubbleSort
- BubbleSort w/Flag
- InsertionSort
- SelectionSort
- Heap Sort
- Merge Sort
- Quick Sort
- Radix Sort
- Counting Sort
- Smooth Sort
+I created the function below (in another project) to output the numbers for 
+g_S3 which is the number 1..100 in Binary Search Fashion. This function mostly
+executed fine, but only outputted 99 numbers since once it got to "1" and the 
+size was one, it simply returned. For this case, I manually added the number "1" 
+into the list to create the full 100 element g_S3 array.
 
-/////////////////////////////////////////////////////////////////////////////
-DATA INPUT
+int bst(std::vector<int> v)
+{
+	if (v.size() <= 1)
+	{
+		return 0;
+	}
+	
+	std::cout << v[(v.size() / 2)-1] << ", ";
+	std::vector<int> left(v.size()/2);
+	std::vector<int>::const_iterator first = v.begin();
+	std::vector<int>::const_iterator last = v.begin() + (v.size()/2);
+	std::copy(first, last, left.begin());
 
-The CGenInput() class is used to generate input. Random input is used for all
-three data files. The input is pre-generated and in the executable's directory
-for convenience.
+	std::vector<int> right(v.size() - v.size() / 2);
+	first = v.begin() + (v.size() / 2);
+	last = v.begin() + (v.size());
+	std::copy(first, last, right.begin());
 
-If regeneration is desired, uncomment the lines below the comment in main.cpp.
-// Uncomment to regenerate input file. Otherwise current input files ascending.txt, 
-// descending.txt and random.txt will be reused.
+	bst(left);
+	bst(right);
 
-ASCENDING.TXT
- This file contains a "-" delimited set of random integers whichs are in
- ascending order.
-
-DESCENDING.TXT
- This file contains a "-" delimited set of random integers whichs are in
- descending order.
-
-RANDOM.TXT
-  This file contains a "-" delimited set of random integers whichs are in
-  random order.
+	return 0;
+}
 
 /////////////////////////////////////////////////////////////////////////////
-ACKNOWLEDGE AND REFERENCE(S):
+ACKNOWLEDGE AND REFERENCE(S)
 
 1. Class notes. Binary Trees Lecture 8 and 9. DSW Algorithm and Rotations.
    http://trifort.org/ads/index.html
@@ -284,3 +227,12 @@ ACKNOWLEDGE AND REFERENCE(S):
 
 5. DSW Algorithm, DSW
    http://web.eecs.umich.edu/~qstout/pap/CACM86.pdf
+
+6. Geek for Geeks, Algorithms. Various articles.
+   https://www.geeksforgeeks.org
+
+7. Splay Trees
+   https://algorithmtutor.com/Data-Structures/Tree/Splay-Trees/
+
+8. Wikipedia. Tree Rotation
+   https://en.wikipedia.org/wiki/Tree_rotation

@@ -19,8 +19,6 @@ public:
 	CBST();
 	~CBST();
 
-	CNode* GetRoot();
-	void   SetRoot(CNode* node);
 	void   Display(CNode *node);
 	void   RemoveAll(CNode* node);
 

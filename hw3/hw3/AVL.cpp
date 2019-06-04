@@ -66,12 +66,12 @@ void CAVL::Rebalance(CNode*& node, int key)
 	{	
 		if (key < node->left->key)
 		{
-			// Left Left Case 
+			// Left-Left
 			node = RotateRight(node, true);
 		}
 		else
 		{
-			// Left Right Case
+			// Left-Right
 			node->left = RotateLeft(node->left, true);
 			node = RotateRight(node, true);
 		}
@@ -81,12 +81,12 @@ void CAVL::Rebalance(CNode*& node, int key)
 	{
 		if (key > node->right->key)
 		{
-			// Right Right Case 
+			// Right-Right
 			node = RotateLeft(node, true);
 		}
 		else
 		{
-			// Right Left Case 
+			// Right-Left
 			node->right = RotateRight(node->right, true);
 			node = RotateLeft(node, true);
 		}

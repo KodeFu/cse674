@@ -24,16 +24,6 @@ CBST::~CBST()
 {
 }
 
-CNode* CBST::GetRoot()
-{
-	return _root;
-}
-
-void CBST::SetRoot(CNode* node)
-{
-	_root = node;
-}
-
 // Display nodes via inorder traversal
 void CBST::Display(CNode* node)
 {
