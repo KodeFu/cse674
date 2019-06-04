@@ -19,9 +19,16 @@
 
 int g_S1[100];	// Stores sequence S1: sequence of numbers from 1..100
 int g_S2[100];  // Stores sequence S2: pseudo-random sequence of distinct numbers of length 100
+int g_S3[] = {  // Stores sequence S3: this is S1 arranged in Binary Search Fashion order
+	50, 25, 12,  6,  3,  1,  2,  4,  5,  9,  7,  8, 10, 11, 18, 15, 13, 14, 16, 17,
+	21, 19, 20, 23, 22, 24, 37, 31, 28, 26, 27, 29, 30, 34, 32, 33, 35, 36, 43, 40,
+	38, 39, 41, 42, 46, 44, 45, 48, 47, 49, 75, 62, 56, 53, 51, 52, 54, 55, 59, 57,
+	58, 60, 61, 68, 65, 63, 64, 66, 67, 71, 69, 70, 73, 72, 74, 87, 81, 78, 76, 77,
+	79, 80, 84, 82, 83, 85, 86, 93, 90, 88, 89, 91, 92, 96, 94, 95, 98, 97, 99, 100
+};
 
-void GenerateS1();                      // Generate S1 data set; ordered 1..100
-void GenerateS2(unsigned int seed = 0);   // Generate S2 data set; random range 1..100
+void GenerateS1();                       // Generate S1 data set; ordered 1..100
+void GenerateS2(unsigned int seed = 0);  // Generate S2 data set; random range 1..100
 
 void Task1()
 {
@@ -71,6 +78,36 @@ void Task1()
 		{
 			std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;\
 			CPrintTree::printBT(bst->_root);
+			std::cout << std::endl;
+			bst->Display(bst->_root);
+			std::cout << std::endl;
+		}
+	}
+
+	// Delete the 50 from tree and print the height of the tree and the tree structure.
+	std::cout << "deleting 50" << std::endl;
+	bst->Remove(bst->_root, 50);
+	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
+	CPrintTree::printBT(bst->_root);
+	std::cout << std::endl;
+	bst->Display(bst->_root);
+	std::cout << std::endl;
+
+	bst->RemoveAll(bst->_root);
+	delete bst;
+
+	std::cout << "===== BST sub-task 3 =====" << std::endl;
+	bst = new CBST();
+
+	// Insert every element of S1 into the BST. 
+	for (int i = 0; i < 100; i++) {
+		bst->Insert(bst->_root, g_S3[i]);
+
+		// Print the height of the tree and the tree structure after every 10 insertions.
+		if ((i + 1) % 10 == 0)
+		{
+			std::cout << "tree height: " << bst->Height(bst->_root) << std::endl; \
+				CPrintTree::printBT(bst->_root);
 			std::cout << std::endl;
 			bst->Display(bst->_root);
 			std::cout << std::endl;
@@ -170,6 +207,43 @@ void Task2()
 
 	bst->RemoveAll(bst->_root);
 	delete bst;
+
+	std::cout << "===== DSW sub-task 3 =====" << std::endl;
+	bst = new CDSW();
+	// Insert every element of S2 into the BST. 
+	for (int i = 0; i < 100; i++) {
+		bst->Insert(bst->_root, g_S3[i]);
+
+		// Print the height of the tree and the tree structure after every 10 insertions.
+		if ((i + 1) % 10 == 0)
+		{
+			std::cout << "tree height (before): " << bst->Height(bst->_root) << std::endl;
+			CPrintTree::printBT(bst->_root);
+			std::cout << std::endl;
+			bst->Display(bst->_root);
+			std::cout << std::endl;
+
+			bst->BalanceTree(bst->_root);
+
+			std::cout << "tree height (after): " << bst->Height(bst->_root) << std::endl;
+			CPrintTree::printBT(bst->_root);
+			std::cout << std::endl;
+			bst->Display(bst->_root);
+			std::cout << std::endl;
+		}
+	}
+
+	// Delete the 50 from tree and print the height of the tree and the tree structure.
+	std::cout << "deleting 50" << std::endl;
+	bst->Remove(bst->_root, 50);
+	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
+	CPrintTree::printBT(bst->_root);
+	std::cout << std::endl;
+	bst->Display(bst->_root);
+	std::cout << std::endl;
+
+	bst->RemoveAll(bst->_root);
+	delete bst;
 }
 
 void Task3()
@@ -200,14 +274,14 @@ void Task3()
 	std::cout << "deleting 50" << std::endl;
 	bst->Remove(bst->_root, 50);
 	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
-	//CPrintTree::printBT(bst->_root);
-	//std::cout << std::endl;
+	CPrintTree::printBT(bst->_root);
+	std::cout << std::endl;
 	bst->Display(bst->_root);
 	std::cout << std::endl;
 
 	bst->RemoveAll(bst->_root);
 	delete bst;
-	return;
+
 	std::cout << "===== AVL sub-task 2 =====" << std::endl;
 	bst = new CAVL();
 	// Insert every element of S2 into the BST. 
@@ -216,6 +290,35 @@ void Task3()
 
 		// Print the height of the tree and the tree structure after every 10 insertions.
 		if ((i+1) % 10 == 0)
+		{
+			std::cout << "tree height (before): " << bst->Height(bst->_root) << std::endl;
+			CPrintTree::printBT(bst->_root);
+			std::cout << std::endl;
+			bst->Display(bst->_root);
+			std::cout << std::endl;
+		}
+	}
+
+	// Delete the 50 from tree and print the height of the tree and the tree structure.
+	std::cout << "deleting 50" << std::endl;
+	bst->Remove(bst->_root, 50);
+	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
+	CPrintTree::printBT(bst->_root);
+	std::cout << std::endl;
+	bst->Display(bst->_root);
+	std::cout << std::endl;
+
+	bst->RemoveAll(bst->_root);
+	delete bst;
+
+	std::cout << "===== AVL sub-task 3 =====" << std::endl;
+	bst = new CAVL();
+	// Insert every element of S2 into the BST. 
+	for (int i = 0; i < 100; i++) {
+		bst->Insert(bst->_root, g_S2[i]);
+
+		// Print the height of the tree and the tree structure after every 10 insertions.
+		if ((i + 1) % 10 == 0)
 		{
 			std::cout << "tree height (before): " << bst->Height(bst->_root) << std::endl;
 			CPrintTree::printBT(bst->_root);
@@ -264,7 +367,7 @@ void Task4()
 
 	// Search 50 in tree and print the height of the tree and the tree structure.
 	std::cout << "searching 50" << std::endl;
-	bst->SetRoot(bst->Search(bst->_root, 50));
+	bst->Search(bst->_root, 50);
 	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
 	CPrintTree::printBT(bst->_root);
 	std::cout << std::endl;
@@ -293,7 +396,36 @@ void Task4()
 
 	// Search 50 in tree and print the height of the tree and the tree structure.
 	std::cout << "searching 50" << std::endl;
-	bst->SetRoot(bst->Search(bst->_root, 50));
+	bst->Search(bst->_root, 50);
+	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
+	CPrintTree::printBT(bst->_root);
+	std::cout << std::endl;
+	bst->Display(bst->_root);
+	std::cout << std::endl;
+
+	bst->RemoveAll(bst->_root);
+	delete bst;
+
+	std::cout << "===== Splay sub-task 3 =====" << std::endl;
+	bst = new CSplay();
+	// Insert every element of S2 into the BST. 
+	for (int i = 0; i < 100; i++) {
+		bst->Insert(bst->_root, g_S3[i]);
+
+		// Print the height of the tree and the tree structure after every 10 insertions.
+		if ((i + 1) % 10 == 0)
+		{
+			std::cout << "tree height (before): " << bst->Height(bst->_root) << std::endl;
+			CPrintTree::printBT(bst->_root);
+			std::cout << std::endl;
+			bst->Display(bst->_root);
+			std::cout << std::endl;
+		}
+	}
+
+	// Search 50 in tree and print the height of the tree and the tree structure.
+	std::cout << "searching 50" << std::endl;
+	bst->Search(bst->_root, 50);
 	std::cout << "tree height: " << bst->Height(bst->_root) << std::endl;
 	CPrintTree::printBT(bst->_root);
 	std::cout << std::endl;
