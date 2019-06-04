@@ -176,6 +176,10 @@ CSPLAY
 	  - CNode right  Defines a pointer to the right subtree.
 	  - int height   Defines the height of the tree. This is only used for AVL trees.
 
+Finally, hw3.cpp defines the main entry point to the application. It executes Tas1(), Task2(),
+Task3() and Task4(). All of these task functions are defined in this file. Each task goes through
+all of the subtasks required by the homework assignment.
+
 /////////////////////////////////////////////////////////////////////////////
 REFERENCE CODE (created by me)
 
