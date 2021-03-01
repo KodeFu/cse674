@@ -1,3 +1,5 @@
-# CSE674 Advanced Data Structures and Algorithms Coursework Grades
+# CSE674 Advanced Data Structures and Algorithms
 
-Labs for Advanced Datat Structures and Algorithms course.
+Labs for Advanced Data Structures and Algorithms course.
+
+Syracuse University
